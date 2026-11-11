@@ -4,61 +4,81 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Pacific — The data center factory</title>
+<title>Pacific — Data centers, built in a factory</title>
 <style>
-  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --accent:#fff; }
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
   .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
-  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px 40px; mix-blend-mode:normal; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px var(--pad); }
   nav .wordmark img { height:20px; display:block; opacity:0.96; }
   nav .links { display:flex; gap:34px; align-items:center; }
-  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.75; transition:opacity .3s; }
+  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.8; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
-  nav .cta { border:1px solid rgba(255,255,255,.55); padding:9px 22px; background:rgba(255,255,255,.08); opacity:1 !important; }
+  nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; }
   nav .cta:hover { background:var(--ink); color:var(--bg); }
-  .hero { position:relative; height:100vh; min-height:620px; overflow:hidden; }
-  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.82); }
-  .hero .shade { position:absolute; inset:0; background:linear-gradient(232.66deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.88) 95%); }
-  .hero .inner { position:absolute; left:40px; right:40px; bottom:72px; }
-  h1 { font-size:clamp(44px,7vw,96px); font-weight:400; letter-spacing:-1px; line-height:.92; max-width:15ch; text-indent:clamp(40px,8vw,120px); }
-  .hero .sub { margin-top:26px; font-size:17px; color:#c9c7c2; max-width:46ch; font-weight:300; }
-  section { padding:96px 40px; }
-  .statement { max-width:1200px; margin:0 auto; }
-  .statement p.big { font-size:clamp(26px,3.2vw,44px); font-weight:400; line-height:1.15; letter-spacing:-0.01em; max-width:28ch; margin-top:28px; text-indent:clamp(32px,6vw,96px); }
-  .media { padding:0; }
-  .media img { width:100%; display:block; }
-  .product { max-width:1200px; margin:0 auto; }
-  .product h2 { font-size:clamp(30px,4vw,52px); font-weight:400; letter-spacing:-0.5px; line-height:1; margin-top:26px; }
-  .product p.lead { margin-top:18px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
+
+  /* Hero: full-bleed image, one giant word cropped at the bottom edge */
+  .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+  .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+  .hero .giant { position:absolute; left:0; right:0; bottom:-0.14em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:1; white-space:nowrap; color:#fff; font-size:14vw; }
+  .hero .kicker { position:absolute; left:var(--pad); top:50%; transform:translateY(-50%); max-width:30ch; font-size:17px; font-weight:300; color:#e6e3dd; display:none; }
+
+  section { padding:110px var(--pad); }
+  .wrap { max-width:1280px; margin:0; }
+  .statement p.big { font-size:clamp(28px,3.4vw,50px); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:26ch; margin-top:26px; }
+  .statement p.sub { margin-top:22px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
+
+  .band { position:relative; height:88vh; min-height:520px; overflow:hidden; }
+  .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .band .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.7) 100%); }
+  .band .inner { position:absolute; left:var(--pad); right:var(--pad); bottom:56px; }
+  .band p.big { font-size:clamp(26px,3.2vw,46px); font-weight:400; max-width:22ch; line-height:1.12; letter-spacing:-0.015em; margin-top:16px; }
+  .band.tall { height:100vh; }
+
+  .product h2 { font-size:clamp(32px,4.4vw,60px); font-weight:400; letter-spacing:-0.02em; line-height:1; margin-top:24px; }
+  .product h2 span { color:var(--dim); }
+  .product p.lead { margin-top:20px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
   .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:64px; }
-  .stat { background:var(--bg); padding:34px 26px; }
+  .stat { background:var(--bg); padding:34px 26px 34px 0; padding-left:26px; }
+  .stat:first-child { padding-left:0; }
   .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; letter-spacing:-0.5px; line-height:1; }
   .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
-  .band { position:relative; height:76vh; min-height:440px; overflow:hidden; }
-  .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.8); }
-  .band .shade { position:absolute; inset:0; background:linear-gradient(232.66deg, rgba(0,0,0,0) 42%, rgba(0,0,0,.85) 95%); }
-  .band .inner { position:absolute; left:40px; right:40px; bottom:56px; }
-  .band p.big { font-size:clamp(24px,3vw,42px); font-weight:300; max-width:24ch; line-height:1.2; margin-top:18px; }
-  .contact { max-width:1200px; margin:0 auto; border-top:1px solid var(--line); padding-top:90px; }
-  .contact .big { font-size:clamp(26px,3.4vw,46px); font-weight:300; max-width:24ch; line-height:1.2; margin-top:26px; }
+
+  .media { padding:0; }
+  .media img { width:100%; display:block; }
+  .pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bg); }
+  .pair img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; }
+
+  .contact { border-top:1px solid var(--line); padding-top:90px; }
+  .contact .big { font-size:clamp(26px,3.4vw,46px); font-weight:400; max-width:24ch; line-height:1.15; letter-spacing:-0.015em; margin-top:26px; }
   .contact .row { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:70px; }
   .contact .col p { margin-top:14px; font-size:15px; color:#c9c7c2; font-weight:300; max-width:44ch; }
-  .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:14px; letter-spacing:.14em; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:5px; }
-  footer { display:flex; justify-content:space-between; align-items:center; padding:46px 40px; border-top:1px solid var(--line); margin-top:120px; }
+  .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:12px; letter-spacing:.18em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:11px 22px; }
+  .contact a.mail:hover { background:var(--ink); color:var(--bg); }
+
+  footer { display:flex; justify-content:space-between; align-items:center; padding:46px var(--pad); border-top:1px solid var(--line); margin-top:120px; }
   footer img { height:16px; opacity:.8; }
   footer .label { font-size:10px; }
-  .fade { opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease; }
+
+  .fade { opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
   .fade.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
+
   @media (max-width:760px){
-    nav { padding:20px 20px; } nav .links a:not(.cta){ display:none; }
-    section { padding:90px 20px; }
-    .hero .inner, .band .inner { left:20px; right:20px; }
+    :root { --pad:20px; }
+    nav .links a:not(.cta){ display:none; }
+    section { padding:90px var(--pad); }
     .stats { grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(odd) { padding-left:0; }
     .contact .row { grid-template-columns:1fr; gap:44px; }
-    footer { padding:36px 20px; }
+    .pair { grid-template-columns:1fr; }
+    .band { height:70vh; }
   }
+  html.review .hero, html.review .band.tall { height:900px; } html.review .band { height:640px; } html.review .fade { opacity:1; transform:none; }
 </style>
 </head>
 <body>
@@ -67,6 +87,7 @@
   <a class="wordmark" href="#"><img src="img/pacific_logo_full_white.svg" alt="Pacific"></a>
   <div class="links">
     <a href="#pod">Pod 32</a>
+    <a href="#deploy">Deployment</a>
     <a href="#factory">Factory</a>
     <a href="#contact">Company</a>
     <a class="cta" href="#contact">Request capacity</a>
@@ -74,35 +95,21 @@
 </nav>
 
 <header class="hero">
-  <img src="img/hero.jpg" alt="Pacific pod on a truck">
+  <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light">
   <div class="shade"></div>
-  <div class="inner">
-    <h1 class="fade">The data center factory.</h1>
-    <p class="sub fade">A data center inside a 40 foot container. Built in a factory, tested there, delivered on one truck.</p>
-  </div>
+  <div class="giant"><span id="giant">Data centers</span></div>
 </header>
 
 <section class="statement">
-  <div class="label fade">What we build</div>
-  <p class="big fade">Giant data centers take years and earn nothing until everything is finished. A pod lands on powered land and goes to work.</p>
-</section>
-
-<div class="media fade"><img src="img/pod_top.jpg" alt="Pacific pod, top view"></div>
-
-<section class="product" id="pod">
-  <div class="label fade">The machine</div>
-  <h2 class="fade">Pod 32<br><span style="color:#8a8a86">Mobile compute unit</span></h2>
-  <p class="lead fade">Thirty-two nodes of NVIDIA B300s with power, cooling and network in one container. It arrives tested.</p>
-  <div class="stats fade">
-    <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
-    <div class="stat"><div class="n">&lt;1 MW</div><div class="d">One truck, one pad</div></div>
-    <div class="stat"><div class="n">Direct-to-chip</div><div class="d">Liquid cooling</div></div>
-    <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
+  <div class="wrap">
+    <div class="label fade">Pacific</div>
+    <p class="big fade">The data center factory. A full data center inside a 40 foot container, built on a line, tested there, delivered on one truck.</p>
+    <p class="sub fade">Giant data centers take years and earn nothing until everything is finished. A pod lands on powered land and goes to work.</p>
   </div>
 </section>
 
-<div class="band fade">
-  <img src="img/pod_amber.jpg" alt="Pacific pod in transit">
+<div class="band tall fade" id="deploy">
+  <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk with a crew member walking toward it">
   <div class="shade"></div>
   <div class="inner">
     <div class="label">Deployment</div>
@@ -110,21 +117,66 @@
   </div>
 </div>
 
-<section class="statement" id="factory">
-  <div class="label fade">The factory</div>
-  <p class="big fade">We are building the factory that builds data centers. Production lines, with the longest-lead parts made in house.</p>
+<section class="product" id="pod">
+  <div class="wrap">
+    <div class="label fade">The machine</div>
+    <h2 class="fade">Pod 32<br><span>Mobile compute unit</span></h2>
+    <p class="lead fade">Thirty-two nodes of NVIDIA B300s with power, cooling and network in one container. It arrives tested.</p>
+    <div class="stats fade">
+      <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
+      <div class="stat"><div class="n">&lt;1 MW</div><div class="d">One truck, one pad</div></div>
+      <div class="stat"><div class="n">Direct-to-chip</div><div class="d">Liquid cooling</div></div>
+      <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
+    </div>
+  </div>
 </section>
 
-<div class="media fade"><img src="img/pod_profile.jpg" alt="Pacific pod, profile"></div>
+<div class="media fade"><img src="img/v13_long_side_grazing.jpg" alt="Pacific pod, long side"></div>
+
+<div class="pair fade">
+  <img src="img/v10_fan_lit_from_above.jpg" alt="Roof cooling fan">
+  <img src="img/v07_logo_plate_lit.jpg" alt="Pacific name plate">
+</div>
+
+<section class="statement" id="factory">
+  <div class="wrap">
+    <div class="label fade">The factory</div>
+    <p class="big fade">We are building the factory that builds data centers. Production lines, with the longest-lead parts made in house.</p>
+    <p class="sub fade">One pod leaves on one truck. The next one is already on the line behind it.</p>
+  </div>
+</section>
+
+<div class="band fade">
+  <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory">
+  <div class="shade"></div>
+  <div class="inner">
+    <div class="label">Out the door</div>
+    <p class="big">Built, tested and powered up before it ever sees a site.</p>
+  </div>
+</div>
+
+<div class="pair fade">
+  <img src="img/hero.jpg" alt="Pacific pod on a truck in the forest">
+  <img src="img/deploy.jpg" alt="Pacific pod on a truck through an industrial site">
+</div>
+
+<div class="band fade">
+  <img src="img/v16_person_on_roof_sky.jpg" alt="Engineer standing on a Pacific pod at dusk">
+  <div class="shade"></div>
+  <div class="inner">
+    <div class="label">Capacity</div>
+    <p class="big">GPU clusters and colocation space, available from early 2027.</p>
+  </div>
+</div>
 
 <section id="contact">
-  <div class="contact">
+  <div class="wrap contact">
     <div class="label fade">Company</div>
     <p class="big fade">San Francisco. Hiring people who have built factories, pads and power systems fast.</p>
     <div class="row fade">
       <div class="col">
         <div class="label">Capacity</div>
-        <p>GPU clusters and colocation space, available from early 2027.</p>
+        <p>Tell us where the power is and when you need the GPUs.</p>
         <a class="mail" href="mailto:harper@pacificmachines.com">Request capacity</a>
       </div>
       <div class="col">
@@ -142,7 +194,21 @@
 </footer>
 
 <script>
-  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.15});
+  if (location.search.includes('review')) document.documentElement.classList.add('review');
+  // Fit the giant hero word to the full width between the page gutters.
+  (function(){
+    const el = document.getElementById('giant'); const box = el.parentElement;
+    function fit(){
+      const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
+      const target = window.innerWidth - pad*2;
+      box.style.fontSize = '100px';
+      const w = el.getBoundingClientRect().width;
+      box.style.fontSize = (100 * target / w) + 'px';
+    }
+    fit(); window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
   document.querySelectorAll('.fade').forEach(el => io.observe(el));
 </script>
 </body>

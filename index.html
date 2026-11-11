@@ -6,16 +6,16 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Pacific — Data centers, built in a factory</title>
 <style>
-  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; }
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(28px,3.3vw,48px); }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
   .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
 
-  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px var(--pad); }
+  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px var(--pad) 40px; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0)); }
   nav .wordmark img { height:20px; display:block; opacity:0.96; }
   nav .links { display:flex; gap:34px; align-items:center; }
-  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.8; transition:opacity .3s; }
+  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
   nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; }
   nav .cta:hover { background:var(--ink); color:var(--bg); }
@@ -23,46 +23,49 @@
   /* Hero: full-bleed image, one giant word cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
-  .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
-  .hero .giant { position:absolute; left:0; right:0; bottom:-0.14em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:1; white-space:nowrap; color:#fff; font-size:14vw; }
+  .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+  .hero .giant { position:absolute; left:0; right:0; bottom:-0.14em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
+  .hero .giant .l { display:inline; }
   .hero .kicker { position:absolute; left:var(--pad); top:50%; transform:translateY(-50%); max-width:30ch; font-size:17px; font-weight:300; color:#e6e3dd; display:none; }
 
   section { padding:110px var(--pad); }
-  .wrap { max-width:1280px; margin:0; }
-  .statement p.big { font-size:clamp(28px,3.4vw,50px); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:26ch; margin-top:26px; }
+  .wrap { max-width:none; margin:0; }
+  .statement p.big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
   .statement p.sub { margin-top:22px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
 
   .band { position:relative; height:88vh; min-height:520px; overflow:hidden; }
   .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .band .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.7) 100%); }
   .band .inner { position:absolute; left:var(--pad); right:var(--pad); bottom:56px; }
-  .band p.big { font-size:clamp(26px,3.2vw,46px); font-weight:400; max-width:22ch; line-height:1.12; letter-spacing:-0.015em; margin-top:16px; }
+  .band p.big { font-size:var(--h); font-weight:400; max-width:24ch; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; }
   .band.tall { height:100vh; }
 
-  .product h2 { font-size:clamp(32px,4.4vw,60px); font-weight:400; letter-spacing:-0.02em; line-height:1; margin-top:24px; }
+  .product h2 { font-size:var(--h); font-weight:400; letter-spacing:-0.015em; line-height:1.12; margin-top:20px; max-width:24ch; }
   .product h2 span { color:var(--dim); }
   .product p.lead { margin-top:20px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
   .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:64px; }
   .stat { background:var(--bg); padding:34px 26px 34px 0; padding-left:26px; }
   .stat:first-child { padding-left:0; }
-  .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; letter-spacing:-0.5px; line-height:1; }
+  .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; letter-spacing:0; line-height:1; white-space:nowrap; }
   .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
 
   .media { padding:0; }
+  .band + .pair, .pair + .band, .media + .pair, .band + .media, .media + .band, .pair + .pair { margin-top:40px; }
   .media img { width:100%; display:block; }
   .pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bg); }
   .pair img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; }
 
-  .contact { border-top:1px solid var(--line); padding-top:90px; }
-  .contact .big { font-size:clamp(26px,3.4vw,46px); font-weight:400; max-width:24ch; line-height:1.15; letter-spacing:-0.015em; margin-top:26px; }
+  .contact { padding-top:0; }
+  section#contact { border-top:1px solid var(--line); }
+  .contact .big { font-size:var(--h); font-weight:400; max-width:24ch; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; }
   .contact .row { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:70px; }
-  .contact .col p { margin-top:14px; font-size:15px; color:#c9c7c2; font-weight:300; max-width:44ch; }
-  .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:12px; letter-spacing:.18em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:11px 22px; }
+  .contact .col p { margin-top:14px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:44ch; }
+  .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:11px 22px; }
   .contact a.mail:hover { background:var(--ink); color:var(--bg); }
 
-  footer { display:flex; justify-content:space-between; align-items:center; padding:46px var(--pad); border-top:1px solid var(--line); margin-top:120px; }
+  footer { display:flex; justify-content:space-between; align-items:center; padding:46px var(--pad); border-top:1px solid var(--line); margin-top:0; }
   footer img { height:16px; opacity:.8; }
-  footer .label { font-size:10px; }
+  footer .label { font-size:11px; }
 
   .fade { opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
   .fade.in { opacity:1; transform:none; }
@@ -78,6 +81,8 @@
     .pair { grid-template-columns:1fr; }
     .band { height:70vh; }
     .hero img { object-position:78% 40%; }
+    .hero .giant { white-space:normal; font-size:19vw; }
+    .hero .giant .l { display:block; width:max-content; }
   }
   html.review .hero, html.review .band.tall { height:900px; } html.review .band { height:640px; } html.review .fade { opacity:1; transform:none; }
 </style>
@@ -98,7 +103,7 @@
 <header class="hero">
   <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light">
   <div class="shade"></div>
-  <div class="giant"><span id="giant">The data center factory</span></div>
+  <div class="giant"><span id="giant"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></div>
 </header>
 
 <section class="statement">
@@ -126,7 +131,7 @@
     <div class="stats fade">
       <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
       <div class="stat"><div class="n">&lt;1 MW</div><div class="d">One truck, one pad</div></div>
-      <div class="stat"><div class="n">Direct-to-chip</div><div class="d">Liquid cooling</div></div>
+      <div class="stat"><div class="n">Liquid</div><div class="d">Direct-to-chip cooling</div></div>
       <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
     </div>
   </div>
@@ -136,7 +141,7 @@
 
 <div class="pair fade">
   <img src="img/v10_fan_lit_from_above.jpg" alt="Roof cooling fan">
-  <img src="img/v07_logo_plate_lit.jpg" alt="Pacific name plate">
+  <img src="img/v3_corner_door_person.jpg" alt="Engineer beside the pod door">
 </div>
 
 <section class="statement" id="factory">
@@ -199,11 +204,14 @@
   // Fit the giant hero word to the full width between the page gutters.
   (function(){
     const el = document.getElementById('giant'); const box = el.parentElement;
+    const lines = el.querySelectorAll('.l');
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
-      const target = window.innerWidth - pad*2;
+      const target = document.documentElement.clientWidth - pad*2;
       box.style.fontSize = '100px';
-      const w = el.getBoundingClientRect().width;
+      const stacked = getComputedStyle(lines[0]).display === 'block';
+      const w = stacked ? Math.max(...[...lines].map(l => l.getBoundingClientRect().width)) : el.getBoundingClientRect().width;
+      if (!w) return;
       box.style.fontSize = (100 * target / w) + 'px';
     }
     fit(); window.addEventListener('resize', fit);

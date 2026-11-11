@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Pacific — Data centers, built in a factory</title>
+<title>Pacific. The data center factory</title>
 <style>
   :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(28px,3.3vw,48px); }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
+  @media (prefers-reduced-motion:no-preference){ html { scroll-behavior:smooth; } }
   body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
   .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
 
@@ -26,10 +26,9 @@
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
   .hero .giant { position:absolute; left:0; right:0; bottom:-0.14em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
-  .hero .kicker { position:absolute; left:var(--pad); top:50%; transform:translateY(-50%); max-width:30ch; font-size:17px; font-weight:300; color:#e6e3dd; display:none; }
 
   section { padding:110px var(--pad); }
-  .wrap { max-width:none; margin:0; }
+  .wrap { max-width:none; }
   .statement p.big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
   .statement p.sub { margin-top:22px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
 
@@ -44,16 +43,17 @@
   .product h2 span { color:var(--dim); }
   .product p.lead { margin-top:20px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
   .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:64px; }
-  .stat { background:var(--bg); padding:34px 26px 34px 0; padding-left:26px; }
+  .stat { background:var(--bg); padding:34px 26px; }
   .stat:first-child { padding-left:0; }
   .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; letter-spacing:0; line-height:1; white-space:nowrap; }
   .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
 
-  .media { padding:0; }
+  .media { }
   .band + .pair, .pair + .band, .media + .pair, .band + .media, .media + .band, .pair + .pair { margin-top:40px; }
-  .media img { width:100%; display:block; }
+  .media img { width:100%; height:auto; display:block; }
   .pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bg); }
   .pair img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; }
+  .pair.trucks img { filter:sepia(.3) saturate(.75) brightness(.88); }
 
   .contact { padding-top:0; }
   section#contact { border-top:1px solid var(--line); }
@@ -63,7 +63,7 @@
   .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:11px 22px; }
   .contact a.mail:hover { background:var(--ink); color:var(--bg); }
 
-  footer { display:flex; justify-content:space-between; align-items:center; padding:46px var(--pad); border-top:1px solid var(--line); margin-top:0; }
+  footer { display:flex; flex-direction:column; align-items:flex-start; gap:18px; padding:46px var(--pad); border-top:1px solid var(--line); }
   footer img { height:16px; opacity:.8; }
   footer .label { font-size:11px; }
 
@@ -79,11 +79,12 @@
     .stat:nth-child(odd) { padding-left:0; }
     .contact .row { grid-template-columns:1fr; gap:44px; }
     .pair { grid-template-columns:1fr; }
-    .band { height:70vh; }
+    .band, .band.tall { height:70vh; }
     .hero img { object-position:78% 40%; }
     .hero .giant { white-space:normal; font-size:19vw; }
     .hero .giant .l { display:block; width:max-content; }
   }
+  /* review-only: fixed heights so a flat full-page capture shows every section */
   html.review .hero, html.review .band.tall { height:900px; } html.review .band { height:640px; } html.review .fade { opacity:1; transform:none; }
 </style>
 </head>
@@ -95,27 +96,27 @@
     <a href="#pod">Pod 32</a>
     <a href="#deploy">Deployment</a>
     <a href="#factory">Factory</a>
-    <a href="#contact">Company</a>
+    <a href="#contact">Contact</a>
     <a class="cta" href="#contact">Request capacity</a>
   </div>
 </nav>
 
 <header class="hero">
-  <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light">
+  <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light" fetchpriority="high">
   <div class="shade"></div>
-  <div class="giant"><span id="giant"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></div>
+  <h1 class="giant"><span id="giant"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
 </header>
 
 <section class="statement">
   <div class="wrap">
     <div class="label fade">Pacific</div>
-    <p class="big fade">A full data center inside a 40 foot container, built on a line, tested there, delivered on one truck.</p>
-    <p class="sub fade">Giant data centers take years and earn nothing until everything is finished. A pod lands on powered land and goes to work.</p>
+    <p class="big fade">A full data center in a 40 foot container, built on a line.</p>
+    <p class="sub fade">Giant data centers take years and earn nothing until everything is finished.</p>
   </div>
 </section>
 
 <div class="band tall fade" id="deploy">
-  <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk with a crew member walking toward it">
+  <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk, a technician walking past with a tool case" loading="lazy" decoding="async">
   <div class="shade"></div>
   <div class="inner">
     <div class="label">Deployment</div>
@@ -126,22 +127,22 @@
 <section class="product" id="pod">
   <div class="wrap">
     <div class="label fade">The machine</div>
-    <h2 class="fade">Pod 32<br><span>Mobile compute unit</span></h2>
-    <p class="lead fade">Thirty-two nodes of NVIDIA B300s with power, cooling and network in one container. It arrives tested.</p>
+    <h2 class="fade">Pod 32<br><span>Forty foot data center</span></h2>
+    <p class="lead fade">Thirty-two NVIDIA B300 nodes with power, cooling and network in one container.</p>
     <div class="stats fade">
       <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
-      <div class="stat"><div class="n">&lt;1 MW</div><div class="d">One truck, one pad</div></div>
+      <div class="stat"><div class="n">&lt;1 MW</div><div class="d">Grid connection</div></div>
       <div class="stat"><div class="n">Liquid</div><div class="d">Direct-to-chip cooling</div></div>
       <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
     </div>
   </div>
 </section>
 
-<div class="media fade"><img src="img/v13_long_side_grazing.jpg" alt="Pacific pod, long side"></div>
+<div class="media fade"><img src="img/v13_long_side_grazing.jpg" alt="Pacific pod, long side" width="1424" height="800" loading="lazy" decoding="async"></div>
 
 <div class="pair fade">
-  <img src="img/v10_fan_lit_from_above.jpg" alt="Roof cooling fan">
-  <img src="img/v3_corner_door_person.jpg" alt="Engineer beside the pod door">
+  <img src="img/v10_fan_lit_from_above.jpg" alt="Roof cooling fan" loading="lazy" decoding="async">
+  <img src="img/v3_corner_door_person.jpg" alt="Engineer beside the pod door" loading="lazy" decoding="async">
 </div>
 
 <section class="statement" id="factory">
@@ -153,7 +154,7 @@
 </section>
 
 <div class="band fade">
-  <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory">
+  <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
   <div class="shade"></div>
   <div class="inner">
     <div class="label">Out the door</div>
@@ -161,13 +162,13 @@
   </div>
 </div>
 
-<div class="pair fade">
-  <img src="img/hero.jpg" alt="Pacific pod on a truck in the forest">
-  <img src="img/deploy.jpg" alt="Pacific pod on a truck through an industrial site">
+<div class="pair trucks fade">
+  <img src="img/hero.jpg" alt="Pacific pod on a truck in the forest" loading="lazy" decoding="async">
+  <img src="img/deploy.jpg" alt="Pacific pod on a truck through an industrial site" loading="lazy" decoding="async">
 </div>
 
 <div class="band fade">
-  <img src="img/v16_person_on_roof_sky.jpg" alt="Engineer standing on a Pacific pod at dusk">
+  <img src="img/v16_person_on_roof_sky.jpg" alt="Engineer standing on a Pacific pod at dusk" loading="lazy" decoding="async">
   <div class="shade"></div>
   <div class="inner">
     <div class="label">Capacity</div>
@@ -178,7 +179,7 @@
 <section id="contact">
   <div class="wrap contact">
     <div class="label fade">Company</div>
-    <p class="big fade">San Francisco. Hiring people who have built factories, pads and power systems fast.</p>
+    <p class="big fade">San Francisco. Hiring people who have built factories, pads and power systems.</p>
     <div class="row fade">
       <div class="col">
         <div class="label">Capacity</div>
@@ -187,7 +188,7 @@
       </div>
       <div class="col">
         <div class="label">Careers</div>
-        <p>Few seats, all of them weight-bearing. Write to the founder directly.</p>
+        <p>Small team. Write to the founder.</p>
         <a class="mail" href="mailto:harper@pacificmachines.com">Write to Harper</a>
       </div>
     </div>
@@ -196,7 +197,7 @@
 
 <footer>
   <img src="img/pacific_logo_full_white.svg" alt="Pacific">
-  <div class="label">© 2026 Pacific Systems, Inc. — Mock-up, not the live site</div>
+  <div class="label">© 2026 Pacific Systems, Inc. Mock-up, not the live site.</div>
 </footer>
 
 <script>

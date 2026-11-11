@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pacific — The data center factory</title>
+<style>
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --accent:#fff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
+  .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
+  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px 40px; mix-blend-mode:normal; }
+  nav .wordmark img { height:20px; display:block; opacity:0.96; }
+  nav .links { display:flex; gap:34px; align-items:center; }
+  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.75; transition:opacity .3s; }
+  nav .links a:hover { opacity:1; }
+  nav .cta { border:1px solid rgba(255,255,255,.45); padding:10px 18px; opacity:1 !important; }
+  nav .cta:hover { background:var(--ink); color:var(--bg); }
+  .hero { position:relative; height:100vh; min-height:620px; overflow:hidden; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.82); }
+  .hero .shade { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,10,10,.42) 0%, rgba(10,10,10,.05) 40%, rgba(10,10,10,.78) 100%); }
+  .hero .inner { position:absolute; left:40px; right:40px; bottom:72px; }
+  h1 { font-size:clamp(44px,7.2vw,104px); font-weight:300; letter-spacing:-0.015em; line-height:1.02; max-width:14ch; }
+  .hero .sub { margin-top:26px; font-size:15px; color:#c9c7c2; max-width:46ch; font-weight:300; }
+  section { padding:140px 40px; }
+  .statement { max-width:1200px; margin:0 auto; }
+  .statement p.big { font-size:clamp(26px,3.4vw,46px); font-weight:300; line-height:1.25; letter-spacing:-0.01em; max-width:26ch; margin-top:28px; }
+  .media { padding:0; }
+  .media img { width:100%; display:block; }
+  .product { max-width:1200px; margin:0 auto; }
+  .product h2 { font-size:clamp(30px,4vw,56px); font-weight:300; letter-spacing:-0.01em; margin-top:26px; }
+  .product p.lead { margin-top:18px; font-size:16px; color:#c9c7c2; font-weight:300; max-width:52ch; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:64px; }
+  .stat { background:var(--bg); padding:34px 26px; }
+  .stat .n { font-size:clamp(22px,2.4vw,34px); font-weight:300; letter-spacing:-0.01em; }
+  .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
+  .band { position:relative; height:76vh; min-height:440px; overflow:hidden; }
+  .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.8); }
+  .band .shade { position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,.82), rgba(10,10,10,.08) 55%); }
+  .band .inner { position:absolute; left:40px; right:40px; bottom:56px; }
+  .band p.big { font-size:clamp(24px,3vw,42px); font-weight:300; max-width:24ch; line-height:1.2; margin-top:18px; }
+  .contact { max-width:1200px; margin:0 auto; border-top:1px solid var(--line); padding-top:90px; }
+  .contact .big { font-size:clamp(26px,3.4vw,46px); font-weight:300; max-width:24ch; line-height:1.2; margin-top:26px; }
+  .contact .row { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:70px; }
+  .contact .col p { margin-top:14px; font-size:15px; color:#c9c7c2; font-weight:300; max-width:44ch; }
+  .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:14px; letter-spacing:.14em; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:5px; }
+  footer { display:flex; justify-content:space-between; align-items:center; padding:46px 40px; border-top:1px solid var(--line); margin-top:120px; }
+  footer img { height:16px; opacity:.8; }
+  footer .label { font-size:10px; }
+  .fade { opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease; }
+  .fade.in { opacity:1; transform:none; }
+  @media (max-width:760px){
+    nav { padding:20px 20px; } nav .links a:not(.cta){ display:none; }
+    section { padding:90px 20px; }
+    .hero .inner, .band .inner { left:20px; right:20px; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+    .contact .row { grid-template-columns:1fr; gap:44px; }
+    footer { padding:36px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="wordmark" href="#"><img src="img/pacific_logo_full_white.svg" alt="Pacific"></a>
+  <div class="links">
+    <a href="#pod">Pod 32</a>
+    <a href="#factory">Factory</a>
+    <a href="#contact">Company</a>
+    <a class="cta" href="#contact">Request capacity</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="img/hero.jpg" alt="Pacific pod on a truck">
+  <div class="shade"></div>
+  <div class="inner">
+    <h1 class="fade">The data center factory.</h1>
+    <p class="sub fade">A data center inside a 40 foot container. Built in a factory, tested there, delivered on one truck.</p>
+  </div>
+</header>
+
+<section class="statement">
+  <div class="label fade">What we build</div>
+  <p class="big fade">Giant data centers take years and earn nothing until everything is finished. A pod lands on powered land and goes to work.</p>
+</section>
+
+<div class="media fade"><img src="img/pod_top.jpg" alt="Pacific pod, top view"></div>
+
+<section class="product" id="pod">
+  <div class="label fade">The machine</div>
+  <h2 class="fade">Pod 32</h2>
+  <p class="lead fade">Thirty-two nodes of NVIDIA B300s with power, cooling and network in one container. It arrives tested.</p>
+  <div class="stats fade">
+    <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
+    <div class="stat"><div class="n">&lt;1 MW</div><div class="d">One truck, one pad</div></div>
+    <div class="stat"><div class="n">Direct-to-chip</div><div class="d">Liquid cooling</div></div>
+    <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
+  </div>
+</section>
+
+<div class="band fade">
+  <img src="img/deploy.jpg" alt="Pacific pod in transit">
+  <div class="shade"></div>
+  <div class="inner">
+    <div class="label">Deployment</div>
+    <p class="big">Lands on powered land. Plugs into stranded power in days.</p>
+  </div>
+</div>
+
+<section class="statement" id="factory">
+  <div class="label fade">The factory</div>
+  <p class="big fade">We are building the factory that builds data centers. Production lines, with the longest-lead parts made in house.</p>
+</section>
+
+<div class="media fade"><img src="img/pod_profile.jpg" alt="Pacific pod, profile"></div>
+
+<section id="contact">
+  <div class="contact">
+    <div class="label fade">Company</div>
+    <p class="big fade">San Francisco. Hiring people who have built factories, pads and power systems fast.</p>
+    <div class="row fade">
+      <div class="col">
+        <div class="label">Capacity</div>
+        <p>GPU clusters and colocation space, available from early 2027.</p>
+        <a class="mail" href="mailto:harper@pacificmachines.com">Request capacity</a>
+      </div>
+      <div class="col">
+        <div class="label">Careers</div>
+        <p>Few seats, all of them weight-bearing. Write to the founder directly.</p>
+        <a class="mail" href="mailto:harper@pacificmachines.com">Write to Harper</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="img/pacific_logo_full_white.svg" alt="Pacific">
+  <div class="label">© 2026 Pacific Systems, Inc. — Mock-up, not the live site</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.15});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

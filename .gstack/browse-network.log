@@ -1,0 +1,6 @@
+[2026-11-11T05:35:10.373Z] GET file:///tmp/pacific-mockup/index.html → 200 (1ms, 8155B)
+[2026-11-11T05:35:10.376Z] GET file:///tmp/pacific-mockup/img/pacific_logo_full_white.svg → 200 (?ms, 4178B)
+[2026-11-11T05:35:10.376Z] GET file:///tmp/pacific-mockup/img/hero.jpg → 200 (?ms, 290591B)
+[2026-11-11T05:35:10.376Z] GET file:///tmp/pacific-mockup/img/pod_top.jpg → 200 (?ms, 149959B)
+[2026-11-11T05:35:10.376Z] GET file:///tmp/pacific-mockup/img/deploy.jpg → 200 (?ms, 414092B)
+[2026-11-11T05:35:10.376Z] GET file:///tmp/pacific-mockup/img/pod_profile.jpg → 200 (1ms, 131515B)

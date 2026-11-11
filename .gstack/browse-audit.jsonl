@@ -1,0 +1,4 @@
+{"ts":"2026-11-11T05:35:10.340Z","cmd":"viewport","args":"1280x720","origin":"about:blank","durationMs":3,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-11-11T05:35:10.378Z","cmd":"goto","args":"file:///tmp/pacific-mockup/index.html#pod","origin":"file:///tmp/pacific-mockup/index.html#pod","durationMs":6,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-11-11T05:35:11.441Z","cmd":"scroll","args":"up 600","origin":"file:///tmp/pacific-mockup/index.html#pod","durationMs":3,"status":"error","hasCookies":false,"mode":"launched","error":"intoViewIfNeeded: Error while parsing css selector \"600\". Did you mean to CSS.escape it?\nCall log:\n\u001b[2m  - waiting for 600\u001b[22m\n"}
+{"ts":"2026-11-11T05:35:12.523Z","cmd":"screenshot","args":"--viewport /tmp/mock_topcheck.png","origin":"file:///tmp/pacific-mockup/index.html#pod","durationMs":29,"status":"ok","hasCookies":false,"mode":"launched"}

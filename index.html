@@ -24,7 +24,7 @@
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.6) 100%); }
-  .hero .giant { position:absolute; left:0; right:0; bottom:-0.14em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
+  .hero .giant { position:absolute; left:0; right:0; bottom:-0.03em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
 
   /* One text component, one rhythm: eyebrow, headline, sub, all on the gutter */
@@ -137,11 +137,21 @@
 <section class="block" id="factory">
   <div class="label fade">The factory</div>
   <h2 class="big fade">We are building the factory that builds data centers.</h2>
-  <p class="sub fade">The longest-lead parts are made in house. One pod leaves on a truck as the next moves up the line.</p>
+  <p class="sub fade">The longest-lead parts are made in house. As one pod leaves, the next moves up the line.</p>
 </section>
 
 <div class="media fade">
   <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+</div>
+
+<section class="block" id="road">
+  <div class="label fade">On the road</div>
+  <h2 class="big fade">One pod, one truck, one pad.</h2>
+  <p class="sub fade">Delivered on a standard flatbed. Set down, connected, running.</p>
+</section>
+
+<div class="media tall fade">
+  <img src="img/truck.jpg" alt="Pacific pod on a truck, in fog" loading="lazy" decoding="async">
 </div>
 
 <section class="block" id="capacity">
@@ -163,7 +173,7 @@
 </footer>
 
 <script>
-  if (location.search.includes('review')) document.documentElement.classList.add('review');
+  if (location.search.includes('review')) { document.documentElement.classList.add('review'); document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager'); }
   (function(){
     const el = document.getElementById('giant'); const box = el.parentElement;
     const lines = el.querySelectorAll('.l');

@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Pacific. The data center factory</title>
 <style>
-  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(28px,3.3vw,48px); }
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(28px,3.3vw,48px); --gap:150px; }
   * { margin:0; padding:0; box-sizing:border-box; }
   @media (prefers-reduced-motion:no-preference){ html { scroll-behavior:smooth; } }
   body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
@@ -20,72 +20,56 @@
   nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; }
   nav .cta:hover { background:var(--ink); color:var(--bg); }
 
-  /* Hero: full-bleed image, one giant word cropped at the bottom edge */
+  /* Hero: full-bleed image, one giant line cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
   .hero .giant { position:absolute; left:0; right:0; bottom:-0.14em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
 
-  section { padding:110px var(--pad); }
-  .wrap { max-width:none; }
-  .statement p.big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
-  .statement p.sub { margin-top:22px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
+  /* One text component, one rhythm: eyebrow, headline, sub, all on the gutter */
+  .block { padding:var(--gap) var(--pad) 72px; }
+  .block h2, .block p.big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
+  .block h2 span { color:var(--dim); }
+  .block p.sub { margin-top:22px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:48ch; }
 
-  .band { position:relative; height:88vh; min-height:520px; overflow:hidden; }
-  .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .band .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.7) 100%); }
-  .band .inner { position:absolute; left:var(--pad); right:var(--pad); bottom:56px; }
-  .band p.big { font-size:var(--h); font-weight:400; max-width:24ch; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; }
-  .band.tall { height:100vh; }
-
-  .product h2 { font-size:var(--h); font-weight:400; letter-spacing:-0.015em; line-height:1.12; margin-top:20px; max-width:24ch; }
-  .product h2 span { color:var(--dim); }
-  .product p.lead { margin-top:20px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:52ch; }
-  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:64px; }
-  .stat { background:var(--bg); padding:34px 26px; }
-  .stat:first-child { padding-left:0; }
-  .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; letter-spacing:0; line-height:1; white-space:nowrap; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:56px; }
+  .stat { background:var(--bg); padding:30px 26px 30px 0; }
+  .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; line-height:1; white-space:nowrap; }
   .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
 
-  .media { }
-  .band + .pair, .pair + .band, .media + .pair, .band + .media, .media + .band, .pair + .pair { margin-top:40px; }
-  .media img { width:100%; height:auto; display:block; }
-  .pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bg); }
-  .pair img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; }
-  .pair.trucks img { filter:sepia(.3) saturate(.75) brightness(.88); }
+  /* Images carry no text. Same height class every time so the page scrolls at one beat. */
+  .media { position:relative; height:84vh; min-height:480px; overflow:hidden; }
+  .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .media.tall { height:100vh; }
+  .pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bg); margin-top:1px; }
+  .pair img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; filter:sepia(.3) saturate(.75) brightness(.88); }
 
-  .contact { padding-top:0; }
-  section#contact { border-top:1px solid var(--line); }
-  .contact .big { font-size:var(--h); font-weight:400; max-width:24ch; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; }
-  .contact .row { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:70px; }
-  .contact .col p { margin-top:14px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:44ch; }
-  .contact a.mail { display:inline-block; margin-top:22px; color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:11px 22px; }
-  .contact a.mail:hover { background:var(--ink); color:var(--bg); }
+  .actions { display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
+  .actions a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:13px 24px; }
+  .actions a:hover { background:var(--ink); color:var(--bg); }
 
   footer { display:flex; flex-direction:column; align-items:flex-start; gap:18px; padding:46px var(--pad); border-top:1px solid var(--line); }
   footer img { height:16px; opacity:.8; }
-  footer .label { font-size:11px; }
 
-  .fade { opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; }
   .fade.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
 
+  /* review-only: fixed heights so a flat full-page capture shows every section */
+  html.review .hero, html.review .media.tall { height:900px; } html.review .media { height:720px; } html.review .fade { opacity:1; transform:none; }
+
   @media (max-width:760px){
-    :root { --pad:20px; }
+    :root { --pad:20px; --gap:100px; }
     nav .links a:not(.cta){ display:none; }
-    section { padding:90px var(--pad); }
     .stats { grid-template-columns:repeat(2,1fr); }
-    .stat:nth-child(odd) { padding-left:0; }
-    .contact .row { grid-template-columns:1fr; gap:44px; }
+    .stat { padding:24px 16px 24px 0; }
+    .media, .media.tall { height:62vh; min-height:360px; }
     .pair { grid-template-columns:1fr; }
-    .band, .band.tall { height:70vh; }
     .hero img { object-position:78% 40%; }
     .hero .giant { white-space:normal; font-size:19vw; }
     .hero .giant .l { display:block; width:max-content; }
   }
-  /* review-only: fixed heights so a flat full-page capture shows every section */
-  html.review .hero, html.review .band.tall { height:900px; } html.review .band { height:640px; } html.review .fade { opacity:1; transform:none; }
 </style>
 </head>
 <body>
@@ -96,8 +80,8 @@
     <a href="#pod">Pod 32</a>
     <a href="#deploy">Deployment</a>
     <a href="#factory">Factory</a>
-    <a href="#contact">Contact</a>
-    <a class="cta" href="#contact">Request capacity</a>
+    <a href="#capacity">Capacity</a>
+    <a class="cta" href="#capacity">Request capacity</a>
   </div>
 </nav>
 
@@ -107,93 +91,69 @@
   <h1 class="giant"><span id="giant"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
 </header>
 
-<section class="statement">
-  <div class="wrap">
-    <div class="label fade">Pacific</div>
-    <p class="big fade">A full data center in a 40 foot container, built on a line.</p>
-    <p class="sub fade">Giant data centers take years and earn nothing until everything is finished.</p>
-  </div>
+<section class="block">
+  <div class="label fade">Pacific</div>
+  <p class="big fade">A full data center in a 40 foot container, built on a line.</p>
+  <p class="sub fade">Giant data centers take years and earn nothing until everything is finished.</p>
 </section>
 
-<div class="band tall fade" id="deploy">
+<div class="media tall fade">
   <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk, a technician walking past with a tool case" loading="lazy" decoding="async">
-  <div class="shade"></div>
-  <div class="inner">
-    <div class="label">Deployment</div>
-    <p class="big">Lands on powered land. Plugs into stranded power in days.</p>
-  </div>
 </div>
 
-<section class="product" id="pod">
-  <div class="wrap">
-    <div class="label fade">The machine</div>
-    <h2 class="fade">Pod 32<br><span>Forty foot data center</span></h2>
-    <p class="lead fade">Thirty-two NVIDIA B300 nodes with power, cooling and network in one container.</p>
-    <div class="stats fade">
-      <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
-      <div class="stat"><div class="n">&lt;1 MW</div><div class="d">Grid connection</div></div>
-      <div class="stat"><div class="n">Liquid</div><div class="d">Direct-to-chip cooling</div></div>
-      <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
-    </div>
+<section class="block" id="pod">
+  <div class="label fade">The machine</div>
+  <h2 class="fade">Pod 32<br><span>Forty foot data center</span></h2>
+  <p class="sub fade">Thirty-two NVIDIA B300 nodes with power, cooling and network in one container. It arrives tested.</p>
+  <div class="stats fade">
+    <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
+    <div class="stat"><div class="n">&lt;1 MW</div><div class="d">Grid connection</div></div>
+    <div class="stat"><div class="n">Liquid</div><div class="d">Direct-to-chip cooling</div></div>
+    <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
   </div>
 </section>
 
-<div class="media fade"><img src="img/v13_long_side_grazing.jpg" alt="Pacific pod, long side" width="1424" height="800" loading="lazy" decoding="async"></div>
-
-<div class="pair fade">
-  <img src="img/v10_fan_lit_from_above.jpg" alt="Roof cooling fan" loading="lazy" decoding="async">
-  <img src="img/v3_corner_door_person.jpg" alt="Engineer beside the pod door" loading="lazy" decoding="async">
+<div class="media fade">
+  <img src="img/v13_long_side_grazing.jpg" alt="Pacific pod, long side" loading="lazy" decoding="async">
 </div>
 
-<section class="statement" id="factory">
-  <div class="wrap">
-    <div class="label fade">The factory</div>
-    <p class="big fade">We are building the factory that builds data centers. Production lines, with the longest-lead parts made in house.</p>
-    <p class="sub fade">One pod leaves on one truck. The next one is already on the line behind it.</p>
-  </div>
+<section class="block" id="deploy">
+  <div class="label fade">Deployment</div>
+  <p class="big fade">Lands on powered land. Plugs into stranded power in days.</p>
+  <p class="sub fade">One pod or forty. Same unit, same truck, same pad.</p>
 </section>
 
-<div class="band fade">
+<div class="media tall fade">
+  <img src="img/cluster.jpg" alt="Rows of Pacific pods on a site at night" loading="lazy" decoding="async">
+</div>
+
+<section class="block" id="factory">
+  <div class="label fade">The factory</div>
+  <p class="big fade">We are building the factory that builds data centers.</p>
+  <p class="sub fade">Production lines, with the longest-lead parts made in house. One pod leaves on one truck and the next is already on the line behind it.</p>
+</section>
+
+<div class="media fade">
   <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
-  <div class="shade"></div>
-  <div class="inner">
-    <div class="label">Out the door</div>
-    <p class="big">Built, tested and powered up before it ever sees a site.</p>
-  </div>
 </div>
-
-<div class="pair trucks fade">
+<div class="pair fade">
   <img src="img/hero.jpg" alt="Pacific pod on a truck in the forest" loading="lazy" decoding="async">
   <img src="img/deploy.jpg" alt="Pacific pod on a truck through an industrial site" loading="lazy" decoding="async">
 </div>
 
-<div class="band fade">
-  <img src="img/v16_person_on_roof_sky.jpg" alt="Engineer standing on a Pacific pod at dusk" loading="lazy" decoding="async">
-  <div class="shade"></div>
-  <div class="inner">
-    <div class="label">Capacity</div>
-    <p class="big">GPU clusters and colocation space, available from early 2027.</p>
-  </div>
-</div>
-
-<section id="contact">
-  <div class="wrap contact">
-    <div class="label fade">Company</div>
-    <p class="big fade">San Francisco. Hiring people who have built factories, pads and power systems.</p>
-    <div class="row fade">
-      <div class="col">
-        <div class="label">Capacity</div>
-        <p>Tell us where the power is and when you need the GPUs.</p>
-        <a class="mail" href="mailto:harper@pacificmachines.com">Request capacity</a>
-      </div>
-      <div class="col">
-        <div class="label">Careers</div>
-        <p>Small team. Write to the founder.</p>
-        <a class="mail" href="mailto:harper@pacificmachines.com">Write to Harper</a>
-      </div>
-    </div>
+<section class="block" id="capacity">
+  <div class="label fade">Capacity</div>
+  <p class="big fade">GPU clusters and colocation space, available from early 2027.</p>
+  <p class="sub fade">Tell us where the power is and when you need the GPUs. San Francisco. Small team, write to the founder.</p>
+  <div class="actions fade">
+    <a href="mailto:harper@pacificmachines.com">Request capacity</a>
+    <a href="mailto:harper@pacificmachines.com">Write to Harper</a>
   </div>
 </section>
+
+<div class="media tall fade">
+  <img src="img/lookout.jpg" alt="Engineer beside a Pacific pod at dusk, looking out" loading="lazy" decoding="async">
+</div>
 
 <footer>
   <img src="img/pacific_logo_full_white.svg" alt="Pacific">
@@ -202,7 +162,6 @@
 
 <script>
   if (location.search.includes('review')) document.documentElement.classList.add('review');
-  // Fit the giant hero word to the full width between the page gutters.
   (function(){
     const el = document.getElementById('giant'); const box = el.parentElement;
     const lines = el.querySelectorAll('.l');

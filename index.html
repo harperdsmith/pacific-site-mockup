@@ -17,7 +17,7 @@
   nav .links { display:flex; gap:34px; align-items:center; }
   nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
-  nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; }
+  nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
   nav .cta:hover { background:var(--ink); color:var(--bg); }
 
   /* Hero: full-bleed image, one giant line cropped at the bottom edge */
@@ -29,11 +29,11 @@
 
   /* One text component, one rhythm: eyebrow, headline, sub, all on the gutter */
   .block { padding:var(--gap) var(--pad) 72px; }
-  .block h2, .block p.big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
+  .block h2, .block .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
   .block h2 span { color:var(--dim); }
-  .block p.sub { margin-top:22px; font-size:18px; color:#c9c7c2; font-weight:300; max-width:48ch; }
+  .block p.sub { margin-top:22px; font-size:18px; color:#b3b1ac; font-weight:400; max-width:48ch; }
 
-  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:56px; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:56px; }
   .stat { background:var(--bg); padding:30px 26px 30px 0; }
   .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; line-height:1; white-space:nowrap; }
   .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
@@ -42,17 +42,20 @@
   .media { position:relative; height:84vh; min-height:480px; overflow:hidden; }
   .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .media.tall { height:100vh; }
-  .pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bg); margin-top:1px; }
-  .pair img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10; filter:sepia(.3) saturate(.75) brightness(.88); }
+  img[src*="v13"] { object-position:center 20%; }
+  @media (max-width:1100px){ .hero img { object-position:70% 40%; } }
 
   .actions { display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
-  .actions a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid rgba(255,255,255,.6); padding:13px 24px; }
-  .actions a:hover { background:var(--ink); color:var(--bg); }
+  .actions a { color:var(--bg); background:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid var(--ink); padding:13px 24px; transition:background-color .25s ease, color .25s ease, opacity .25s ease; }
+  .actions a:hover { opacity:.85; }
+  a:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
 
   footer { display:flex; flex-direction:column; align-items:flex-start; gap:18px; padding:46px var(--pad); border-top:1px solid var(--line); }
   footer img { height:16px; opacity:.8; }
 
-  .fade { opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; }
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
+  .media.fade { transform:none; }
+  .block .fade:nth-child(2){ transition-delay:.08s } .block .fade:nth-child(3){ transition-delay:.16s } .block .fade:nth-child(4){ transition-delay:.24s }
   .fade.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
 
@@ -65,8 +68,10 @@
     .stats { grid-template-columns:repeat(2,1fr); }
     .stat { padding:24px 16px 24px 0; }
     .media, .media.tall { height:62vh; min-height:360px; }
-    .pair { grid-template-columns:1fr; }
     .hero img { object-position:78% 40%; }
+    img[src*="lookout"]{ object-position:65% center } img[src*="v13"]{ object-position:70% center } img[src*="v08"]{ object-position:58% center }
+    .block p.sub { font-size:16px; }
+    .actions a { width:100%; text-align:center; }
     .hero .giant { white-space:normal; font-size:19vw; }
     .hero .giant .l { display:block; width:max-content; }
   }
@@ -93,20 +98,20 @@
 
 <section class="block">
   <div class="label fade">Pacific</div>
-  <p class="big fade">A full data center in a 40 foot container, built on a line.</p>
+  <h2 class="big fade">A full data center in a 40 foot container, built on a line.</h2>
   <p class="sub fade">Giant data centers take years and earn nothing until everything is finished.</p>
 </section>
 
 <div class="media tall fade">
-  <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk, a technician walking past with a tool case" loading="lazy" decoding="async">
+  <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk, a technician walking past with a tool case" decoding="async">
 </div>
 
 <section class="block" id="pod">
   <div class="label fade">The machine</div>
   <h2 class="fade">Pod 32<br><span>Forty foot data center</span></h2>
-  <p class="sub fade">Thirty-two NVIDIA B300 nodes with power, cooling and network in one container. It arrives tested.</p>
+  <p class="sub fade">Thirty-two NVIDIA B300 nodes with their power, cooling and network. It arrives tested.</p>
   <div class="stats fade">
-    <div class="stat"><div class="n">256</div><div class="d">GPUs in one container</div></div>
+    <div class="stat"><div class="n">256</div><div class="d">GPUs per pod</div></div>
     <div class="stat"><div class="n">&lt;1 MW</div><div class="d">Grid connection</div></div>
     <div class="stat"><div class="n">Liquid</div><div class="d">Direct-to-chip cooling</div></div>
     <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
@@ -119,7 +124,7 @@
 
 <section class="block" id="deploy">
   <div class="label fade">Deployment</div>
-  <p class="big fade">Lands on powered land. Plugs into stranded power in days.</p>
+  <h2 class="big fade">Lands on a concrete pad. Running on stranded power in days.</h2>
   <p class="sub fade">One pod or forty. Same unit, same truck, same pad.</p>
 </section>
 
@@ -129,25 +134,20 @@
 
 <section class="block" id="factory">
   <div class="label fade">The factory</div>
-  <p class="big fade">We are building the factory that builds data centers.</p>
-  <p class="sub fade">Production lines, with the longest-lead parts made in house. One pod leaves on one truck and the next is already on the line behind it.</p>
+  <h2 class="big fade">We are building the factory that builds data centers.</h2>
+  <p class="sub fade">The longest-lead parts are made in house. One pod leaves on a truck as the next moves up the line.</p>
 </section>
 
 <div class="media fade">
   <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
 </div>
-<div class="pair fade">
-  <img src="img/hero.jpg" alt="Pacific pod on a truck in the forest" loading="lazy" decoding="async">
-  <img src="img/deploy.jpg" alt="Pacific pod on a truck through an industrial site" loading="lazy" decoding="async">
-</div>
 
 <section class="block" id="capacity">
   <div class="label fade">Capacity</div>
-  <p class="big fade">GPU clusters and colocation space, available from early 2027.</p>
-  <p class="sub fade">Tell us where the power is and when you need the GPUs. San Francisco. Small team, write to the founder.</p>
+  <h2 class="big fade">GPU clusters and colocation space, available from early 2027.</h2>
+  <p class="sub fade">Tell us where the power is and when you need the GPUs. Small team in San Francisco; you write to the founder.</p>
   <div class="actions fade">
     <a href="mailto:harper@pacificmachines.com">Request capacity</a>
-    <a href="mailto:harper@pacificmachines.com">Write to Harper</a>
   </div>
 </section>
 

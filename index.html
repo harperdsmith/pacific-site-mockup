@@ -153,8 +153,6 @@
   </div>
 </nav>
 
-<!-- ============ VERSION A: four cards on one screen ============ -->
-
 <header class="hero">
   <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light" fetchpriority="high">
   <div class="shade"></div>
@@ -215,93 +213,6 @@
   </div>
 </section>
 
-<section class="hiring-img dark">
-  <img src="img/hiring_dusk.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
-  <div class="centre">
-    <div class="word" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
-    <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
-  </div>
-</section>
-
-<section class="hiring" id="careers">
-  <div class="word fade" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
-  <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
-</section>
-
-<footer>
-  <div>
-    <img src="img/pacific_logo_full_white.svg" alt="Pacific">
-    <div class="label" style="margin-top:18px">© 2026 Pacific Systems, Inc. Mock-up, not the live site.</div>
-  </div>
-  <div class="cols label">
-    <a href="#pod">Pod 32</a><a href="#factory">Factory 1</a><a href="#careers">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a>
-  </div>
-</footer>
-
-<!-- ============ VERSION B: same page, cards as full-width Helsing rows ============ -->
-
-<div class="divider">
-  <div class="label">Version B, for comparison</div>
-  <div class="big">Same page. The four cards become one screen each, the way Helsing lays out its products.</div>
-</div>
-
-<header class="hero">
-  <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light" loading="lazy" decoding="async">
-  <div class="shade"></div>
-  <div class="giant" aria-hidden="true"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></div>
-</header>
-
-<section class="seam">
-  <div class="txt">
-    <div class="big fade">Pacific manufactures self-contained, portable AI data centers at scale.</div>
-    <p class="sub fade">This is the fastest path to bringing compute online. We deliver functional data centers to sites where the power is already developed, and they generate tokens within days.</p>
-    <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale.</p>
-  </div>
-  <div class="media fade">
-    <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" loading="lazy" decoding="async">
-    <div class="top"></div>
-  </div>
-  <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>
-</section>
-
-<div class="rows">
-  <a class="rowcard pod fade" href="#pod">
-    <img src="img/card_pod32_orange.jpg" alt="Pacific Pod 32 in front of a wall of light" loading="lazy" decoding="async">
-    <div class="veil"></div>
-    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container</div><span class="btn">Learn more</span></div>
-  </a>
-  <a class="rowcard vera fade" href="#pod">
-    <img src="img/card_vera_bw.jpg" alt="Pacific pod in a hangar" loading="lazy" decoding="async">
-    <div class="veil"></div>
-    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development</div><span class="btn">Learn more</span></div>
-  </a>
-  <a class="rowcard factory fade" href="#factory">
-    <img src="img/card_factory_gantry.jpg" alt="Pacific pod on a gantry crane in the factory" loading="lazy" decoding="async">
-    <div class="veil"></div>
-    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year</div><span class="btn">Learn more</span></div>
-  </a>
-  <a class="rowcard sov fade" href="#careers">
-    <img src="img/card_sov_truck.jpg" alt="Pacific pod on a truck at dusk" loading="lazy" decoding="async">
-    <div class="veil"></div>
-    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control</div><span class="btn">Learn more</span></div>
-  </a>
-</div>
-
-<div class="band fade">
-  <img src="img/band_orange_end_on.jpg" alt="Pacific pod end-on in front of a wall of light" loading="lazy" decoding="async">
-  <div class="veil"></div>
-  <div class="txt">
-    <div class="label">The factory</div>
-    <div class="big">SpaceX built rocket factories.</div>
-    <p>The data center supply chain sat idle for twenty years. AI now demands ten thousand times more than it can produce, in a matter of years. Serving that demand requires re-industrialization.</p>
-  </div>
-</div>
-
-<section class="hiring" id="careers">
-  <div class="word fade" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
-  <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
-</section>
-
 <footer>
   <div>
     <img src="img/pacific_logo_full_white.svg" alt="Pacific">
@@ -318,7 +229,7 @@
     const fits = [...document.querySelectorAll('.giant-fit, .hiring-fit')];
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
-      const target = document.documentElement.clientWidth - pad*2;
+      const target = (document.documentElement.clientWidth - pad*2) * (el.classList.contains('hiring-fit') ? 0.8 : 1);
       fits.forEach(el => {
         const box = el.parentElement; const lines = el.querySelectorAll('.l');
         box.style.fontSize = '100px';

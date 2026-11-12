@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pacific. Tagline options, round two</title>
+<style>
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(30px,3.4vw,52px); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
+  .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
+  header.top { padding:48px var(--pad) 10px; display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line); }
+  header.top img { height:20px; }
+  .opt { position:relative; padding-top:90px; }
+  .opt .num { padding:0 var(--pad); }
+  .opt .txt { position:relative; z-index:2; padding:14px var(--pad) 0; margin-bottom:-1.25em; }
+  .opt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:30ch; text-shadow:0 2px 24px rgba(0,0,0,.4); }
+  .opt .media { position:relative; height:64vh; min-height:420px; overflow:hidden; }
+  .opt .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 78%; }
+  .opt .media .top { position:absolute; left:0; right:0; top:0; height:40%; background:linear-gradient(180deg, var(--bg) 0%, rgba(10,10,10,0) 100%); }
+  .opt .cap { padding:16px var(--pad) 0; display:flex; gap:14px; align-items:baseline; flex-wrap:wrap; }
+  .opt .cap .src { font-size:13px; color:#b3b1ac; max-width:70ch; }
+  .opt .cap .src em { color:var(--ink); font-style:normal; }
+  footer { padding:80px var(--pad) 60px; border-top:1px solid var(--line); margin-top:120px; }
+  @media (max-width:760px){ :root { --pad:20px; } .opt .media { height:52vh; min-height:320px; } .opt .media img { object-position:60% 78%; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="../../img/pacific_logo_full_white.svg" alt="Pacific">
+  <div class="label">Tagline options, round two, 11 Nov 2026. 15 lines.</div>
+</header>
+
+<section style="padding:48px var(--pad) 0; max-width:900px">
+  <div class="label">What the others say, for reference</div>
+  <div style="margin-top:14px; font-size:15px; color:#b3b1ac; line-height:1.6">
+    <div><em style="color:var(--ink);font-style:normal">Runware:</em> &ldquo;The modular AI data center factory.&rdquo; &ldquo;Time to first token: days, not years.&rdquo; &ldquo;From construction project to manufactured product.&rdquo;</div>
+    <div><em style="color:var(--ink);font-style:normal">Giga Energy:</em> &ldquo;Build AI data centers faster.&rdquo; &ldquo;Are you building fast enough?&rdquo;</div>
+    <div><em style="color:var(--ink);font-style:normal">Torus:</em> &ldquo;move the chips to the power that&rsquo;s already there.&rdquo;</div>
+    <div><em style="color:var(--ink);font-style:normal">Mavria:</em> factory-based, repeatable manufacturing in place of on-site custom construction.</div>
+    <div><em style="color:var(--ink);font-style:normal">NVIDIA DSX POD:</em> &ldquo;The fastest path to productive intelligence at scale.&rdquo;</div>
+    <div><em style="color:var(--ink);font-style:normal">Crusoe:</em> &ldquo;The AI factory company.&rdquo; &nbsp; <em style="color:var(--ink);font-style:normal">Helsing:</em> &ldquo;Helsing deploys AI-enabled precision mass at scale.&rdquo;</div>
+    <div style="margin-top:10px">Taken words, avoided below: modular (Runware), factory-built, AI factory, days not years (Armada and Runware), prefabricated, 40 foot box.</div>
+  </div>
+</section>
+
+<script>
+const options = [
+  ["Pacific mass manufactures portable AI data centers.",
+   "Your line", "Pacific mass manufactures portable AI data centers.", "Mass manufactures carries the factory. Portable is the word nobody else owns."],
+  ["Pacific builds self-contained, portable AI data centers at scale.",
+   "Your line, Helsing shape", "Helsing deploys AI-enabled precision mass at scale.", "Self-contained says everything is in the box without saying box."],
+  ["Pacific mass manufactures self-contained AI data centers and lands them on live power.",
+   "Your line plus the release", "lands them on power that is already built.", "Factory and site in one sentence."],
+  ["Pacific builds the factories that mass manufacture portable AI data centers.",
+   "Your line", "Pacific builds factories that mass manufacture portable data centers at scale.", "The factory is the product. Closest to the YC tag."],
+  ["The fastest path to live compute is a data center you can move to the power.",
+   "NVIDIA DSX POD", "The fastest path to productive intelligence at scale.", "Speed as the claim, portability as the reason."],
+  ["Pacific mass manufactures AI data centers that go live in days.",
+   "NVIDIA, your recall of it", "AI factories that go live in days.", "Speed in the sentence. Days is the plug-in claim you accepted for the release."],
+  ["Portable AI data centers, mass manufactured.",
+   "Giga Energy", "Build AI data centers faster.", "Four words. Everything else goes in the second line."],
+  ["Pacific manufactures self-contained AI data centers at scale and deploys them where the power already is.",
+   "Torus", "move the chips to the power that's already there.", "Their idea, our nouns. Longest of the set."],
+  ["Pacific moves the data center to the power.",
+   "Torus, inverted", "move the chips to the power that's already there.", "One idea, seven words. Needs a second sentence to say how."],
+  ["AI data centers, manufactured by the thousand and delivered on a truck.",
+   "Runware", "A data center's worth of capacity, every 24 hours.", "Volume plus the truck. No company name in it."],
+  ["Pacific mass manufactures self-contained AI data centers, so compute goes live where the power already is.",
+   "Mavria", "replaces on-site custom construction with factory-based, repeatable manufacturing.", "Cause and effect in one line."],
+  ["Pacific builds portable, self-contained AI data centers at the scale AI needs them.",
+   "Your 5 Oct mission line", "We build, power and finance data centers at the speed AI needs them.", "Scale instead of speed, otherwise your line."],
+  ["Pacific mass manufactures portable AI data centers. Designed, built and deployed at scale.",
+   "SpaceX, split in two", "designs, manufactures and launches advanced rockets and spacecraft.", "Headline then the three verbs as a second beat."],
+  ["Self-contained AI data centers, built on a line and landed on live power.",
+   "Ben's About line", "builds data centers on a production line and deploys them on sites where grid power is already available.", "Built on a line is the factory without the word."],
+  ["Pacific mass manufactures portable AI data centers for labs, governments and defense.",
+   "Your second paragraph", "We partner with AI labs, governments, and aerospace or defense companies.", "Who it is for, in the first line."],
+];
+document.write(options.map((o,i)=>`
+<section class="opt" id="o${i+1}">
+  <div class="num label">Option ${String(i+1).padStart(2,'0')}</div>
+  <div class="txt"><div class="big">${o[0]}</div></div>
+  <div class="media"><img src="../../img/v08_anduril_crew_sky.jpg" alt="" loading="${i<2?'eager':'lazy'}"><div class="top"></div></div>
+  <div class="cap"><span class="label">Inspiration</span><span class="src"><em>${o[1]}:</em> &ldquo;${o[2]}&rdquo; &nbsp; ${o[3]}</span></div>
+</section>`).join(''));
+</script>
+
+<footer><div class="label">© 2026 Pacific Systems, Inc. Working options, not the live site.</div></footer>
+</body>
+</html>

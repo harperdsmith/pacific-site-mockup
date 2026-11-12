@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pacific. Tagline options</title>
+<style>
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(30px,3.4vw,52px); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
+  .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
+  header.top { padding:48px var(--pad) 10px; display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line); }
+  header.top img { height:20px; }
+  .opt { position:relative; padding-top:90px; }
+  .opt .num { padding:0 var(--pad); }
+  .opt .txt { position:relative; z-index:2; padding:14px var(--pad) 0; margin-bottom:-1.25em; }
+  .opt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:30ch; text-shadow:0 2px 24px rgba(0,0,0,.4); }
+  .opt .media { position:relative; height:64vh; min-height:420px; overflow:hidden; }
+  .opt .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 78%; }
+  .opt .media .top { position:absolute; left:0; right:0; top:0; height:40%; background:linear-gradient(180deg, var(--bg) 0%, rgba(10,10,10,0) 100%); }
+  .opt .cap { padding:16px var(--pad) 0; display:flex; gap:14px; align-items:baseline; flex-wrap:wrap; }
+  .opt .cap .src { font-size:13px; color:#b3b1ac; max-width:70ch; }
+  .opt .cap .src em { color:var(--ink); font-style:normal; }
+  footer { padding:80px var(--pad) 60px; border-top:1px solid var(--line); margin-top:120px; }
+  @media (max-width:760px){ :root { --pad:20px; } .opt .media { height:52vh; min-height:320px; } .opt .media img { object-position:60% 78%; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="../img/pacific_logo_full_white.svg" alt="Pacific">
+  <div class="label">Tagline options, 11 Nov 2026. Same image, same position, 15 lines.</div>
+</header>
+
+<script>
+const options = [
+  ["Pacific deploys prefabricated AI data centers at scale.",
+   "Helsing", "Helsing deploys AI-enabled precision mass at scale.", "Your own word for the box. Boring on purpose, everything is in it."],
+  ["Pacific designs, manufactures and deploys containerized AI data centers.",
+   "SpaceX", "SpaceX designs, manufactures and launches advanced rockets and spacecraft.", "Three verbs, no adjectives. The company is the sentence."],
+  ["Pacific builds complete AI data centers in a 40 foot box.",
+   "Your press release sub-head", "builds a complete data center in a 40 foot container, power, cooling and the nodes all in one box.", "The physical fact, nothing else."],
+  ["Pacific manufactures AI data centers and lands them on power that is already built.",
+   "Your press release opening", "Pacific builds portable AI data centers in a factory and lands them on power that is already built.", "The whole idea in one line, longest of the set."],
+  ["Data centers you can drive to the power.",
+   "Your quote in the release", "We find the power that is already there and build data centers you can drive to it.", "Shortest. Reads as a slogan rather than a description."],
+  ["Pacific builds AI data centers on a production line and drives them to the power.",
+   "Ben's About line, plus your quote", "It builds data centers on a production line and deploys them on sites where grid power is already available.", "Production line says factory without saying factory."],
+  ["The industrial base for AI compute.",
+   "Isembard", "The Industrial Base for the West.", "Category claim. Says what Pacific is, not what the pod is."],
+  ["Pacific turns stranded power into AI compute, in days.",
+   "Ben's About line, plus your headline", "Pacific turns unused power into AI compute. ... plugging them into stranded power in days.", "Outcome first. The box is implied."],
+  ["A data center in a box. Built by the thousand.",
+   "Castelion", "designs, tests, and manufactures next-generation military systems rapidly and at massive scale.", "Two fragments. Volume is the claim."],
+  ["Pacific builds portable AI data centers at the speed the power comes online.",
+   "Your 5 Oct mission line", "We build, power and finance data centers at the speed AI needs them.", "Portable is the one word NVIDIA does not use."],
+  ["Compute, delivered on one truck.",
+   "Firefly", "Launch. Land. Orbit.", "Terse and physical. Would need the second sentence to carry the rest."],
+  ["Pacific designs, manufactures and deploys 1 MW AI data centers in 40 foot containers.",
+   "SpaceX, with the numbers in", "designs, manufactures and launches advanced rockets and spacecraft.", "Same as option 2 with the two specifics a buyer searches for."],
+  ["AI data centers, built like aircraft and moved like freight.",
+   "Boom Supersonic", "America's most vertically integrated aviation and energy company.", "Two analogies the industry already understands."],
+  ["Pacific builds fully contained AI data centers and lands them on live power.",
+   "Your note today", "We build fully contained AI data centers at scale.", "Your words, with the second half of the idea added."],
+  ["Pacific manufactures AI data centers the way SpaceX manufactures rockets.",
+   "Your SpaceX line", "SpaceX did not just build rockets, it built rocket factories.", "The factory, told through the comparison instead of the word."],
+];
+document.write(options.map((o,i)=>`
+<section class="opt" id="o${i+1}">
+  <div class="num label">Option ${String(i+1).padStart(2,'0')}</div>
+  <div class="txt"><div class="big">${o[0]}</div></div>
+  <div class="media"><img src="../img/v08_anduril_crew_sky.jpg" alt="" loading="${i<2?'eager':'lazy'}"><div class="top"></div></div>
+  <div class="cap"><span class="label">Inspiration</span><span class="src"><em>${o[1]}:</em> &ldquo;${o[2]}&rdquo; &nbsp; ${o[3]}</span></div>
+</section>`).join(''));
+</script>
+
+<footer><div class="label">© 2026 Pacific Systems, Inc. Working options, not the live site.</div></footer>
+</body>
+</html>

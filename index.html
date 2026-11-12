@@ -36,7 +36,7 @@
   .seam .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; }
   .seam .media .top { position:absolute; left:0; right:0; top:0; height:40%; background:linear-gradient(180deg, rgba(10,10,10,.45) 0%, rgba(10,10,10,.2) 50%, rgba(10,10,10,0) 100%); }
   .seam .txt { position:absolute; left:var(--pad); right:var(--pad); top:330px; z-index:2; }
-  .seam .txt .big { font-size:clamp(34px,3.9vw,60px); font-weight:400; line-height:1.1; letter-spacing:-0.018em; max-width:calc(100vw - var(--pad) - 420px); text-shadow:0 2px 24px rgba(0,0,0,.35); }
+  .seam .txt .big { font-size:clamp(34px,3.9vw,60px); font-weight:400; line-height:1.1; letter-spacing:-0.018em; max-width:min(calc(100vw - var(--pad) - 420px), 66vw); text-shadow:0 2px 24px rgba(0,0,0,.35); }
   .seam .txt p.sub { margin-top:0; font-size:clamp(18px,1.25vw,24px); color:#dcd9d3; max-width:60ch; margin-left:5.6vw; text-shadow:0 2px 24px rgba(0,0,0,.5); line-height:1.5; }
   .seam .txt p.sub:first-of-type { margin-top:44px; }
   .seam .txt p.sub + p.sub { margin-top:1.4em; }
@@ -89,7 +89,7 @@
   .hiring-img.dark .btn { color:#0a0a0a; border-color:rgba(10,10,10,.9); }
   .hiring-img.dark .btn:hover { background:#0a0a0a; color:#fff; }
   html.review .hiring-img { height:auto; }
-  @media (max-width:760px){ .hiring-img { height:70vh; min-height:420px; } .hiring-img img { object-position:60% 100%; } }
+  @media (max-width:760px){ .hiring-img { height:70vh; min-height:420px; aspect-ratio:auto; } .hiring-img img { object-position:60% 100%; } }
   /* 6. Hiring: one giant word edge to edge, one button */
   .hiring { padding:var(--gap) 0 calc(var(--gap) - 20px); text-align:center; overflow:hidden; margin-top:var(--gap); }
   .hiring .word { padding:0 var(--pad); font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
@@ -148,7 +148,7 @@
     .card { aspect-ratio:4/3; }
     .band, .rowcard { height:70vh; min-height:420px; }
     .seam .media img { object-position:58% center; }
-    .seam { height:auto; min-height:0; } .seam .media { position:relative; height:70vh; } .seam .txt { position:relative; top:0; padding:60px 0 24px; } .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; } .seam .scale { position:relative; left:0; bottom:0; padding:18px var(--pad) 40px; } .seam .scale p.sub { white-space:normal; }
+    .seam { height:auto; min-height:0; } .seam .media { position:relative; height:70vh; } .seam .txt { position:relative; top:0; left:0; right:auto; padding:60px var(--pad) 24px; } .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; } .seam .scale { position:relative; left:0; bottom:0; padding:18px var(--pad) 40px; } .seam .scale p.sub { white-space:normal; }
   }
 </style>
 </head>
@@ -177,7 +177,7 @@
     <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale.</p>
   </div>
   <div class="media fade">
-    <img src="img/v08_anduril_crew_sky_v2.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" decoding="async">
+    <img src="img/v08_anduril_crew_sky_v3.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" decoding="async">
     <div class="top"></div>
   </div>
   <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>

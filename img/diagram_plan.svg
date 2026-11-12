@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900" role="img" aria-label="Plan view of Pod 32">
+<rect x="228.48000000000002" y="303.72" width="1463.04" height="292.56" fill="none" stroke="#CECECE" stroke-width="2"/>
+<rect x="228.48000000000002" y="303.72" width="21.36" height="21.36" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="228.48000000000002" y="574.92" width="21.36" height="21.36" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="1670.16" y="303.72" width="21.36" height="21.36" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="1670.16" y="574.92" width="21.36" height="21.36" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="249.84000000000003" y="316.536" width="1420.32" height="31.200000000000003" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="249.84000000000003" y1="322.776" x2="1670.16" y2="322.776" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<line x1="249.84000000000003" y1="329.016" x2="1670.16" y2="329.016" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<line x1="249.84000000000003" y1="335.25600000000003" x2="1670.16" y2="335.25600000000003" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<line x1="249.84000000000003" y1="341.496" x2="1670.16" y2="341.496" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<rect x="249.84000000000003" y="552.2639999999999" width="1420.32" height="31.200000000000003" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="249.84000000000003" y1="558.5039999999999" x2="1670.16" y2="558.5039999999999" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<line x1="249.84000000000003" y1="564.7439999999999" x2="1670.16" y2="564.7439999999999" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<line x1="249.84000000000003" y1="570.9839999999999" x2="1670.16" y2="570.9839999999999" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<line x1="249.84000000000003" y1="577.2239999999999" x2="1670.16" y2="577.2239999999999" stroke="#8a8a86" stroke-width="0.8" opacity="0.7"/>
+<rect x="278.25600000000003" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="337.05600000000004" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="337.05600000000004" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="337.05600000000004" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="416.688" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="475.488" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="475.488" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="475.488" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="555.12" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="613.92" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="613.92" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="613.92" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="693.5519999999999" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="752.3519999999999" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="752.3519999999999" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="752.3519999999999" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="831.9839999999999" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="890.7839999999999" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="890.7839999999999" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="890.7839999999999" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="970.4159999999999" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1029.216" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1029.216" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1029.216" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="1108.848" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1167.648" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1167.648" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1167.648" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="1247.28" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1306.08" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1306.08" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1306.08" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="1385.712" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1444.512" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1444.512" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1444.512" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="1524.144" y="391.2" width="117.6" height="117.6" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1582.944" cy="450.0" r="54.096" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1582.944" cy="450.0" r="35.279999999999994" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<circle cx="1582.944" cy="450.0" r="16.464000000000002" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="228.48000000000002" y1="257.72" x2="1691.52" y2="257.72" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="228.48000000000002" y1="249.72000000000003" x2="228.48000000000002" y2="265.72" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="1691.52" y1="249.72000000000003" x2="1691.52" y2="265.72" stroke="#8a8a86" stroke-width="1.4"/>
+<rect x="890.0" y="244.72000000000003" width="140" height="26" fill="#07070b"/>
+<text x="960.0" y="263.72" text-anchor="middle" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">Length: 12.2 m</text>
+<line x1="1737.52" y1="303.72" x2="1737.52" y2="596.28" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="1729.52" y1="303.72" x2="1745.52" y2="303.72" stroke="#8a8a86" stroke-width="1.4"/>
+<line x1="1729.52" y1="596.28" x2="1745.52" y2="596.28" stroke="#8a8a86" stroke-width="1.4"/>
+<text x="1753.52" y="456.0" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">Width: 2.44 m</text>
+<circle cx="337.05600000000004" cy="450.0" r="3" fill="#CECECE"/><line x1="337.05600000000004" y1="450.0" x2="208.48000000000002" y2="666.28" stroke="#8a8a86" stroke-width="1.4"/><text x="198.48000000000002" y="672.28" text-anchor="end" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">10 roof fans</text>
+<circle cx="960.0" cy="567.8639999999999" r="3" fill="#CECECE"/><line x1="960.0" y1="567.8639999999999" x2="1100.0" y2="666.28" stroke="#8a8a86" stroke-width="1.4"/><text x="1110.0" y="672.28" text-anchor="start" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">Louvre band, both sides</text>
+<circle cx="1135.5648" cy="450.0" r="3" fill="#CECECE"/><line x1="1135.5648" y1="450.0" x2="1135.5648" y2="193.72000000000003" stroke="#8a8a86" stroke-width="1.4"/><text x="1145.5648" y="199.72000000000003" text-anchor="start" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">256 NVIDIA B300 GPUs inside</text>
+</svg>

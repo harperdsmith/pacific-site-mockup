@@ -10,6 +10,7 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   @media (prefers-reduced-motion:no-preference){ html { scroll-behavior:smooth; } }
   body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
+  a { color:inherit; }
   .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px var(--pad) 40px; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0)); }
@@ -20,63 +21,97 @@
   nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
   nav .cta:hover { background:var(--ink); color:var(--bg); }
 
-  /* Hero: full-bleed image, one giant line cropped at the bottom edge */
+  /* 1. Hero: the v7 light wall, one giant line cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.6) 100%); }
   .hero .giant { position:absolute; left:0; right:0; bottom:0.18em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
 
-  /* One text component, one rhythm: eyebrow, headline, sub, all on the gutter */
+  /* 2. Two sentences that sit across the seam between the black and the sunrise image */
+  .seam { position:relative; }
+  .seam .txt { position:relative; z-index:2; padding:var(--gap) var(--pad) 0; margin-bottom:-2.6em; }
+  .seam .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:30ch; margin-top:20px; text-shadow:0 2px 24px rgba(0,0,0,.35); }
+  .seam .media { position:relative; height:100vh; min-height:560px; overflow:hidden; }
+  .seam .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 60%; }
+  .seam .media .top { position:absolute; left:0; right:0; top:0; height:42%; background:linear-gradient(180deg, var(--bg) 0%, rgba(10,10,10,0) 100%); }
+
+  /* 3a. Four cards, Helsing product grid */
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:var(--gap) var(--pad) 0; }
+  .card { position:relative; aspect-ratio:16/10; overflow:hidden; background:#000; display:block; text-decoration:none; }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s cubic-bezier(.2,.6,.2,1); }
+  .card:hover img { transform:scale(1.03); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.85) 100%); }
+  .card .txt { position:absolute; left:28px; right:28px; bottom:26px; }
+  .card .name { font-size:clamp(22px,2vw,30px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; }
+  .card .line { margin-top:8px; font-size:15px; color:#c9c7c2; max-width:40ch; }
+  .card .more { margin-top:16px; display:inline-block; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:4px; }
+  .card.pod img { object-position:center 25%; }
+  .card.vera img { object-position:center 45%; }
+  .card.factory img { object-position:center 55%; }
+  .card.sov img { object-position:65% center; }
+
+  /* 3b. Version B: one card per screen, Helsing rows. Name on top, descriptor in grey, outlined button. */
+  .rows { padding-top:var(--gap); }
+  .rowcard { position:relative; height:100vh; min-height:600px; overflow:hidden; display:block; text-decoration:none; border-top:1px solid #000; }
+  .rowcard img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.6,.2,1); }
+  .rowcard:hover img { transform:scale(1.02); }
+  .rowcard .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.8) 100%); }
+  .rowcard .txt { position:absolute; left:var(--pad); right:var(--pad); bottom:64px; }
+  .rowcard .name { font-size:clamp(34px,4.2vw,64px); font-weight:400; letter-spacing:-0.02em; line-height:1.02; }
+  .rowcard .line { font-size:clamp(22px,2.6vw,40px); color:#a9a7a2; font-weight:400; letter-spacing:-0.015em; line-height:1.1; margin-top:4px; }
+  .rowcard .btn { display:inline-block; margin-top:40px; border:1px solid rgba(255,255,255,.85); padding:16px 34px; font-size:17px; color:#fff; }
+  .rowcard.pod img { object-position:center 30%; } .rowcard.vera img { object-position:center 45%; } .rowcard.factory img { object-position:center 55%; } .rowcard.sov img { object-position:60% center; }
+
+  /* 5. Closing band: hangar door, the SpaceX line on it */
+  .band { position:relative; height:100vh; min-height:560px; overflow:hidden; margin-top:var(--gap); }
+  .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 55%; }
+  .band .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.8) 100%); }
+  .band .txt { position:absolute; left:var(--pad); right:var(--pad); bottom:64px; max-width:60ch; }
+  .band .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
+  .band .txt p { margin-top:20px; font-size:18px; color:#d6d3cd; max-width:52ch; }
+
+  /* 6. Careers */
   .block { padding:var(--gap) var(--pad) 72px; }
-  .block h2, .block .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:24ch; margin-top:20px; }
-  .block h2 span { color:var(--dim); }
-  .block p.sub { margin-top:22px; font-size:18px; color:#b3b1ac; font-weight:400; max-width:48ch; }
-
-  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:56px; }
-  .stat { background:var(--bg); padding:30px 26px 30px 0; }
-  .stat .n { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:clamp(22px,2.3vw,34px); font-weight:400; line-height:1; white-space:nowrap; }
-  .stat .d { margin-top:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); }
-
-  /* Images carry no text. Same height class every time so the page scrolls at one beat. */
-  .media { position:relative; height:84vh; min-height:480px; overflow:hidden; }
-  .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .media.tall { height:100vh; }
-  img[src*="v13"] { object-position:center 20%; }
-  img[src*="truck"] { object-position:center 55%; }
-  @media (max-width:1100px){ .hero img { object-position:70% 40%; } }
-
+  .block h2, .block .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:26ch; margin-top:20px; }
+  .block p.sub { margin-top:22px; font-size:18px; color:#b3b1ac; font-weight:400; max-width:52ch; }
   .actions { display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
-  .actions a { color:var(--bg); background:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid var(--ink); padding:13px 24px; transition:background-color .25s ease, color .25s ease, opacity .25s ease; }
+  .actions a { color:var(--bg); background:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid var(--ink); padding:13px 24px; transition:opacity .25s ease; }
   .actions a:hover { opacity:.85; }
+  .actions a.ghost { background:transparent; color:var(--ink); border-color:rgba(255,255,255,.5); }
   a:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
 
-  footer { display:flex; flex-direction:column; align-items:flex-start; gap:18px; padding:46px var(--pad); border-top:1px solid var(--line); }
+  footer { display:flex; justify-content:space-between; align-items:flex-end; gap:18px; padding:46px var(--pad); border-top:1px solid var(--line); margin-top:var(--gap); }
   footer img { height:16px; opacity:.8; }
+  footer .cols { display:flex; gap:40px; }
+  footer .cols a { text-decoration:none; }
+
+  /* A/B divider */
+  .divider { padding:120px var(--pad) 40px; border-top:1px dashed #333; margin-top:var(--gap); }
+  .divider .label { color:#ff8a3d; }
+  .divider .big { font-size:var(--h); font-weight:400; margin-top:16px; }
 
   .fade { opacity:0; transform:translateY(18px); transition:opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
-  .media.fade { transform:none; }
-  .media.fade img { transform:scale(1.03); transition:transform 1.6s cubic-bezier(.2,.6,.2,1); }
-  .media.fade.in img { transform:none; }
-  .block .fade:nth-child(2){ transition-delay:.08s } .block .fade:nth-child(3){ transition-delay:.16s } .block .fade:nth-child(4){ transition-delay:.24s }
+  .band.fade, .card.fade, .rowcard.fade, .media.fade { transform:none; }
+  .grid .fade:nth-child(2){ transition-delay:.1s } .grid .fade:nth-child(3){ transition-delay:.2s } .grid .fade:nth-child(4){ transition-delay:.3s }
   .fade.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
 
-  /* review-only: fixed heights so a flat full-page capture shows every section */
-  html.review .hero, html.review .media.tall { height:900px; } html.review .media { height:720px; } html.review .fade { opacity:1; transform:none; }
+  html.review .hero, html.review .band, html.review .seam .media, html.review .rowcard { height:900px; } html.review .fade { opacity:1; transform:none; }
 
+  @media (max-width:900px){ .grid { grid-template-columns:1fr; } }
   @media (max-width:760px){
     :root { --pad:20px; --gap:100px; }
     nav .links a:not(.cta){ display:none; }
-    .stats { grid-template-columns:repeat(2,1fr); }
-    .stat { padding:24px 16px 24px 0; }
-    .media, .media.tall { height:62vh; min-height:360px; }
     .hero img { object-position:78% 40%; }
-    img[src*="lookout"]{ object-position:65% center } img[src*="v13"]{ object-position:70% center } img[src*="v08"]{ object-position:58% center }
     .block p.sub { font-size:16px; }
     .actions a { width:100%; text-align:center; }
     .hero .giant { white-space:normal; font-size:19vw; }
     .hero .giant .l { display:block; width:max-content; }
+    .card { aspect-ratio:4/3; }
+    .seam .media, .band, .rowcard { height:70vh; min-height:420px; }
+    .seam .media img { object-position:58% center; }
+    footer { flex-direction:column; align-items:flex-start; }
   }
 </style>
 </head>
@@ -86,106 +121,175 @@
   <a class="wordmark" href="#"><img src="img/pacific_logo_full_white.svg" alt="Pacific"></a>
   <div class="links">
     <a href="#pod">Pod 32</a>
-    <a href="#deploy">Deployment</a>
-    <a href="#factory">Factory</a>
-    <a href="#capacity">Capacity</a>
-    <a class="cta" href="#capacity">Request capacity</a>
+    <a href="#factory">Factory 1</a>
+    <a href="#careers">Careers</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com">Request capacity</a>
   </div>
 </nav>
+
+<!-- ============ VERSION A: four cards on one screen ============ -->
 
 <header class="hero">
   <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light" fetchpriority="high">
   <div class="shade"></div>
-  <h1 class="giant"><span id="giant"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
+  <h1 class="giant"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
 </header>
 
-<section class="block">
-  <div class="label fade">Pacific</div>
-  <h2 class="big fade">A full data center in a 40 foot container, built on a line.</h2>
-  <p class="sub fade">Giant data centers take years and earn nothing until everything is finished.</p>
-</section>
-
-<div class="media tall fade">
-  <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at dusk, a technician walking past with a tool case" decoding="async">
-</div>
-
-<section class="block" id="pod">
-  <div class="label fade">The machine</div>
-  <h2 class="fade">Pod 32<br><span>Forty foot data center</span></h2>
-  <p class="sub fade">Thirty-two NVIDIA B300 nodes with their power, cooling and network. It arrives tested.</p>
-  <div class="stats fade">
-    <div class="stat"><div class="n">256</div><div class="d">GPUs per pod</div></div>
-    <div class="stat"><div class="n">&lt;1 MW</div><div class="d">Grid connection</div></div>
-    <div class="stat"><div class="n">Liquid</div><div class="d">Direct-to-chip cooling</div></div>
-    <div class="stat"><div class="n">983 TB</div><div class="d">Raw NVMe</div></div>
+<section class="seam">
+  <div class="txt">
+    <div class="label fade">Pacific</div>
+    <div class="big fade">Pacific builds fully contained AI data centers at scale. We build them in a factory and land them on power that is already built.</div>
+  </div>
+  <div class="media fade">
+    <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" decoding="async">
+    <div class="top"></div>
   </div>
 </section>
 
-<div class="media fade">
-  <img src="img/v13_long_side_grazing.jpg" alt="Pacific pod, long side" loading="lazy" decoding="async">
+<div class="grid" id="pod">
+  <a class="card pod fade" href="#pod">
+    <img src="img/v13_long_side_grazing.jpg" alt="Pacific Pod 32, long side" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container.</div><span class="more">Learn more</span></div>
+  </a>
+  <a class="card vera fade" href="#pod">
+    <img src="img/truck.jpg" alt="Pacific pod on the road" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development.</div><span class="more">Learn more</span></div>
+  </a>
+  <a class="card factory fade" href="#factory" id="factory">
+    <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year.</div><span class="more">Learn more</span></div>
+  </a>
+  <a class="card sov fade" href="#careers">
+    <img src="img/lookout.jpg" alt="Engineer beside a Pacific pod at dusk" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control.</div><span class="more">Learn more</span></div>
+  </a>
 </div>
 
-<section class="block" id="deploy">
-  <div class="label fade">Deployment</div>
-  <h2 class="big fade">Lands on a concrete pad. Running on stranded power in days.</h2>
-  <p class="sub fade">Delivered on a standard flatbed. Set down, connected, running.</p>
-</section>
-
-<div class="media tall fade">
-  <img src="img/truck.jpg" alt="Pacific pod on a truck, leaving an industrial site" loading="lazy" decoding="async">
-</div>
-
-<section class="block" id="factory">
-  <div class="label fade">The factory</div>
-  <h2 class="big fade">We are building the factory that builds data centers.</h2>
-  <p class="sub fade">The longest-lead parts are made in house. As one pod leaves, the next moves up the line.</p>
-</section>
-
-<div class="media fade">
+<div class="band fade">
   <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+  <div class="veil"></div>
+  <div class="txt">
+    <div class="label">The factory</div>
+    <div class="big">SpaceX did not just build rockets, it built rocket factories.</div>
+    <p>Data centers are still built the way buildings are built, bespoke, on site, over years, by trades that are running out, so we are building the factory that builds them.</p>
+  </div>
 </div>
 
-<section class="block" id="scale">
-  <div class="label fade">At scale</div>
-  <h2 class="big fade">One pod or forty. Same unit, same truck, same pad.</h2>
-  <p class="sub fade">Rows of pods on one site, each one tested before it left the factory.</p>
-</section>
-
-<div class="media tall fade">
-  <img src="img/cluster.jpg" alt="Rows of Pacific pods on a site at night" loading="lazy" decoding="async">
-</div>
-
-<section class="block" id="capacity">
-  <div class="label fade">Capacity</div>
-  <h2 class="big fade">GPU clusters and colocation space, available from early 2027.</h2>
-  <p class="sub fade">Tell us where the power is and when you need the GPUs. Small team in San Francisco; you write to the founder.</p>
+<section class="block" id="careers">
+  <div class="label fade">Careers</div>
+  <h2 class="big fade">We are hiring people who have built fast before.</h2>
+  <p class="sub fade">Engineers and manufacturing leads from SpaceX, the aerospace supply chain and the data center trades, to build the factory that builds data centers. Write to Harper directly.</p>
   <div class="actions fade">
-    <a href="mailto:harper@pacificmachines.com">Request capacity</a>
+    <a href="mailto:harper@pacificmachines.com">Write to Harper</a>
+    <a class="ghost" href="mailto:harper@pacificmachines.com">Request capacity</a>
   </div>
 </section>
-
-<div class="media tall fade">
-  <img src="img/lookout.jpg" alt="Engineer beside a Pacific pod at dusk, looking out" loading="lazy" decoding="async">
-</div>
 
 <footer>
-  <img src="img/pacific_logo_full_white.svg" alt="Pacific">
-  <div class="label">© 2026 Pacific Systems, Inc. Mock-up, not the live site.</div>
+  <div>
+    <img src="img/pacific_logo_full_white.svg" alt="Pacific">
+    <div class="label" style="margin-top:18px">© 2026 Pacific Systems, Inc. Mock-up, not the live site.</div>
+  </div>
+  <div class="cols label">
+    <a href="#pod">Pod 32</a><a href="#factory">Factory 1</a><a href="#careers">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a>
+  </div>
+</footer>
+
+<!-- ============ VERSION B: same page, cards as full-width Helsing rows ============ -->
+
+<div class="divider">
+  <div class="label">Version B, for comparison</div>
+  <div class="big">Same page. The four cards become one screen each, the way Helsing lays out its products.</div>
+</div>
+
+<header class="hero">
+  <img src="img/hero_wall.jpg" alt="Pacific pod in silhouette in front of a wall of light" loading="lazy" decoding="async">
+  <div class="shade"></div>
+  <div class="giant" aria-hidden="true"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></div>
+</header>
+
+<section class="seam">
+  <div class="txt">
+    <div class="label fade">Pacific</div>
+    <div class="big fade">Pacific builds fully contained AI data centers at scale. We build them in a factory and land them on power that is already built.</div>
+  </div>
+  <div class="media fade">
+    <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" loading="lazy" decoding="async">
+    <div class="top"></div>
+  </div>
+</section>
+
+<div class="rows">
+  <a class="rowcard pod fade" href="#pod">
+    <img src="img/v13_long_side_grazing.jpg" alt="Pacific Pod 32, long side" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container</div><span class="btn">Learn more</span></div>
+  </a>
+  <a class="rowcard vera fade" href="#pod">
+    <img src="img/truck.jpg" alt="Pacific pod on the road" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development</div><span class="btn">Learn more</span></div>
+  </a>
+  <a class="rowcard factory fade" href="#factory">
+    <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year</div><span class="btn">Learn more</span></div>
+  </a>
+  <a class="rowcard sov fade" href="#careers">
+    <img src="img/lookout.jpg" alt="Engineer beside a Pacific pod at dusk" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control</div><span class="btn">Learn more</span></div>
+  </a>
+</div>
+
+<div class="band fade">
+  <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+  <div class="veil"></div>
+  <div class="txt">
+    <div class="label">The factory</div>
+    <div class="big">SpaceX did not just build rockets, it built rocket factories.</div>
+    <p>Data centers are still built the way buildings are built, bespoke, on site, over years, by trades that are running out, so we are building the factory that builds them.</p>
+  </div>
+</div>
+
+<section class="block">
+  <div class="label fade">Careers</div>
+  <h2 class="big fade">We are hiring people who have built fast before.</h2>
+  <p class="sub fade">Engineers and manufacturing leads from SpaceX, the aerospace supply chain and the data center trades, to build the factory that builds data centers. Write to Harper directly.</p>
+  <div class="actions fade">
+    <a href="mailto:harper@pacificmachines.com">Write to Harper</a>
+    <a class="ghost" href="mailto:harper@pacificmachines.com">Request capacity</a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <img src="img/pacific_logo_full_white.svg" alt="Pacific">
+    <div class="label" style="margin-top:18px">© 2026 Pacific Systems, Inc. Mock-up, not the live site.</div>
+  </div>
+  <div class="cols label">
+    <a href="#pod">Pod 32</a><a href="#factory">Factory 1</a><a href="#careers">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a>
+  </div>
 </footer>
 
 <script>
   if (location.search.includes('review')) { document.documentElement.classList.add('review'); document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager'); }
   (function(){
-    const el = document.getElementById('giant'); const box = el.parentElement;
-    const lines = el.querySelectorAll('.l');
+    const fits = [...document.querySelectorAll('.giant-fit')];
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
       const target = document.documentElement.clientWidth - pad*2;
-      box.style.fontSize = '100px';
-      const stacked = getComputedStyle(lines[0]).display === 'block';
-      const w = stacked ? Math.max(...[...lines].map(l => l.getBoundingClientRect().width)) : el.getBoundingClientRect().width;
-      if (!w) return;
-      box.style.fontSize = (100 * target / w) + 'px';
+      fits.forEach(el => {
+        const box = el.parentElement; const lines = el.querySelectorAll('.l');
+        box.style.fontSize = '100px';
+        const stacked = getComputedStyle(lines[0]).display === 'block';
+        const w = stacked ? Math.max(...[...lines].map(l => l.getBoundingClientRect().width)) : el.getBoundingClientRect().width;
+        if (w) box.style.fontSize = (100 * target / w) + 'px';
+      });
     }
     fit(); window.addEventListener('resize', fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);

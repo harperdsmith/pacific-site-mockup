@@ -229,8 +229,9 @@
     const fits = [...document.querySelectorAll('.giant-fit, .hiring-fit')];
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
-      const target = (document.documentElement.clientWidth - pad*2) * (el.classList.contains('hiring-fit') ? 0.8 : 0.995);
+      const avail = document.documentElement.clientWidth - pad*2;
       fits.forEach(el => {
+        const target = avail * (el.classList.contains('hiring-fit') ? 0.8 : 0.995);
         const box = el.parentElement; const lines = el.querySelectorAll('.l');
         box.style.fontSize = '100px';
         const stacked = lines.length && getComputedStyle(lines[0]).display === 'block';

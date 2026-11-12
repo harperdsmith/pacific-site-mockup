@@ -31,15 +31,17 @@
   /* 2. Two sentences that sit across the seam between the black and the sunrise image */
   .seam { position:relative; }
   .seam .txt { position:relative; z-index:2; padding:var(--gap) var(--pad) 0; margin-bottom:-9.5em; }
-  .seam .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:30ch; margin-top:20px; text-shadow:0 2px 24px rgba(0,0,0,.35); }
-  .seam .txt p.sub { margin-top:22px; font-size:18px; color:#d6d3cd; max-width:56ch; text-shadow:0 2px 24px rgba(0,0,0,.5); }
+  .seam .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:calc(100vw - var(--pad) - 300px); margin-top:20px; text-shadow:0 2px 24px rgba(0,0,0,.35); }
+  .seam .txt p.sub { margin-top:22px; font-size:18px; color:#d6d3cd; max-width:72ch; margin-left:12vw; text-shadow:0 2px 24px rgba(0,0,0,.5); }
   .seam .txt p.sub + p.sub { margin-top:14px; }
   .seam .media { position:relative; height:100vh; min-height:560px; overflow:hidden; }
   .seam .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 72%; }
   .seam .media .top { position:absolute; left:0; right:0; top:0; height:62%; background:linear-gradient(180deg, var(--bg) 0%, rgba(10,10,10,0) 100%); }
 
+  .scale { padding:64px var(--pad) 0; }
+  .scale p.sub { font-size:18px; color:#b3b1ac; max-width:60ch; }
   /* 3a. Four cards, Helsing product grid */
-  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:var(--gap) var(--pad) 0; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:72px var(--pad) 0; }
   .card { position:relative; aspect-ratio:16/10; overflow:hidden; background:#000; display:block; text-decoration:none; }
   .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s cubic-bezier(.2,.6,.2,1); }
   .card:hover img { transform:scale(1.03); }
@@ -54,7 +56,7 @@
   .card.sov img { object-position:65% center; }
 
   /* 3b. Version B: one card per screen, Helsing rows. Name on top, descriptor in grey, outlined button. */
-  .rows { padding-top:var(--gap); }
+  .rows { padding-top:72px; }
   .rowcard { position:relative; height:100vh; min-height:600px; overflow:hidden; display:block; text-decoration:none; border-top:1px solid #000; }
   .rowcard img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.6,.2,1); }
   .rowcard:hover img { transform:scale(1.02); }
@@ -113,6 +115,7 @@
     .card { aspect-ratio:4/3; }
     .seam .media, .band, .rowcard { height:70vh; min-height:420px; }
     .seam .media img { object-position:58% center; }
+    .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; }
     footer { flex-direction:column; align-items:flex-start; }
   }
 </style>
@@ -142,12 +145,16 @@
     <div class="label fade">Pacific</div>
     <div class="big fade">Pacific manufactures self-contained, portable AI data centers at scale.</div>
     <p class="sub fade">This is the fastest path to bringing compute online. We deliver functional data centers to sites where the power is already developed, and they generate tokens within days.</p>
-    <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale. Pods can be single megawatt sites or clustered to form hyperscale campuses.</p>
+    <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale.</p>
   </div>
   <div class="media fade">
     <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" decoding="async">
     <div class="top"></div>
   </div>
+</section>
+
+<section class="scale">
+  <p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p>
 </section>
 
 <div class="grid" id="pod">
@@ -221,12 +228,16 @@
     <div class="label fade">Pacific</div>
     <div class="big fade">Pacific manufactures self-contained, portable AI data centers at scale.</div>
     <p class="sub fade">This is the fastest path to bringing compute online. We deliver functional data centers to sites where the power is already developed, and they generate tokens within days.</p>
-    <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale. Pods can be single megawatt sites or clustered to form hyperscale campuses.</p>
+    <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale.</p>
   </div>
   <div class="media fade">
     <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" loading="lazy" decoding="async">
     <div class="top"></div>
   </div>
+</section>
+
+<section class="scale">
+  <p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p>
 </section>
 
 <div class="rows">

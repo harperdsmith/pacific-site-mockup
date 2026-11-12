@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900" role="img" aria-label="Plan view of Pod 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 620" role="img" aria-label="Plan view of Pod 32"><g transform="translate(0,-140)">
 <rect x="228.48000000000002" y="303.72" width="1463.04" height="292.56" fill="none" stroke="#CECECE" stroke-width="2"/>
 <rect x="228.48000000000002" y="303.72" width="21.36" height="21.36" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
 <rect x="228.48000000000002" y="574.92" width="21.36" height="21.36" fill="none" stroke="#8a8a86" stroke-width="1.4"/>
@@ -66,4 +66,4 @@
 <circle cx="337.05600000000004" cy="450.0" r="3" fill="#CECECE"/><line x1="337.05600000000004" y1="450.0" x2="208.48000000000002" y2="666.28" stroke="#8a8a86" stroke-width="1.4"/><text x="198.48000000000002" y="672.28" text-anchor="end" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">10 roof fans</text>
 <circle cx="960.0" cy="567.8639999999999" r="3" fill="#CECECE"/><line x1="960.0" y1="567.8639999999999" x2="1100.0" y2="666.28" stroke="#8a8a86" stroke-width="1.4"/><text x="1110.0" y="672.28" text-anchor="start" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">Louvre band, both sides</text>
 <circle cx="1135.5648" cy="450.0" r="3" fill="#CECECE"/><line x1="1135.5648" y1="450.0" x2="1135.5648" y2="193.72000000000003" stroke="#8a8a86" stroke-width="1.4"/><text x="1145.5648" y="199.72000000000003" text-anchor="start" font-family="SF Mono,JetBrains Mono,Menlo,Consolas,monospace" font-size="18" fill="#CECECE">256 NVIDIA B300 GPUs inside</text>
-</svg>
+</g></svg>

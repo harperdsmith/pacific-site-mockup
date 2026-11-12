@@ -105,10 +105,23 @@
   .actions a.ghost { background:transparent; color:var(--ink); border-color:rgba(255,255,255,.5); }
   a:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
 
-  footer { display:flex; justify-content:space-between; align-items:flex-end; gap:18px; padding:46px var(--pad); border-top:1px solid var(--line); margin-top:var(--gap); }
-  footer img { height:16px; opacity:.8; }
-  footer .cols { display:flex; gap:40px; }
-  footer .cols a { text-decoration:none; }
+
+  /* Footer, cloned from Helsing: flush grey block, lockup + two link columns + legal line */
+  .foot { background:#9E9A9B; color:#474749; padding:32px var(--pad) 10px; margin-top:0; }
+  .foot a { color:inherit; text-decoration:none; transition:color .15s ease; }
+  .foot a:hover { color:#1F1E1E; }
+  .foot .fnav { display:grid; grid-template-columns:minmax(0,4fr) minmax(0,2fr) minmax(0,2fr) minmax(0,4fr); gap:24px; align-items:start; font-size:16px; line-height:1.3; }
+  .foot .flogo img { height:16px; width:auto; display:block; opacity:.9; }
+  .foot ul { list-style:none; display:flex; flex-direction:column; gap:14px; }
+  .foot .fsocial { display:flex; justify-content:flex-end; gap:16px; }
+  .foot .fsocial svg { display:block; }
+  .foot .flegal { display:flex; justify-content:space-between; gap:16px; margin-top:80px; font-size:12px; line-height:1.3; }
+  @media (max-width:760px){
+    .foot .fnav { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px 16px; }
+    .foot .flogo { grid-column:1 / -1; }
+    .foot .fsocial { grid-column:1 / -1; justify-content:flex-start; }
+    .foot .flegal { flex-direction:column; align-items:flex-end; gap:6px; margin-top:40px; }
+  }
 
   /* A/B divider */
   .divider { padding:120px var(--pad) 40px; border-top:1px dashed #333; margin-top:var(--gap); }
@@ -136,19 +149,18 @@
     .band, .rowcard { height:70vh; min-height:420px; }
     .seam .media img { object-position:58% center; }
     .seam { height:auto; min-height:0; } .seam .media { position:relative; height:70vh; } .seam .txt { position:relative; top:0; padding:60px 0 24px; } .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; } .seam .scale { position:relative; left:0; bottom:0; padding:18px var(--pad) 40px; } .seam .scale p.sub { white-space:normal; }
-    footer { flex-direction:column; align-items:flex-start; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="wordmark" href="#"><img src="img/pacific_logo_full_white.svg" alt="Pacific"></a>
+  <a class="wordmark" href="./"><img src="img/pacific_logo_full_white.svg" alt="Pacific"></a>
   <div class="links">
-    <a href="#pod">Pod 32</a>
-    <a href="#factory">Factory 1</a>
-    <a href="#careers">Careers</a>
-    <a class="cta" href="mailto:harper@pacificmachines.com">Request capacity</a>
+    <a href="pod-32/">Pod 32</a>
+    <a href="factory-1/">Factory 1</a>
+    <a href="careers/">Careers</a>
+    <a class="cta" href="https://cal.com/harper-smith/30-minute-call">Request capacity</a>
   </div>
 </nav>
 
@@ -158,7 +170,7 @@
   <h1 class="giant"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
 </header>
 
-<section class="seam">
+<section class="seam" id="company">
   <div class="txt">
     <div class="big fade">Pacific manufactures self-contained, portable AI data centers at scale.</div>
     <p class="sub fade">This is the fastest path to bringing compute online. We deliver functional data centers to sites where the power is already developed, and they generate tokens within days.</p>
@@ -172,22 +184,22 @@
 </section>
 
 <div class="grid" id="pod">
-  <a class="card pod fade" href="#pod">
+  <a class="card pod fade" href="pod-32/">
     <img src="img/card_pod32_orange.jpg" alt="Pacific Pod 32 in front of a wall of light" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container.</div><span class="more">Learn more</span></div>
   </a>
-  <a class="card vera fade" href="#pod">
+  <a class="card vera fade" href="vera-rubin/">
     <img src="img/card_vera_bw.jpg" alt="Pacific pod in a hangar" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development.</div><span class="more">Learn more</span></div>
   </a>
-  <a class="card factory fade" href="#factory" id="factory">
+  <a class="card factory fade" href="factory-1/" id="factory">
     <img src="img/card_factory_gantry.jpg" alt="Pacific pod on a gantry crane in the factory" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year.</div><span class="more">Learn more</span></div>
   </a>
-  <a class="card sov fade" href="#careers">
+  <a class="card sov fade" href="sovereignty/">
     <img src="img/card_sov_truck.jpg" alt="Pacific pod on a truck at dusk" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control.</div><span class="more">Learn more</span></div>
@@ -208,18 +220,30 @@
   <img src="img/hiring_dusk_v3.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
   <div class="centre">
     <div class="word" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
-    <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
+    <a class="btn fade" href="careers/">Open roles</a>
   </div>
 </section>
 
-<footer>
-  <div>
-    <img src="img/pacific_logo_full_white.svg" alt="Pacific">
-    <div class="label" style="margin-top:18px">© 2026 Pacific Systems, Inc. Mock-up, not the live site.</div>
+<footer class="foot">
+  <div class="fnav">
+    <a class="flogo" href="./"><img src="img/pacific_logo_black.png" alt="Pacific"></a>
+    <ul>
+      <li><a href="pod-32/">Pod 32</a></li>
+      <li><a href="vera-rubin/">Vera Rubin</a></li>
+      <li><a href="factory-1/">Factory 1</a></li>
+      <li><a href="sovereignty/">Sovereignty</a></li>
+    </ul>
+    <ul>
+      <li><a href="./#company">Company</a></li>
+      <li><a href="careers/">Careers</a></li>
+      <li><a href="mailto:harper@pacificmachines.com">Contact</a></li>
+      <li><a href="https://cal.com/harper-smith/30-minute-call">Request capacity</a></li>
+    </ul>
+    <div class="fsocial">
+      <a href="https://www.linkedin.com/company/pacific-compute" aria-label="Pacific on LinkedIn" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+    </div>
   </div>
-  <div class="cols label">
-    <a href="#pod">Pod 32</a><a href="#factory">Factory 1</a><a href="#careers">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a>
-  </div>
+  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Mock-up, not the live site</span></div>
 </footer>
 
 <script>

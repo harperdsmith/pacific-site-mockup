@@ -131,6 +131,8 @@
     .foot .fsocial { grid-column:1 / -1; justify-content:flex-start; }
     .foot .flegal { flex-direction:column; align-items:flex-end; gap:6px; margin-top:40px; }
   }
+  nav { transition:transform .35s ease, opacity .35s ease; }
+  nav.hide { transform:translateY(-110%); opacity:0; pointer-events:none; }
 </style>
 </head>
 <body>
@@ -291,6 +293,20 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })(); } catch (e) { console.error(e); }
   setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('in')), 2500);
+</script>
+<script>
+  (function(){
+    const nav=document.querySelector('nav'); if(!nav) return;
+    let last=window.scrollY, ticking=false;
+    function update(){
+      const y=window.scrollY, first=window.innerHeight*0.9;
+      if(y<first){ nav.classList.remove('hide'); }
+      else if(y>last+6){ nav.classList.add('hide'); }
+      else if(y<last-6){ nav.classList.remove('hide'); }
+      last=y; ticking=false;
+    }
+    window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});
+  })();
 </script>
 </body>
 </html>

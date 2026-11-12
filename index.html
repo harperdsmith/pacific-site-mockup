@@ -39,7 +39,7 @@
   .seam .media .top { position:absolute; left:0; right:0; top:0; height:40%; background:linear-gradient(180deg, rgba(10,10,10,.45) 0%, rgba(10,10,10,.2) 50%, rgba(10,10,10,0) 100%); }
   .seam .txt { position:absolute; left:var(--pad); right:var(--pad); top:300px; z-index:2; }
   .seam .txt .big { font-size:clamp(27px,3.1vw,48px); font-weight:400; line-height:1.1; letter-spacing:-0.018em; max-width:min(calc(100vw - var(--pad) - 420px), 66vw); text-shadow:0 2px 24px rgba(0,0,0,.35); }
-  .seam .txt p.sub { margin-top:0; font-size:clamp(19px,1.5vw,29px); color:#dcd9d3; max-width:52ch; margin-left:5.6vw; text-shadow:0 2px 24px rgba(0,0,0,.5); line-height:1.4; }
+  .seam .txt p.sub { margin-top:0; font-size:clamp(19px,1.5vw,29px); color:#dcd9d3; max-width:calc(min(100vw - var(--pad) - 420px, 66vw) - 5.6vw); margin-left:5.6vw; text-shadow:0 2px 24px rgba(0,0,0,.5); line-height:1.4; }
   .seam .txt p.sub:first-of-type { margin-top:44px; }
   .seam .txt p.sub + p.sub { margin-top:1.4em; }
   .seam .scale { position:absolute; left:calc(var(--pad) + 5.6vw); right:var(--pad); bottom:72px; z-index:2; padding:0; }
@@ -176,6 +176,8 @@
     .seam .media img { object-position:58% center; }
     .seam { height:auto; min-height:0; } .seam .media { position:relative; height:70vh; } .seam .txt { position:relative; top:0; left:0; right:auto; padding:60px var(--pad) 24px; } .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; } .seam .scale { position:relative; left:0; bottom:0; padding:18px var(--pad) 40px; } .seam .scale p.sub { white-space:normal; }
   }
+  nav { transition:transform .35s ease, opacity .35s ease; }
+  nav.hide { transform:translateY(-110%); opacity:0; pointer-events:none; }
 </style>
 </head>
 <body>
@@ -328,6 +330,20 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })(); } catch (e) { console.error(e); }
   setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('in')), 2500);
+</script>
+<script>
+  (function(){
+    const nav=document.querySelector('nav'); if(!nav) return;
+    let last=window.scrollY, ticking=false;
+    function update(){
+      const y=window.scrollY, first=window.innerHeight*0.9;
+      if(y<first){ nav.classList.remove('hide'); }
+      else if(y>last+6){ nav.classList.add('hide'); }
+      else if(y<last-6){ nav.classList.remove('hide'); }
+      last=y; ticking=false;
+    }
+    window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});
+  })();
 </script>
 </body>
 </html>

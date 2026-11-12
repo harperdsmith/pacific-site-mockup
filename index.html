@@ -27,7 +27,7 @@
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.35) 100%); }
-  .hero .giant { position:absolute; left:0; right:0; bottom:0.18em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
+  .hero .giant { position:absolute; left:0; right:0; bottom:0.18em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
 
   /* 2. Statement over the sunrise image: breathing room after the hero, text stepped in, container low */
@@ -229,7 +229,7 @@
     const fits = [...document.querySelectorAll('.giant-fit, .hiring-fit')];
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
-      const target = (document.documentElement.clientWidth - pad*2) * (el.classList.contains('hiring-fit') ? 0.8 : 1);
+      const target = (document.documentElement.clientWidth - pad*2) * (el.classList.contains('hiring-fit') ? 0.8 : 0.995);
       fits.forEach(el => {
         const box = el.parentElement; const lines = el.querySelectorAll('.l');
         box.style.fontSize = '100px';

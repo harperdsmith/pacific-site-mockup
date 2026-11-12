@@ -66,7 +66,7 @@
   .rowcard .name { font-size:clamp(34px,4.2vw,64px); font-weight:400; letter-spacing:-0.02em; line-height:1.02; }
   .rowcard .line { font-size:clamp(22px,2.6vw,40px); color:#a9a7a2; font-weight:400; letter-spacing:-0.015em; line-height:1.1; margin-top:4px; }
   .rowcard .btn { display:inline-block; margin-top:40px; border:1px solid rgba(255,255,255,.85); padding:16px 34px; font-size:17px; color:#fff; }
-  .rowcard.pod img { object-position:center 30%; } .rowcard.vera img { object-position:center 45%; } .rowcard.factory img { object-position:center 55%; } .rowcard.sov img { object-position:60% center; }
+  .rowcard.pod img { object-position:center 55%; } .rowcard.vera img { object-position:center 50%; } .rowcard.factory img { object-position:center 55%; } .rowcard.sov img { object-position:center 60%; }
 
   /* 5. Closing band: hangar door, the SpaceX line on it */
   .band { position:relative; height:100vh; min-height:560px; overflow:hidden; margin-top:var(--gap); }
@@ -154,26 +154,26 @@
   <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>
 </section>
 
-<div class="grid" id="pod">
-  <a class="card pod fade" href="#pod">
-    <img src="img/v13_long_side_grazing.jpg" alt="Pacific Pod 32, long side" loading="lazy" decoding="async">
+<div class="rows" id="pod">
+  <a class="rowcard pod fade" href="#pod">
+    <img src="img/card_pod32_orange.jpg" alt="Pacific Pod 32 in front of a wall of light" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container.</div><span class="more">Learn more</span></div>
+    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container</div><span class="btn">Learn more</span></div>
   </a>
-  <a class="card vera fade" href="#pod">
-    <img src="img/truck.jpg" alt="Pacific pod on the road" loading="lazy" decoding="async">
+  <a class="rowcard vera fade" href="#pod">
+    <img src="img/card_vera_bw.jpg" alt="Pacific pod in a hangar" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development.</div><span class="more">Learn more</span></div>
+    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development</div><span class="btn">Learn more</span></div>
   </a>
-  <a class="card factory fade" href="#factory" id="factory">
+  <a class="rowcard factory fade" href="#factory" id="factory">
     <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year.</div><span class="more">Learn more</span></div>
+    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year</div><span class="btn">Learn more</span></div>
   </a>
-  <a class="card sov fade" href="#careers">
-    <img src="img/lookout.jpg" alt="Engineer beside a Pacific pod at dusk" loading="lazy" decoding="async">
+  <a class="rowcard sov fade" href="#careers">
+    <img src="img/card_sov_truck.jpg" alt="Pacific pod on a truck at dusk" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control.</div><span class="more">Learn more</span></div>
+    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control</div><span class="btn">Learn more</span></div>
   </a>
 </div>
 
@@ -211,7 +211,7 @@
 
 <div class="divider">
   <div class="label">Version B, for comparison</div>
-  <div class="big">Same page. The four cards become one screen each, the way Helsing lays out its products.</div>
+  <div class="big">Same page, same blocks. Kept for comparison.</div>
 </div>
 
 <header class="hero">
@@ -235,12 +235,12 @@
 
 <div class="rows">
   <a class="rowcard pod fade" href="#pod">
-    <img src="img/v13_long_side_grazing.jpg" alt="Pacific Pod 32, long side" loading="lazy" decoding="async">
+    <img src="img/card_pod32_orange.jpg" alt="Pacific Pod 32 in front of a wall of light" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container</div><span class="btn">Learn more</span></div>
   </a>
   <a class="rowcard vera fade" href="#pod">
-    <img src="img/truck.jpg" alt="Pacific pod on the road" loading="lazy" decoding="async">
+    <img src="img/card_vera_bw.jpg" alt="Pacific pod in a hangar" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development</div><span class="btn">Learn more</span></div>
   </a>
@@ -250,7 +250,7 @@
     <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year</div><span class="btn">Learn more</span></div>
   </a>
   <a class="rowcard sov fade" href="#careers">
-    <img src="img/lookout.jpg" alt="Engineer beside a Pacific pod at dusk" loading="lazy" decoding="async">
+    <img src="img/card_sov_truck.jpg" alt="Pacific pod on a truck at dusk" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control</div><span class="btn">Learn more</span></div>
   </a>

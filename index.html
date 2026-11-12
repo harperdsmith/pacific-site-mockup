@@ -25,11 +25,11 @@
 
   /* 1. Hero: the v7 light wall, one giant line cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
-  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; transform:scale(1.25); transform-origin:76% bottom; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.35) 100%); }
-  .hero .giant { position:absolute; left:0; right:0; bottom:0.42em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
+  .hero .giant { position:absolute; left:0; right:0; bottom:0.3em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
-  .hero .preorder { position:absolute; left:50%; transform:translateX(-50%); bottom:19vh; z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; transition:background-color .25s ease, color .25s ease; }
+  .hero .preorder { position:absolute; left:50%; transform:translateX(-50%); bottom:22vh; z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; transition:background-color .25s ease, color .25s ease; }
   .hero .preorder:hover { background:#fff; color:#0a0a0a; }
 
   /* 2. Statement over the sunrise image: breathing room after the hero, text stepped in, container low */

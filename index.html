@@ -76,7 +76,12 @@
   .band .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
   .band .txt p { margin-top:20px; font-size:clamp(18px,1.25vw,24px); color:#e2dfd9; max-width:52ch; line-height:1.5; }
 
-  /* 6. Careers */
+  /* 6. Hiring: one giant word edge to edge, one button */
+  .hiring { padding:var(--gap) 0 calc(var(--gap) - 20px); text-align:center; overflow:hidden; }
+  .hiring .word { padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.86; color:#fff; white-space:nowrap; font-size:20vw; }
+  .hiring .btn { display:inline-block; margin-top:44px; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
+  .hiring .btn:hover { background:var(--ink); color:var(--bg); }
+  /* 6b. legacy block styles (still used by the divider) */
   .block { padding:var(--gap) var(--pad) 72px; }
   .block h2, .block .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:26ch; margin-top:20px; }
   .block p.sub { margin-top:22px; font-size:18px; color:#b3b1ac; font-weight:400; max-width:52ch; }
@@ -187,14 +192,9 @@
   </div>
 </div>
 
-<section class="block" id="careers">
-  <div class="label fade">Careers</div>
-  <h2 class="big fade">We are hiring people who have built fast before.</h2>
-  <p class="sub fade">Engineers and manufacturing leads from SpaceX, the aerospace supply chain and the data center trades, to build the factory that builds data centers. Write to Harper directly.</p>
-  <div class="actions fade">
-    <a href="mailto:harper@pacificmachines.com">Write to Harper</a>
-    <a class="ghost" href="mailto:harper@pacificmachines.com">Request capacity</a>
-  </div>
+<section class="hiring" id="careers">
+  <div class="word fade" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
+  <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
 </section>
 
 <footer>
@@ -266,14 +266,9 @@
   </div>
 </div>
 
-<section class="block">
-  <div class="label fade">Careers</div>
-  <h2 class="big fade">We are hiring people who have built fast before.</h2>
-  <p class="sub fade">Engineers and manufacturing leads from SpaceX, the aerospace supply chain and the data center trades, to build the factory that builds data centers. Write to Harper directly.</p>
-  <div class="actions fade">
-    <a href="mailto:harper@pacificmachines.com">Write to Harper</a>
-    <a class="ghost" href="mailto:harper@pacificmachines.com">Request capacity</a>
-  </div>
+<section class="hiring" id="careers">
+  <div class="word fade" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
+  <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
 </section>
 
 <footer>
@@ -289,14 +284,14 @@
 <script>
   if (location.search.includes('review')) { document.documentElement.classList.add('review'); document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager'); }
   (function(){
-    const fits = [...document.querySelectorAll('.giant-fit')];
+    const fits = [...document.querySelectorAll('.giant-fit, .hiring-fit')];
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
       const target = document.documentElement.clientWidth - pad*2;
       fits.forEach(el => {
         const box = el.parentElement; const lines = el.querySelectorAll('.l');
         box.style.fontSize = '100px';
-        const stacked = getComputedStyle(lines[0]).display === 'block';
+        const stacked = lines.length && getComputedStyle(lines[0]).display === 'block';
         const w = stacked ? Math.max(...[...lines].map(l => l.getBoundingClientRect().width)) : el.getBoundingClientRect().width;
         if (w) box.style.fontSize = (100 * target / w) + 'px';
       });

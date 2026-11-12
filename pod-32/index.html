@@ -21,8 +21,8 @@
   nav .links { display:flex; gap:34px; align-items:center; }
   nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
-  nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
-  nav .cta:hover { background:var(--ink); color:var(--bg); }
+  nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
+  nav .links a.cta:hover { background:transparent; color:#fff; }
 
   /* Full-bleed slides */
   .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
@@ -68,6 +68,27 @@
   .ctab .btn { display:inline-block; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
   .ctab .btn:hover { background:var(--ink); color:var(--bg); }
 
+  /* Work with Pacific: three tiers */
+  .btn-solid, .btn-ghost { display:inline-block; padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; text-align:center; transition:background-color .25s ease, color .25s ease, border-color .25s ease; }
+  .btn-solid { background:#fff; color:#0a0a0a; border:1px solid #fff; }
+  .btn-solid:hover { background:transparent; color:#fff; }
+  .btn-ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.85); }
+  .btn-ghost:hover { background:#fff; color:#0a0a0a; }
+  .ways { position:relative; background:#000; margin-top:var(--gap); padding:var(--gap) var(--pad); border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); }
+  .ways .big { font-size:clamp(28px,3.3vw,48px); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
+  .ways p.intro { margin-top:22px; font-size:clamp(18px,1.25vw,24px); color:#b3b1ac; max-width:52ch; line-height:1.5; }
+  .ways .tiers { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 40px; margin-top:64px; padding-top:28px; border-top:1px solid rgba(255,255,255,.18); }
+  .ways .tier { position:relative; display:flex; flex-direction:column; align-items:flex-start; }
+  .ways .tier + .tier::before { content:""; position:absolute; left:-20px; top:0; bottom:0; width:1px; background:rgba(255,255,255,.18); }
+  .ways .tier img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:#000; }
+  .ways .tier .label { margin-top:24px; }
+  .ways .tier .name { margin-top:10px; font-size:clamp(22px,2vw,30px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; }
+  .ways .tier .line { margin-top:10px; font-size:17px; color:#c9c7c2; line-height:1.5; max-width:40ch; flex:1; }
+  .ways .tier .cta { margin-top:24px; padding:13px 26px; font-size:15px; }
+  .ways + .slide { margin-top:var(--gap); }
+  @media (max-width:900px){ .ways .tiers { grid-template-columns:1fr; gap:40px 0; } .ways .tier + .tier { padding-top:40px; border-top:1px solid rgba(255,255,255,.18); } .ways .tier + .tier::before { display:none; } }
+  @media (max-width:760px){ .ways .tier .cta { width:100%; } }
+
   .fade { opacity:0; transform:translateY(18px); transition:opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
   .slide.fade, .giant.fade { transform:none; }
   .fade.in { opacity:1; transform:none; }
@@ -77,6 +98,7 @@
   @media (max-width:760px){
     :root { --pad:20px; --gap:80px; }
     nav .links a:not(.cta){ display:none; }
+    nav .links a.cta { padding:9px 14px; letter-spacing:.14em; }
     .slide { height:70svh; min-height:420px; }
     .hero { height:100svh; }
     .hero .cap { font-size:24px; bottom:24px; }
@@ -119,7 +141,7 @@
     <a href="../pod-32/">Pod 32</a>
     <a href="../factory-1/">Factory 1</a>
     <a href="../careers/">Careers</a>
-    <a class="cta" href="https://cal.com/harper-smith/30-minute-call">Request capacity</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
   </div>
 </nav>
 
@@ -170,6 +192,34 @@
     <li>256 GPUs</li>
   </ul>
 </section>
+<section class="ways" id="work-with-pacific">
+  <div class="label fade">Work with Pacific</div>
+  <div class="big fade">Work with Pacific</div>
+  <p class="intro fade">Pacific operates, manages clusters, rents GPUs, and directly sells pods to selected partners.</p>
+  <div class="tiers">
+    <div class="tier fade">
+      <img src="../img/three_ways/buy_the_pod.jpg" alt="Pacific pod side-on in front of a wall of light, a technician kneeling at its corner" loading="lazy" decoding="async">
+      <div class="label">Pod</div>
+      <div class="name">Buy the pod</div>
+      <div class="line">You own the whole module. It is configured at order, and the target is operation within three months of pre-payment.</div>
+      <a class="btn-ghost cta" href="../buy/">Request a pod</a>
+    </div>
+    <div class="tier fade">
+      <img src="../img/three_ways/rent_capacity.jpg" alt="Pacific pod with both end doors open, rows of racks lit inside" loading="lazy" decoding="async">
+      <div class="label">Capacity</div>
+      <div class="name">Rent the compute</div>
+      <div class="line">Pacific's GPUs run as a managed cluster for your term. You are the only tenant.</div>
+      <a class="btn-ghost cta" href="../rent/">Request capacity</a>
+    </div>
+    <div class="tier fade">
+      <img src="../img/three_ways/managed_cluster.jpg" alt="Three Pacific pods in a row in front of a wall of light" loading="lazy" decoding="async">
+      <div class="label">Colocation</div>
+      <div class="name">Bring your own GPUs</div>
+      <div class="line">Your GPUs sit in a Pacific pod, with A and B power and liquid cooling already built in.</div>
+      <a class="btn-ghost cta" href="../colocate/">Request colo space</a>
+    </div>
+  </div>
+</section>
 
 <section class="slide fade">
   <img src="../img/pod-32/band_line_receding.jpg" alt="A line of Pacific pods receding between light bars" decoding="async">
@@ -200,6 +250,9 @@
       <li><a href="../vera-rubin/">Vera Rubin</a></li>
       <li><a href="../factory-1/">Factory 1</a></li>
       <li><a href="../sovereignty/">Sovereignty</a></li>
+      <li><a href="../buy/">Buy the pod</a></li>
+      <li><a href="../rent/">Rent the compute</a></li>
+      <li><a href="../colocate/">Bring your own GPUs</a></li>
     </ul>
     <ul>
       <li><a href="../#company">Company</a></li>

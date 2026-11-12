@@ -21,8 +21,8 @@
   nav .links { display:flex; gap:34px; align-items:center; }
   nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
-  nav .cta { border:1px solid rgba(255,255,255,.6); padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
-  nav .cta:hover { background:var(--ink); color:var(--bg); }
+  nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
+  nav .links a.cta:hover { background:transparent; color:#fff; }
 
   /* Full-bleed slides */
   .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
@@ -77,6 +77,7 @@
   @media (max-width:760px){
     :root { --pad:20px; --gap:80px; }
     nav .links a:not(.cta){ display:none; }
+    nav .links a.cta { padding:9px 14px; letter-spacing:.14em; }
     .slide { height:70svh; min-height:420px; }
     .hero { height:100svh; }
     .hero .cap { font-size:24px; bottom:24px; }
@@ -119,7 +120,7 @@
     <a href="../pod-32/">Pod 32</a>
     <a href="../factory-1/">Factory 1</a>
     <a href="../careers/">Careers</a>
-    <a class="cta" href="https://cal.com/harper-smith/30-minute-call">Request capacity</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
   </div>
 </nav>
 
@@ -180,6 +181,9 @@
       <li><a href="../vera-rubin/">Vera Rubin</a></li>
       <li><a href="../factory-1/">Factory 1</a></li>
       <li><a href="../sovereignty/">Sovereignty</a></li>
+      <li><a href="../buy/">Buy the pod</a></li>
+      <li><a href="../rent/">Rent the compute</a></li>
+      <li><a href="../colocate/">Bring your own GPUs</a></li>
     </ul>
     <ul>
       <li><a href="../#company">Company</a></li>

@@ -51,10 +51,10 @@
   .card .name { font-size:clamp(22px,2vw,30px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; }
   .card .line { margin-top:8px; font-size:15px; color:#c9c7c2; max-width:40ch; }
   .card .more { margin-top:16px; display:inline-block; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:4px; }
-  .card.pod img { object-position:center 25%; }
-  .card.vera img { object-position:center 45%; }
+  .card.pod img { object-position:center 55%; }
+  .card.vera img { object-position:center 50%; }
   .card.factory img { object-position:center 55%; }
-  .card.sov img { object-position:65% center; }
+  .card.sov img { object-position:center 60%; }
 
   /* 3b. Version B: one card per screen, Helsing rows. Name on top, descriptor in grey, outlined button. */
   .rows { padding-top:72px; }
@@ -154,26 +154,26 @@
   <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>
 </section>
 
-<div class="rows" id="pod">
-  <a class="rowcard pod fade" href="#pod">
+<div class="grid" id="pod">
+  <a class="card pod fade" href="#pod">
     <img src="img/card_pod32_orange.jpg" alt="Pacific Pod 32 in front of a wall of light" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container</div><span class="btn">Learn more</span></div>
+    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container.</div><span class="more">Learn more</span></div>
   </a>
-  <a class="rowcard vera fade" href="#pod">
+  <a class="card vera fade" href="#pod">
     <img src="img/card_vera_bw.jpg" alt="Pacific pod in a hangar" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development</div><span class="btn">Learn more</span></div>
+    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development.</div><span class="more">Learn more</span></div>
   </a>
-  <a class="rowcard factory fade" href="#factory" id="factory">
+  <a class="card factory fade" href="#factory" id="factory">
     <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year</div><span class="btn">Learn more</span></div>
+    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year.</div><span class="more">Learn more</span></div>
   </a>
-  <a class="rowcard sov fade" href="#careers">
+  <a class="card sov fade" href="#careers">
     <img src="img/card_sov_truck.jpg" alt="Pacific pod on a truck at dusk" loading="lazy" decoding="async">
     <div class="veil"></div>
-    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control</div><span class="btn">Learn more</span></div>
+    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control.</div><span class="more">Learn more</span></div>
   </a>
 </div>
 
@@ -211,7 +211,7 @@
 
 <div class="divider">
   <div class="label">Version B, for comparison</div>
-  <div class="big">Same page, same blocks. Kept for comparison.</div>
+  <div class="big">Same page. The four cards become one screen each, the way Helsing lays out its products.</div>
 </div>
 
 <header class="hero">

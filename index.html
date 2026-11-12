@@ -80,9 +80,10 @@
 
   /* 6a. Hiring, image version: giant word in the sky, button under it, no black */
   .hiring-img { position:relative; height:100vh; min-height:640px; overflow:hidden; }
-  .hiring-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; }
-  .hiring-img .word { position:absolute; left:0; right:0; top:9%; padding:0 var(--pad); text-align:center; font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:15vw; }
-  .hiring-img .btn { position:absolute; left:50%; transform:translateX(-50%); top:calc(9% + 15vw * .84 + 36px); border:1px solid rgba(255,255,255,.9); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
+  .hiring-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; transform:translateY(14%) scale(1.14); transform-origin:center bottom; }
+  .hiring-img .centre { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px; }
+  .hiring-img .word { width:100%; padding:0 var(--pad); text-align:center; font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
+  .hiring-img .btn { border:1px solid rgba(255,255,255,.9); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
   .hiring-img .btn:hover { background:#fff; color:var(--bg); }
   html.review .hiring-img { height:1000px; }
   @media (max-width:760px){ .hiring-img { height:70vh; min-height:420px; } .hiring-img img { object-position:60% 100%; } }
@@ -204,8 +205,10 @@
 
 <section class="hiring-img" id="careers">
   <img src="img/hiring_dusk.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
-  <div class="word" aria-hidden="true"><span>HIRING</span></div>
-  <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
+  <div class="centre">
+    <div class="word" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
+    <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
+  </div>
 </section>
 
 <section class="hiring" id="careers">

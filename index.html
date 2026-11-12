@@ -55,7 +55,7 @@
   .card .more { margin-top:16px; display:inline-block; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:4px; }
   .card.pod img { object-position:center 55%; }
   .card.vera img { object-position:center 50%; }
-  .card.factory img { object-position:center 55%; }
+  .card.factory img { object-position:center 45%; }
   .card.sov img { object-position:center 60%; }
 
   /* 3b. Version B: one card per screen, Helsing rows. Name on top, descriptor in grey, outlined button. */
@@ -68,7 +68,7 @@
   .rowcard .name { font-size:clamp(34px,4.2vw,64px); font-weight:400; letter-spacing:-0.02em; line-height:1.02; }
   .rowcard .line { font-size:clamp(22px,2.6vw,40px); color:#a9a7a2; font-weight:400; letter-spacing:-0.015em; line-height:1.1; margin-top:4px; }
   .rowcard .btn { display:inline-block; margin-top:40px; border:1px solid rgba(255,255,255,.85); padding:16px 34px; font-size:17px; color:#fff; }
-  .rowcard.pod img { object-position:center 55%; } .rowcard.vera img { object-position:center 50%; } .rowcard.factory img { object-position:center 55%; } .rowcard.sov img { object-position:center 60%; }
+  .rowcard.pod img { object-position:center 55%; } .rowcard.vera img { object-position:center 50%; } .rowcard.factory img { object-position:center 45%; } .rowcard.sov img { object-position:center 60%; }
 
   /* 5. Closing band: hangar door, the SpaceX line on it */
   .band { position:relative; height:100vh; min-height:560px; overflow:hidden; margin-top:var(--gap); }
@@ -79,16 +79,20 @@
   .band .txt p { margin-top:20px; font-size:clamp(18px,1.25vw,24px); color:#e2dfd9; max-width:52ch; line-height:1.5; }
 
   /* 6a. Hiring, image version: giant word in the sky, button under it, no black */
-  .hiring-img { position:relative; aspect-ratio:1344/978; min-height:640px; overflow:hidden; }
+  .hiring-img { position:relative; aspect-ratio:1344/978; min-height:640px; overflow:hidden; margin-top:var(--gap); }
   .hiring-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; }
   .hiring-img .centre { position:absolute; left:0; right:0; top:0; bottom:33%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px; }
   .hiring-img .word { width:100%; padding:0 var(--pad); text-align:center; font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
   .hiring-img .btn { border:1px solid rgba(255,255,255,.9); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
   .hiring-img .btn:hover { background:#fff; color:var(--bg); }
+  .hiring-img.dark .word { color:#0a0a0a; }
+  .hiring-img.dark .btn { color:#0a0a0a; border-color:rgba(10,10,10,.9); }
+  .hiring-img.dark .btn:hover { background:#0a0a0a; color:#fff; }
+  .hiring-img + .hiring-img, .hiring-img + .hiring { margin-top:var(--gap); }
   html.review .hiring-img { height:auto; }
   @media (max-width:760px){ .hiring-img { height:70vh; min-height:420px; } .hiring-img img { object-position:60% 100%; } }
   /* 6. Hiring: one giant word edge to edge, one button */
-  .hiring { padding:var(--gap) 0 calc(var(--gap) - 20px); text-align:center; overflow:hidden; }
+  .hiring { padding:var(--gap) 0 calc(var(--gap) - 20px); text-align:center; overflow:hidden; margin-top:var(--gap); }
   .hiring .word { padding:0 var(--pad); font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
   .hiring .btn { display:inline-block; margin-top:44px; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
   .hiring .btn:hover { background:var(--ink); color:var(--bg); }
@@ -182,7 +186,7 @@
     <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development.</div><span class="more">Learn more</span></div>
   </a>
   <a class="card factory fade" href="#factory" id="factory">
-    <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+    <img src="img/card_factory_gantry.jpg" alt="Pacific pod on a gantry crane in the factory" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year.</div><span class="more">Learn more</span></div>
   </a>
@@ -204,6 +208,14 @@
 </div>
 
 <section class="hiring-img" id="careers">
+  <img src="img/hiring_dusk.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
+  <div class="centre">
+    <div class="word" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
+    <a class="btn fade" href="mailto:harper@pacificmachines.com">Open roles</a>
+  </div>
+</section>
+
+<section class="hiring-img dark">
   <img src="img/hiring_dusk.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
   <div class="centre">
     <div class="word" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
@@ -264,7 +276,7 @@
     <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development</div><span class="btn">Learn more</span></div>
   </a>
   <a class="rowcard factory fade" href="#factory">
-    <img src="img/v09_hangar_door.jpg" alt="Pacific pod leaving the factory" loading="lazy" decoding="async">
+    <img src="img/card_factory_gantry.jpg" alt="Pacific pod on a gantry crane in the factory" loading="lazy" decoding="async">
     <div class="veil"></div>
     <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year</div><span class="btn">Learn more</span></div>
   </a>

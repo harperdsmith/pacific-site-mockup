@@ -225,7 +225,9 @@
 
 <script>
   if (location.search.includes('review')) { document.documentElement.classList.add('review'); document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager'); }
-  (function(){
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  try { (function(){
     const fits = [...document.querySelectorAll('.giant-fit, .hiring-fit')];
     function fit(){
       const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
@@ -241,9 +243,8 @@
     }
     fit(); window.addEventListener('resize', fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-  })();
-  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
-  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  })(); } catch (e) { console.error(e); }
+  setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('in')), 2500);
 </script>
 </body>
 </html>

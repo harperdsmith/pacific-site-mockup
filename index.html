@@ -28,18 +28,19 @@
   .hero .giant { position:absolute; left:0; right:0; bottom:0.18em; padding:0 var(--pad); font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
 
-  /* 2. Two sentences that sit across the seam between the black and the sunrise image */
-  .seam { position:relative; }
-  .seam .txt { position:relative; z-index:2; padding:var(--gap) var(--pad) 0; margin-bottom:-9.5em; }
-  .seam .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:calc(100vw - var(--pad) - 300px); margin-top:20px; text-shadow:0 2px 24px rgba(0,0,0,.35); }
-  .seam .txt p.sub { margin-top:22px; font-size:18px; color:#d6d3cd; max-width:72ch; margin-left:12vw; text-shadow:0 2px 24px rgba(0,0,0,.5); }
-  .seam .txt p.sub + p.sub { margin-top:14px; }
-  .seam .media { position:relative; height:100vh; min-height:560px; overflow:hidden; }
-  .seam .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 72%; }
-  .seam .media .top { position:absolute; left:0; right:0; top:0; height:62%; background:linear-gradient(180deg, var(--bg) 0%, rgba(10,10,10,0) 100%); }
+  /* 2. Statement laid over the sunrise image, Harper's Figma layout 11 Nov */
+  .seam { position:relative; height:112vh; min-height:760px; overflow:hidden; }
+  .seam .media { position:absolute; inset:0; }
+  .seam .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 80%; }
+  .seam .media .top { position:absolute; left:0; right:0; top:0; height:46%; background:linear-gradient(180deg, rgba(10,10,10,.92) 0%, rgba(10,10,10,.55) 45%, rgba(10,10,10,0) 100%); }
+  .seam .txt { position:absolute; left:var(--pad); right:var(--pad); top:3.2vh; z-index:2; }
+  .seam .txt .big { font-size:clamp(34px,3.9vw,60px); font-weight:400; line-height:1.1; letter-spacing:-0.018em; max-width:calc(100vw - var(--pad) - 420px); margin-top:14px; text-shadow:0 2px 24px rgba(0,0,0,.35); }
+  .seam .txt p.sub { margin-top:0; font-size:clamp(17px,1.15vw,22px); color:#d6d3cd; max-width:62ch; margin-left:5.6vw; text-shadow:0 2px 24px rgba(0,0,0,.5); line-height:1.5; }
+  .seam .txt p.sub:first-of-type { margin-top:7vh; }
+  .seam .txt p.sub + p.sub { margin-top:1.6em; }
+  .seam .scale { position:absolute; left:calc(var(--pad) + 5.6vw); right:var(--pad); bottom:9vh; z-index:2; padding:0; }
+  .seam .scale p.sub { font-size:clamp(17px,1.15vw,22px); color:#cfccc6; max-width:none; white-space:nowrap; text-shadow:0 2px 24px rgba(0,0,0,.5); }
 
-  .scale { padding:64px var(--pad) 0; }
-  .scale p.sub { font-size:18px; color:#b3b1ac; max-width:60ch; }
   /* 3a. Four cards, Helsing product grid */
   .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:72px var(--pad) 0; }
   .card { position:relative; aspect-ratio:16/10; overflow:hidden; background:#000; display:block; text-decoration:none; }
@@ -101,7 +102,7 @@
   .fade.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
 
-  html.review .hero, html.review .band, html.review .seam .media, html.review .rowcard { height:900px; } html.review .fade { opacity:1; transform:none; }
+  html.review .hero, html.review .band, html.review .seam, html.review .rowcard { height:1000px; } html.review .fade { opacity:1; transform:none; }
 
   @media (max-width:900px){ .grid { grid-template-columns:1fr; } }
   @media (max-width:760px){
@@ -113,9 +114,9 @@
     .hero .giant { white-space:normal; font-size:19vw; }
     .hero .giant .l { display:block; width:max-content; }
     .card { aspect-ratio:4/3; }
-    .seam .media, .band, .rowcard { height:70vh; min-height:420px; }
+    .band, .rowcard { height:70vh; min-height:420px; }
     .seam .media img { object-position:58% center; }
-    .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; }
+    .seam { height:auto; min-height:0; } .seam .media { position:relative; height:70vh; } .seam .txt { position:relative; top:0; padding:60px 0 24px; } .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; } .seam .scale { position:relative; left:0; bottom:0; padding:18px var(--pad) 40px; } .seam .scale p.sub { white-space:normal; }
     footer { flex-direction:column; align-items:flex-start; }
   }
 </style>
@@ -151,10 +152,7 @@
     <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" decoding="async">
     <div class="top"></div>
   </div>
-</section>
-
-<section class="scale">
-  <p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p>
+  <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>
 </section>
 
 <div class="grid" id="pod">
@@ -234,10 +232,7 @@
     <img src="img/v08_anduril_crew_sky.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" loading="lazy" decoding="async">
     <div class="top"></div>
   </div>
-</section>
-
-<section class="scale">
-  <p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p>
+  <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>
 </section>
 
 <div class="rows">

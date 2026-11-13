@@ -317,7 +317,8 @@
   @media (max-width:760px){
     /* Hero: the whole pod at full width, the headline and the pre-order button below it on black, the set centred in the first screen */
     .hero { height:auto; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:calc(84px + env(safe-area-inset-top)) 0 calc(36px + env(safe-area-inset-bottom)); }
-    .hero img { position:relative; inset:auto; width:100%; height:auto; object-fit:contain; object-position:center; transform:none; display:block; order:0; }
+    .hero img, .hero video { position:relative; inset:auto; width:100%; height:auto; object-fit:contain; object-position:center; transform:none; display:block; order:0; -webkit-mask-image:none; mask-image:none; }
+    .hero video { aspect-ratio:1280/704; }
     .hero .shade { display:none; }
     .hero .giant { position:static; order:1; margin-top:36px; }
     .hero .preorder { position:static; transform:none; order:2; align-self:center; margin-top:36px; }

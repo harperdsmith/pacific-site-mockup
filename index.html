@@ -288,6 +288,13 @@
     /* SE-width hero: push the sliver of the lockup's last letter off the left edge (crop anchored to the right, technician and light wall kept) */
     @media (max-width:380px){ .hero img { transform:scale(1.1); transform-origin:100% 50%; } }
   }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+    /* Four cards: the images are composed 16:9; show the whole frame so the technician at the pod corner is not cut in half */
+    .card img { aspect-ratio:16/9; }
+  }
 </style>
 </head>
 <body>

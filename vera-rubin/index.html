@@ -216,6 +216,11 @@
     /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
     nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
   }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+  }
 </style>
 </head>
 <body>

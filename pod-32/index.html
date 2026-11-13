@@ -219,6 +219,14 @@
     /* Hero on 390-430 wide phones: the half of the lockup mark at the right edge goes out of frame (crop anchored to the pod end) */
     @media (min-width:381px){ .hero img { transform:scale(1.07); transform-origin:0 50%; } }
   }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+    /* Hero on 375-wide phones too: the lockup mark at the right edge goes out of frame; the SE's shorter viewport shows more width, so it needs the larger zoom */
+    @media (max-width:380px){ .hero img { transform:scale(1.07); transform-origin:0 50%; } }
+    @media (max-width:380px) and (max-height:700px){ .hero img { transform:scale(1.32); } }
+  }
 </style>
 </head>
 <body>

@@ -197,6 +197,14 @@
     /* Hero on 390-430 wide phones: the sliver of the lockup's last letter goes off the left edge (crop anchored to the technician) */
     @media (min-width:381px){ .hero img { transform:scale(1.12); transform-origin:100% 50%; } }
   }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+    /* Hero: the last letter of the lockup sat at the left edge at the real 393px layout; crop tighter on the pod end and the technician, caption stays on the floor */
+    .hero img { transform:scale(1.42); transform-origin:100% 55%; }
+    @media (max-width:380px) and (max-height:700px){ .hero img { transform:scale(1.72); transform-origin:100% 82%; } }
+  }
 </style>
 </head>
 <body>

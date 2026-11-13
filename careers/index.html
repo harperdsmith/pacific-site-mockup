@@ -199,6 +199,11 @@
     @media (max-width:380px){ .hero img { object-position:60% 50%; } }
     .hero .cap .sub { max-width:24ch; }
   }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+  }
 </style>
 </head>
 <body>

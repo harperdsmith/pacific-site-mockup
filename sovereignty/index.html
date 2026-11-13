@@ -224,6 +224,11 @@
     /* Dusk slide: the pod end, the sun and the walker instead of a flat orange field */
     .slide img[src*="band_pod_dusk_walking"] { object-position:90% 50%; }
   }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+  }
 </style>
 </head>
 <body>

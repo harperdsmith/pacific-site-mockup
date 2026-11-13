@@ -112,6 +112,15 @@
   }
   nav { transition:transform .35s ease, opacity .35s ease; }
   nav.hide { transform:translateY(-110%); opacity:0; pointer-events:none; }
+  /* Footer A: black, three labelled columns */
+  footer.fa { background:var(--bg); color:var(--ink); border-top:1px solid var(--line); padding:64px var(--pad) 36px; margin-top:0; }
+  footer.fa .row { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; align-items:start; }
+  footer.fa img { height:18px; display:block; }
+  footer.fa .fcol .label { margin-bottom:4px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+  footer.fa .fcol a { display:block; color:var(--ink); text-decoration:none; font-size:14px; margin-top:12px; opacity:.85; transition:opacity .2s; }
+  footer.fa .fcol a:hover { opacity:1; }
+  footer.fa .flegal { display:flex; justify-content:space-between; margin-top:72px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
+  @media (max-width:760px){ footer.fa .row { grid-template-columns:1fr 1fr; } footer.fa .flegal { flex-direction:column; gap:8px; } }
 </style>
 </head>
 <body>
@@ -175,27 +184,12 @@
   <a class="btn fade" href="mailto:harper@pacificmachines.com">Write to Harper</a>
 </section>
 
-<footer class="foot">
-  <div class="fnav">
-    <a class="flogo" href="../"><img src="../img/pacific_logo_black.png" alt="Pacific"></a>
-    <ul>
-      <li><a href="../pod-32/">Pod 32</a></li>
-      <li><a href="../vera-rubin/">Vera Rubin</a></li>
-      <li><a href="../factory-1/">Factory 1</a></li>
-      <li><a href="../sovereignty/">Sovereignty</a></li>
-      <li><a href="../buy/">Buy the pod</a></li>
-      <li><a href="../rent/">Rent the compute</a></li>
-      <li><a href="../colocate/">Bring your own GPUs</a></li>
-    </ul>
-    <ul>
-      <li><a href="../#company">Company</a></li>
-      <li><a href="../careers/">Careers</a></li>
-      <li><a href="mailto:harper@pacificmachines.com">Contact</a></li>
-      <li><a href="https://cal.com/harper-smith/30-minute-call">Request capacity</a></li>
-    </ul>
-    <div class="fsocial">
-      <a href="https://www.linkedin.com/in/harper-dammann-smith/" aria-label="Pacific on LinkedIn" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-    </div>
+<footer class="fa">
+  <div class="row">
+    <a href="../"><img src="../img/pacific_logo_full_white.svg" alt="Pacific"></a>
+    <div class="fcol"><div class="label">Product</div><a href="../pod-32/">Pod 32</a><a href="../vera-rubin/">Vera Rubin</a><a href="../factory-1/">Factory 1</a><a href="../sovereignty/">Sovereignty</a></div>
+    <div class="fcol"><div class="label">Work with Pacific</div><a href="../buy/">Buy the pod</a><a href="../rent/">Rent the compute</a><a href="../colocate/">Bring your own GPUs</a></div>
+    <div class="fcol"><div class="label">Company</div><a href="../careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
   <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Mock-up, not the live site</span></div>
 </footer>

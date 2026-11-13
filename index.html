@@ -281,6 +281,13 @@
     /* Footer link rows a full 44pt */
     footer.fa .fcol a { padding:11px 0; }
   }
+  /* ---- Mobile round 3 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
+    nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+    /* SE-width hero: push the sliver of the lockup's last letter off the left edge (crop anchored to the right, technician and light wall kept) */
+    @media (max-width:380px){ .hero img { transform:scale(1.1); transform-origin:100% 50%; } }
+  }
 </style>
 </head>
 <body>

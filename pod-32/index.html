@@ -212,6 +212,13 @@
     /* Footer link rows a full 44pt */
     footer.fa .fcol a { padding:11px 0; }
   }
+  /* ---- Mobile round 3 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
+    nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+    /* Hero on 390-430 wide phones: the half of the lockup mark at the right edge goes out of frame (crop anchored to the pod end) */
+    @media (min-width:381px){ .hero img { transform:scale(1.07); transform-origin:0 50%; } }
+  }
 </style>
 </head>
 <body>

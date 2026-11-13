@@ -190,6 +190,15 @@
     /* Footer link rows a full 44pt */
     footer.fa .fcol a { padding:11px 0; }
   }
+  /* ---- Mobile round 3 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
+    nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+    /* Hero: the technician stands to the right of the caption instead of under it; caption wraps at 24ch so the text never reaches him */
+    .hero img { object-position:64% 50%; }
+    @media (max-width:380px){ .hero img { object-position:60% 50%; } }
+    .hero .cap .sub { max-width:24ch; }
+  }
 </style>
 </head>
 <body>

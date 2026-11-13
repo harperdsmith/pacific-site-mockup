@@ -136,6 +136,8 @@
   }
   nav { transition:transform .35s ease, opacity .35s ease; }
   nav.hide { transform:translateY(-110%); opacity:0; pointer-events:none; }
+  /* Nav never sits on page text: it slides away on the first scroll down and returns on scroll up; away from the top it gets a solid backing so nothing shows through it */
+  nav.solid { background:var(--bg); padding-bottom:22px; }
   /* Footer A: black, three labelled columns */
   footer.fa { background:var(--bg); color:var(--ink); border-top:1px solid var(--line); padding:64px var(--pad) 36px; margin-top:0; }
   footer.fa .row { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; align-items:start; }
@@ -483,10 +485,13 @@
     const nav=document.querySelector('nav'); if(!nav) return;
     let last=window.scrollY, ticking=false;
     function update(){
-      const y=window.scrollY, first=window.innerHeight*0.9;
-      if(y<first){ nav.classList.remove('hide'); }
-      else if(y>last+6){ nav.classList.add('hide'); }
-      else if(y<last-6){ nav.classList.remove('hide'); }
+      const y=window.scrollY;
+      if(y<=8){ nav.classList.remove('hide'); nav.classList.remove('solid'); }
+      else {
+        nav.classList.add('solid');
+        if(y>last+2){ nav.classList.add('hide'); }
+        else if(y<last-2){ nav.classList.remove('hide'); }
+      }
       last=y; ticking=false;
     }
     window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});

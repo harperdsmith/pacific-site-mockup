@@ -26,7 +26,7 @@
 
   /* Full-bleed slides */
   .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
-  .slide img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; }
+  .slide img, .slide video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; background:#000; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(0,0,0,.45) 100%); }
   .hero .cap { position:absolute; left:var(--pad); right:var(--pad); bottom:32px; font-family:var(--mono); font-weight:400; font-size:clamp(22px,2vw,36px); line-height:1.06; color:#CECECE; letter-spacing:-0.01em; }
   .hero .cap span { display:block; }
@@ -208,7 +208,7 @@
   @media (max-width:760px){
     /* Hero and slide crops on a phone show 26% of the frame: pick the end of the pod and the person, never a lockup cut mid-word */
     .hero img { object-position:0% 50%; }
-    .slide img[src*="band_truck_real_v4"] { object-position:0% 50%; }
+    .slide img[src*="band_truck_real_v4"], .slide video.truck { object-position:0% 50%; }
     /* Diagram callouts are unreadable at phone scale (18px text in a 1920 viewBox); the mono list under the drawing carries them */
     .diagram svg text, .diagram svg circle[r="3"], .diagram svg line:not([opacity]) { display:none; }
     /* Giant word block sits on the page black, no tonal step against the CTA block */
@@ -270,8 +270,19 @@
 </section>
 
 <section class="slide fade">
-  <img src="../../img/pod-32/band_truck_real_v4.jpg" alt="Pacific Pod 32 on a truck, headlights on" decoding="async">
+  <video class="truck" autoplay muted loop playsinline preload="metadata" poster="../media/pod32_truck_poster.jpg" aria-label="Pacific Pod 32 parked on a truck in a hangar, the hall lights pulsing" disablepictureinpicture>
+    <source src="../media/pod32_truck_2560.webm" type="video/webm; codecs=vp9" media="(min-width:1600px)">
+    <source src="../media/pod32_truck_2560.mp4" type="video/mp4" media="(min-width:1600px)">
+    <source src="../media/pod32_truck_1920.webm" type="video/webm; codecs=vp9" media="(min-width:761px)">
+    <source src="../media/pod32_truck_1920.mp4" type="video/mp4" media="(min-width:761px)">
+    <source src="../media/pod32_truck_1280.webm" type="video/webm; codecs=vp9">
+    <source src="../media/pod32_truck_1280.mp4" type="video/mp4">
+  </video>
 </section>
+<script>
+  /* Video version: honour prefers-reduced-motion. The poster stays, nothing autoplays. */
+  (function(){ if(!matchMedia('(prefers-reduced-motion: reduce)').matches) return; document.querySelectorAll('video[autoplay]').forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.preload='none'; v.load(); }); })();
+</script>
 
 <section class="wrap rows">
   <div class="row fade">

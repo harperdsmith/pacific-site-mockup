@@ -25,7 +25,7 @@
 
   /* 1. Hero: the v7 light wall, one giant line cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
-  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+  .hero img, .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.35) 100%); }
   .hero .giant { position:absolute; left:0; right:0; bottom:0.3em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
@@ -83,6 +83,7 @@
   /* 5. Closing band: hangar door, the SpaceX line on it */
   .band { position:relative; height:100vh; min-height:560px; overflow:hidden; margin-top:var(--gap); }
   .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; }
+  .band video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; background:#000; }
   .band .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.8) 100%); }
   .band .txt { position:absolute; left:var(--pad); right:var(--pad); bottom:64px; max-width:60ch; }
   .band .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
@@ -173,7 +174,7 @@
     :root { --pad:20px; --gap:100px; }
     nav .links a:not(.cta){ display:none; }
     nav .links a.cta { padding:9px 14px; letter-spacing:.14em; }
-    .hero img { object-position:78% 40%; }
+    .hero img, .hero video { object-position:78% 40%; }
     .block p.sub { font-size:16px; }
     .actions a { width:100%; text-align:center; }
     .hero .giant { white-space:normal; font-size:19vw; }
@@ -280,8 +281,8 @@
   /* ---- Mobile round 2 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
   @media (max-width:760px){
     /* Hero crop on a phone shows 26% of the frame: the end of the pod and the technician at its corner, never a lockup cut mid-word */
-    .hero img { object-position:96% 40%; }
-    @media (max-width:380px){ .hero img { object-position:100% 40%; } }
+    .hero img, .hero video { object-position:96% 40%; }
+    @media (max-width:380px){ .hero img, .hero video { object-position:100% 40%; } }
     /* Sunrise image: taller crop placed left of the hangar frame, so no black band on the right of the phone frame */
     .seam .media { height:auto; min-height:0; aspect-ratio:5/8; }
     .seam .media img { object-position:28% center; }
@@ -298,7 +299,7 @@
     /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
     nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
     /* SE-width hero: push the sliver of the lockup's last letter off the left edge (crop anchored to the right, technician and light wall kept) */
-    @media (max-width:380px){ .hero img { transform:scale(1.1); transform-origin:100% 50%; } }
+    @media (max-width:380px){ .hero img, .hero video { transform:scale(1.1); transform-origin:100% 50%; } }
   }
   /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
   @media (max-width:760px){
@@ -307,13 +308,17 @@
     /* Four cards: the images are composed 16:9; show the whole frame so the technician at the pod corner is not cut in half */
     .card img { aspect-ratio:16/9; }
   }
+  /* ---- Video version: the SpaceX band carries the gantry clip instead of the orange end-on still. Same veil and text placement.
+     On a phone the clip sits full-bleed at its own ratio with the text on black beneath, exactly as the still does. ---- */
+  @media (max-width:760px){ .band video { position:relative; display:block; height:auto; aspect-ratio:1280/704; } }
   @media (max-width:760px){ .flegal a { display:inline-block; padding:14px 0; } }
 
   /* ---- Mobile round 5 (phones, max-width 760px). Harper's iPhone review 2026-11-12: every container whole, text under the image, not on it. Additions only, nothing reaches 761px and wider. ---- */
   @media (max-width:760px){
     /* Hero: the whole pod at full width, the headline and the pre-order button below it on black, the set centred in the first screen */
     .hero { height:auto; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:calc(84px + env(safe-area-inset-top)) 0 calc(36px + env(safe-area-inset-bottom)); }
-    .hero img { position:relative; inset:auto; width:100%; height:auto; object-fit:contain; object-position:center; transform:none; display:block; order:0; }
+    .hero img, .hero video { position:relative; inset:auto; width:100%; height:auto; object-fit:contain; object-position:center; transform:none; display:block; order:0; -webkit-mask-image:none; mask-image:none; }
+    .hero video { aspect-ratio:1280/704; }
     .hero .shade { display:none; }
     .hero .giant { position:static; order:1; margin-top:36px; }
     .hero .preorder { position:static; transform:none; order:2; align-self:center; margin-top:36px; }
@@ -434,12 +439,12 @@
   @media (max-width:760px){ .book-m { display:block; } .book:not(.book-m) { display:none; } }
 
   /* Factory band (Harper 2026-11-12): label top left, headline top centre in the dark above the container, paragraphs centred under the container. Phone: label and headline above the image, paragraphs below it. */
-  .band.fband { --fb-label-top:40px; --fb-head-y:22%; --fb-para-top:auto; --fb-para-bottom:3.2%; --fb-para-w:60ch; --fb-shade-y:92%; --fb-label-shade-y:5.5%; --fb-shade-a:.5; }
+  .band.fband { --fb-label-top:19%; --fb-head-y:33.5%; --fb-para-top:73.5%; --fb-para-bottom:auto; --fb-para-w:46ch; --fb-shade-y:84%; --fb-label-shade-y:20%; --fb-shade-a:.68; }
   .band.fband .nw { white-space:nowrap; }
   .band.fband .fbot p { hyphens:none; -webkit-hyphens:none; }
   .band.fband .fbot p { color:#fff; text-shadow:0 1px 12px rgba(0,0,0,.6); }
   @media (min-width:761px){
-    .band.fband .veil { background:radial-gradient(ellipse 50% 34% at 50% var(--fb-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .8)) 40%, rgba(0,0,0,calc(var(--fb-shade-a) * .35)) 70%, rgba(0,0,0,0) 100%); }
+    .band.fband .veil { background:radial-gradient(ellipse 16% 9% at calc(var(--pad) + 50px) var(--fb-label-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .45)) 55%, rgba(0,0,0,0) 100%), radial-gradient(ellipse 50% 34% at 50% var(--fb-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .8)) 40%, rgba(0,0,0,calc(var(--fb-shade-a) * .35)) 70%, rgba(0,0,0,0) 100%); }
     .band.fband .txt { position:absolute; left:var(--pad); right:var(--pad); max-width:none; z-index:2; text-align:center; }
     .band.fband .txt.ftop { top:0; bottom:0; pointer-events:none; }
     .band.fband .ftop .label { position:absolute; top:var(--fb-label-top); left:0; text-align:left; color:#fff; opacity:1; }
@@ -482,7 +487,14 @@
 </div>
 
 <header class="hero">
-  <img src="img/hero_wall_v10_1920.jpg" srcset="img/hero_wall_v10_1920.jpg 1920w, img/hero_wall_v10.jpg 4096w" sizes="100vw" alt="Pacific pod in silhouette in front of a wall of light" fetchpriority="high">
+  <video class="hv" autoplay muted loop playsinline preload="auto" poster="media/hero_tech_poster.jpg" aria-label="Pacific pod in silhouette in front of a wall of light; a technician stands up and looks into the pod" disablepictureinpicture>
+    <source src="media/hero_tech_2560.webm" type="video/webm; codecs=vp9" media="(min-width:1600px)">
+    <source src="media/hero_tech_2560.mp4" type="video/mp4" media="(min-width:1600px)">
+    <source src="media/hero_tech_1920.webm" type="video/webm; codecs=vp9" media="(min-width:761px)">
+    <source src="media/hero_tech_1920.mp4" type="video/mp4" media="(min-width:761px)">
+    <source src="media/hero_tech_1280.webm" type="video/webm; codecs=vp9">
+    <source src="media/hero_tech_1280.mp4" type="video/mp4">
+  </video>
   <div class="shade"></div>
   <a class="preorder" href="#book-a-call">Pre-order Pod 32</a>
   <h1 class="giant"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
@@ -566,7 +578,12 @@
 </section>
 
 <div class="band fade fband">
-  <img src="img/band_orange_end_on.jpg" alt="Pacific pod end-on in front of a wall of light" loading="lazy" decoding="async">
+  <video class="bv" autoplay muted loop playsinline preload="metadata" poster="media/factory1_gantry_poster.jpg" aria-label="Pacific pod carried toward camera on a gantry crane in the factory" disablepictureinpicture>
+    <source src="media/factory1_gantry_1280.webm" type="video/webm; codecs=vp9" media="(min-width:761px)">
+    <source src="media/factory1_gantry_1280.mp4" type="video/mp4" media="(min-width:761px)">
+    <source src="media/factory1_gantry_720.webm" type="video/webm; codecs=vp9">
+    <source src="media/factory1_gantry_720.mp4" type="video/mp4">
+  </video>
   <div class="veil"></div>
   <div class="txt ftop">
     <div class="label">The factory</div>
@@ -577,6 +594,10 @@
     <p>SpaceX didn't just build rockets, they built rocket factories.</p>
   </div>
 </div>
+<script>
+  /* Video version: honour prefers-reduced-motion. The poster stays, nothing autoplays. */
+  (function(){ if(!matchMedia('(prefers-reduced-motion: reduce)').matches) return; document.querySelectorAll('video[autoplay]').forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.preload='none'; v.load(); }); })();
+</script>
 
 <section class="hiring-img" id="careers">
   <img src="img/hiring_dusk_v3.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
@@ -589,12 +610,12 @@
 
 <footer class="fa">
   <div class="row">
-    <a href="./"><img src="./img/pacific_logo_full_white.svg" alt="Pacific"></a>
+    <a href="./"><img src="img/pacific_logo_full_white.svg" alt="Pacific"></a>
     <div class="fcol"><div class="label">Product</div><a href="./pod-32/">Pod 32</a><a href="./vera-rubin/">Vera Rubin</a><a href="./factory-1/">Factory 1</a><a href="./sovereignty/">Sovereignty</a></div>
     <div class="fcol"><div class="label">Work with Pacific</div><a href="./buy/">Buy the pod</a><a href="./rent/">Rent the compute</a><a href="./colocate/">Bring your own GPUs</a></div>
     <div class="fcol"><div class="label">Company</div><a href="./careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="#book-a-call" data-wp-open>Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
-  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Mock-up, not the live site &middot; <a href="video/">Video version</a></span></div>
+  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Video version &middot; <a href="stills/">Stills version</a></span></div>
 </footer>
 
 <script>

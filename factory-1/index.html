@@ -27,6 +27,7 @@
   /* Full-bleed slides */
   .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
   .slide img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; }
+  .slide video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; background:#000; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(0,0,0,.45) 100%); }
   .hero .cap { position:absolute; left:var(--pad); right:var(--pad); bottom:32px; font-family:var(--mono); font-weight:400; font-size:clamp(22px,2vw,36px); line-height:1.06; color:#CECECE; letter-spacing:-0.01em; }
   .hero .cap span { display:block; }
@@ -179,6 +180,8 @@
   @media (max-width:480px){
     footer.fa .row { grid-template-columns:1fr; gap:36px; }
   }
+  footer.fa .flegal a { color:inherit; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.28); padding-bottom:2px; transition:color .2s, border-color .2s; }
+  footer.fa .flegal a:hover { color:var(--ink); border-color:var(--ink); }
 
   @media (max-width:760px){
     /* Heroes and slides: svh heights so iOS toolbars do not push the caption; caption smaller and on the floor, under the pod */
@@ -226,6 +229,14 @@
   @media (max-width:760px){
     /* Menu overlay: no scroll chaining to the page behind it on iOS */
     .mnav { overscroll-behavior:contain; }
+  }
+  /* ---- Video version: the hero is the gantry clip carrying the pod toward camera; same frame, shade and caption as the still.
+     On a phone the cover crop shows a quarter of the frame: anchor it to the left end of the pod so the lockup is never cut mid-word. ---- */
+  @media (max-width:760px){
+    /* On a phone a cover crop would show a quarter of the frame and cut the lockup mid-word. Instead the clip sits letterboxed at 170vw,
+       centred, so the whole PACIFIC lockup, the technician and the gantry chains are in frame; the floor and roof fade into the page black. */
+    .hero video { inset:auto; top:50%; left:50%; width:170vw; height:auto; transform:translate(-50%,-58%); object-fit:fill;
+      -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 22%, #000 80%, rgba(0,0,0,0) 100%); mask-image:linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 22%, #000 80%, rgba(0,0,0,0) 100%); }
   }
   @media (max-width:760px){ .flegal a { display:inline-block; padding:14px 0; } }
 
@@ -288,10 +299,19 @@
 </div>
 
 <header class="slide hero">
-  <img src="../img/factory-1/hero_gantry_lift_v2.jpg" alt="Pacific pod hanging from a gantry crane in the factory" fetchpriority="high">
+  <video class="hv" autoplay muted loop playsinline preload="metadata" poster="../media/factory1_gantry_poster.jpg" aria-label="Pacific pod carried toward camera on a gantry crane in the factory" disablepictureinpicture>
+    <source src="../media/factory1_gantry_1280.webm" type="video/webm; codecs=vp9" media="(min-width:761px)">
+    <source src="../media/factory1_gantry_1280.mp4" type="video/mp4" media="(min-width:761px)">
+    <source src="../media/factory1_gantry_720.webm" type="video/webm; codecs=vp9">
+    <source src="../media/factory1_gantry_720.mp4" type="video/mp4">
+  </video>
   <div class="shade"></div>
   <h1 class="cap"><span>Factory 1</span><span class="sub">Factory and R&amp;D shop, San Francisco. Opening early next year.</span></h1>
 </header>
+<script>
+  /* Video version: honour prefers-reduced-motion. The poster stays, nothing autoplays. */
+  (function(){ if(!matchMedia('(prefers-reduced-motion: reduce)').matches) return; document.querySelectorAll('video[autoplay]').forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.preload='none'; v.load(); }); })();
+</script>
 
 <section class="wrap rows">
   <div class="row fade">
@@ -482,7 +502,7 @@
     <div class="fcol"><div class="label">Work with Pacific</div><a href="../buy/">Buy the pod</a><a href="../rent/">Rent the compute</a><a href="../colocate/">Bring your own GPUs</a></div>
     <div class="fcol"><div class="label">Company</div><a href="../careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="../#book-a-call" data-wp-open>Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
-  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Mock-up, not the live site</span></div>
+  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Video version &middot; <a href="../stills/factory-1/">Stills version</a></span></div>
 </footer>
 
 <script>

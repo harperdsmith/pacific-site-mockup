@@ -59,6 +59,14 @@
   .card.vera img { object-position:center 50%; }
   .card.factory img { object-position:center 45%; }
   .card.sov img { object-position:center 60%; }
+  /* Card titles sit just under the container base (base is at ~70% of the card); the truck rides 5% higher so its wheels clear the title. Desktop and tablet only; the phone layout stacks text under the image. */
+  @media (min-width:761px){
+    .card .txt { top:73%; bottom:auto; }
+    .card .line { margin-top:6px; }
+    .card .more { margin-top:10px; padding-bottom:3px; }
+    .card.sov img { transform:translateY(-5%); }
+    .card.sov:hover img { transform:translateY(-5%) scale(1.03); }
+  }
 
   /* 3b. Version B: one card per screen, Helsing rows. Name on top, descriptor in grey, outlined button. */
   .rows { padding-top:72px; }

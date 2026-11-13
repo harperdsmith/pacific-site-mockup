@@ -21,7 +21,7 @@
   nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
   nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
-  nav .links a.cta:hover { background:transparent; color:#fff; }
+  @media (hover:hover){ nav .links a.cta:hover { background:transparent; color:#fff; } }
 
   /* 1. Hero: the v7 light wall, one giant line cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
@@ -30,7 +30,7 @@
   .hero .giant { position:absolute; left:0; right:0; bottom:0.3em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
   .hero .preorder { position:absolute; left:50%; transform:translateX(-50%); bottom:22vh; z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; transition:background-color .25s ease, color .25s ease; }
-  .hero .preorder:hover { background:#fff; color:#0a0a0a; }
+  @media (hover:hover){ .hero .preorder:hover { background:#fff; color:#0a0a0a; } }
 
   /* 2. Statement over the sunrise image: breathing room after the hero, text stepped in, container low */
   .seam { position:relative; height:138vh; min-height:1060px; overflow:hidden; background:var(--bg); }
@@ -96,24 +96,24 @@
   .hiring-img .weare { font-size:var(--h); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; color:#fff; margin-bottom:-22px; text-shadow:0 2px 24px rgba(0,0,0,.4); }
   .hiring-img .word { width:100%; padding:0 var(--pad); text-align:center; font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
   .hiring-img .btn { border:1px solid rgba(255,255,255,.9); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
-  .hiring-img .btn:hover { background:#fff; color:var(--bg); }
+  @media (hover:hover){ .hiring-img .btn:hover { background:#fff; color:var(--bg); } }
   .hiring-img.dark .word { color:#0a0a0a; }
   .hiring-img.dark .btn { color:#0a0a0a; border-color:rgba(10,10,10,.9); }
-  .hiring-img.dark .btn:hover { background:#0a0a0a; color:#fff; }
+  @media (hover:hover){ .hiring-img.dark .btn:hover { background:#0a0a0a; color:#fff; } }
   html.review .hiring-img { height:auto; }
   @media (max-width:760px){ .hiring-img { height:70vh; min-height:420px; aspect-ratio:auto; } .hiring-img img { object-position:60% 100%; } }
   /* 6. Hiring: one giant word edge to edge, one button */
   .hiring { padding:var(--gap) 0 calc(var(--gap) - 20px); text-align:center; overflow:hidden; margin-top:var(--gap); }
   .hiring .word { padding:0 var(--pad); font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
   .hiring .btn { display:inline-block; margin-top:44px; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
-  .hiring .btn:hover { background:var(--ink); color:var(--bg); }
+  @media (hover:hover){ .hiring .btn:hover { background:var(--ink); color:var(--bg); } }
   /* 6b. legacy block styles (still used by the divider) */
   .block { padding:var(--gap) var(--pad) 72px; }
   .block h2, .block .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:26ch; margin-top:20px; }
   .block p.sub { margin-top:22px; font-size:18px; color:#b3b1ac; font-weight:400; max-width:52ch; }
   .actions { display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
   .actions a { color:var(--bg); background:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid var(--ink); padding:13px 24px; transition:opacity .25s ease; }
-  .actions a:hover { opacity:.85; }
+  @media (hover:hover){ .actions a:hover { opacity:.85; } }
   .actions a.ghost { background:transparent; color:var(--ink); border-color:rgba(255,255,255,.5); }
   a:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
 
@@ -143,9 +143,9 @@
   /* Work with Pacific: three tiers */
   .btn-solid, .btn-ghost { display:inline-block; padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; text-align:center; transition:background-color .25s ease, color .25s ease, border-color .25s ease; }
   .btn-solid { background:#fff; color:#0a0a0a; border:1px solid #fff; }
-  .btn-solid:hover { background:transparent; color:#fff; }
+  @media (hover:hover){ .btn-solid:hover { background:transparent; color:#fff; } }
   .btn-ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.85); }
-  .btn-ghost:hover { background:#fff; color:#0a0a0a; }
+  @media (hover:hover){ .btn-ghost:hover { background:#fff; color:#0a0a0a; } }
   .ways { position:relative; background:#000; margin-top:var(--gap); padding:var(--gap) var(--pad); border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); }
   .ways .big { font-size:clamp(28px,3.3vw,48px); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
   .ways p.intro { margin-top:22px; font-size:clamp(18px,1.25vw,24px); color:#b3b1ac; max-width:52ch; line-height:1.5; }
@@ -332,6 +332,79 @@
     .seam .txt { grid-area:1 / 1; position:relative; z-index:2; align-self:end; padding:24px var(--pad) 60vw; }
     .seam .scale { grid-area:2 / 1; }
   }
+
+  /* ---- Inline contact (2026-11-12): pre-order dialog (message form or Cal.com booking) and the Book a call section ---- */
+  .book { background:var(--bg); padding:var(--gap) var(--pad) 0; }
+  .book .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
+  .book .cal-wrap { position:relative; margin-top:24px; min-height:620px; }
+  .cal-wrap .cal-loading { position:absolute; left:0; top:0; font-size:15px; color:var(--dim); }
+  .cal-wrap.ready .cal-loading { display:none; }
+  .cal-wrap .cal-inline { position:relative; width:100%; min-height:inherit; }
+  .cal-wrap .cal-fallback { display:none; font-size:17px; color:#c9c7c2; }
+  .cal-wrap.failed .cal-fallback { display:block; } .cal-wrap.failed .cal-loading { display:none; }
+  .cal-wrap .cal-fallback a { color:var(--ink); }
+  html.po-open, html.po-open body { overflow:hidden; }
+  dialog.po { margin:auto; padding:0; border:1px solid rgba(255,255,255,.14); background:#0a0a0a; color:var(--ink); width:min(1040px, calc(100vw - 48px)); max-width:none; max-height:calc(100vh - 48px); overflow:auto; overscroll-behavior:contain; font-family:inherit; }
+  dialog.po::backdrop { background:rgba(0,0,0,.72); }
+  dialog.po .po-in { padding:32px 40px 40px; }
+  dialog.po .po-head { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
+  dialog.po .po-title { font-size:clamp(24px,2.2vw,32px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; padding-top:6px; }
+  dialog.po .po-close { min-height:44px; min-width:44px; padding:0 0 0 12px; margin:-6px -2px 0 0; background:none; border:0; color:var(--ink); font-family:inherit; font-size:11px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-appearance:none; appearance:none; }
+  dialog.po .po-tabs { display:flex; gap:32px; margin-top:28px; border-bottom:1px solid rgba(255,255,255,.18); }
+  dialog.po .po-tab { min-height:44px; padding:0; margin-bottom:-1px; background:none; border:0; border-bottom:1px solid transparent; color:var(--dim); font-family:inherit; font-size:12px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-appearance:none; appearance:none; transition:color .2s, border-color .2s; }
+  dialog.po .po-tab:hover { color:var(--ink); }
+  dialog.po .po-tab[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--ink); }
+  dialog.po .po-panel { padding-top:32px; }
+  dialog.po .po-panel[hidden] { display:none; }
+  dialog.po form { max-width:680px; }
+  dialog.po .po-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px 24px; }
+  dialog.po .po-field { display:flex; flex-direction:column; gap:8px; }
+  dialog.po .po-field.wide { grid-column:1 / -1; }
+  dialog.po .po-field label { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+  dialog.po .po-field label .req { color:var(--dim); letter-spacing:0; text-transform:none; }
+  dialog.po input, dialog.po textarea { width:100%; min-height:48px; padding:12px 14px; background:transparent; color:var(--ink); border:1px solid rgba(255,255,255,.28); border-radius:0; font-family:inherit; font-size:17px; line-height:1.4; -webkit-appearance:none; appearance:none; transition:border-color .2s; }
+  dialog.po textarea { min-height:128px; resize:vertical; }
+  dialog.po input:hover, dialog.po textarea:hover { border-color:rgba(255,255,255,.5); }
+  dialog.po input:focus, dialog.po textarea:focus { outline:none; border-color:var(--ink); }
+  dialog.po [aria-invalid="true"] { border-color:#ff8a3d; }
+  dialog.po .po-err { min-height:0; font-size:14px; color:#ff8a3d; }
+  dialog.po .po-err:empty { display:none; }
+  dialog.po .po-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-top:28px; }
+  dialog.po .po-send { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.85); border-radius:0; padding:15px 34px; min-height:48px; font-family:inherit; font-size:17px; line-height:1.2; cursor:pointer; -webkit-appearance:none; appearance:none; transition:background-color .25s ease, color .25s ease; }
+  @media (hover:hover){ dialog.po .po-send:hover { background:#fff; color:#0a0a0a; } }
+  dialog.po .po-send[disabled] { opacity:.5; cursor:default; }
+  dialog.po .po-note { margin-top:24px; padding:18px 20px; border:1px solid rgba(255,255,255,.18); font-size:17px; line-height:1.5; color:#e2dfd9; }
+  dialog.po .po-note[hidden] { display:none; }
+  dialog.po .po-note .po-switch { display:inline-block; margin-top:14px; background:none; border:0; border-bottom:1px solid rgba(255,255,255,.5); padding:10px 0 4px; color:var(--ink); font-family:inherit; font-size:12px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-appearance:none; appearance:none; }
+  dialog.po .po-done { font-size:clamp(20px,1.6vw,24px); line-height:1.4; max-width:40ch; }
+  dialog.po .po-done[hidden] { display:none; }
+  dialog.po .cal-wrap { min-height:560px; }
+  dialog.po button:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+  @media (max-width:760px){
+    dialog.po { width:100vw; height:100vh; height:100dvh; max-height:none; margin:0; border:0; inset:0; }
+    dialog.po .po-in { padding:calc(12px + env(safe-area-inset-top)) var(--pad) calc(32px + env(safe-area-inset-bottom)); }
+    dialog.po .po-head { align-items:center; }
+    dialog.po .po-title { font-size:24px; padding-top:0; }
+    dialog.po .po-close { margin:0 -2px 0 0; }
+    dialog.po .po-tabs { gap:24px; margin-top:16px; }
+    dialog.po .po-panel { padding-top:24px; }
+    dialog.po .po-grid { grid-template-columns:1fr; gap:18px; }
+    dialog.po .po-send { width:100%; }
+    .book .cal-wrap { margin-top:16px; }
+  }
+
+  /* Bordered buttons (2026-11-12): no second focus box after a click or a returned focus; keyboard focus shows the hover fill instead; hover fill only on devices that really hover */
+  .hero .preorder:focus, .hero .preorder:focus-visible, .btn-ghost:focus, .btn-ghost:focus-visible, .btn-solid:focus, .btn-solid:focus-visible, nav .links a.cta:focus, nav .links a.cta:focus-visible, .hiring .btn:focus, .hiring .btn:focus-visible, .hiring-img .btn:focus, .hiring-img .btn:focus-visible, .hiring-img.dark .btn:focus, .hiring-img.dark .btn:focus-visible, dialog.po .po-send:focus, dialog.po .po-send:focus-visible, .actions a:focus, .actions a:focus-visible, .mnav .mnav-links a.cta:focus, .mnav .mnav-links a.cta:focus-visible { outline:none; }
+  nav .links a.cta:focus-visible { background:transparent; color:#fff; }
+  .hero .preorder:focus-visible { background:#fff; color:#0a0a0a; }
+  .hiring-img .btn:focus-visible { background:#fff; color:var(--bg); }
+  .hiring-img.dark .btn:focus-visible { background:#0a0a0a; color:#fff; }
+  .hiring .btn:focus-visible { background:var(--ink); color:var(--bg); }
+  .actions a:focus-visible { opacity:.85; }
+  .btn-solid:focus-visible { background:transparent; color:#fff; }
+  .btn-ghost:focus-visible { background:#fff; color:#0a0a0a; }
+  dialog.po .po-send:focus-visible { background:#fff; color:#0a0a0a; }
+  .mnav .mnav-links a.cta:focus-visible { background:transparent; color:#fff; }
 </style>
 </head>
 <body>
@@ -366,7 +439,7 @@
     <source src="media/hero_tech_1280.mp4" type="video/mp4">
   </video>
   <div class="shade"></div>
-  <a class="preorder" href="https://cal.com/harper-smith/30-minute-call">Pre-order Pod 32</a>
+  <a class="preorder" href="#book-a-call">Pre-order Pod 32</a>
   <h1 class="giant"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
 </header>
 
@@ -433,6 +506,12 @@
       <a class="btn-ghost cta" href="colocate/">Request colo space</a>
     </div>
   </div>
+</section>
+
+<section class="book" id="book-a-call">
+  <div class="label fade">Get in touch</div>
+  <div class="big fade">Book a call</div>
+  <div class="cal-wrap" id="book-cal-wrap"><div class="cal-loading">Loading the calendar</div><div class="cal-fallback">The calendar did not load. <a href="https://cal.com/harper-smith/30-minute-call" target="_blank" rel="noopener">Open it here</a>.</div><div class="cal-inline" id="book-cal"></div></div>
 </section>
 
 <div class="band fade">
@@ -523,6 +602,118 @@
     close.addEventListener('click',()=>set(false));
     document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&m.classList.contains('open')) set(false); });
     const mq=matchMedia('(min-width:761px)'); if(mq.addEventListener) mq.addEventListener('change',e=>{ if(e.matches&&m.classList.contains('open')) set(false); });
+  })();
+</script>
+
+<dialog class="po" id="po-dialog" aria-labelledby="po-title">
+  <div class="po-in">
+    <div class="po-head">
+      <h2 class="po-title" id="po-title">Pre-order Pod 32</h2>
+      <button class="po-close" type="button" aria-label="Close">Close</button>
+    </div>
+    <div class="po-tabs" role="tablist" aria-label="How to get in touch">
+      <button class="po-tab" type="button" role="tab" id="po-tab-msg" aria-controls="po-panel-msg" aria-selected="true">Send a message</button>
+      <button class="po-tab" type="button" role="tab" id="po-tab-cal" aria-controls="po-panel-cal" aria-selected="false" tabindex="-1">Book a call</button>
+    </div>
+    <div class="po-panel" id="po-panel-msg" role="tabpanel" aria-labelledby="po-tab-msg">
+      <form class="po-form" novalidate>
+        <div class="po-grid">
+          <div class="po-field"><label for="po-name">Name <span class="req">(required)</span></label><input id="po-name" name="name" type="text" autocomplete="name" required aria-describedby="po-name-err"><div class="po-err" id="po-name-err" aria-live="polite"></div></div>
+          <div class="po-field"><label for="po-company">Company</label><input id="po-company" name="company" type="text" autocomplete="organization"></div>
+          <div class="po-field"><label for="po-email">Email <span class="req">(required)</span></label><input id="po-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="po-email-err"><div class="po-err" id="po-email-err" aria-live="polite"></div></div>
+          <div class="po-field"><label for="po-phone">Phone</label><input id="po-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+          <div class="po-field wide"><label for="po-message">Message</label><textarea id="po-message" name="message" rows="4"></textarea></div>
+        </div>
+        <div class="po-actions"><button class="po-send" type="submit">Send</button><div class="po-err" id="po-send-err" aria-live="polite"></div></div>
+        <div class="po-note" id="po-note" role="status" hidden>Messages are not switched on yet. Please book a call instead.<br><button class="po-switch" type="button">Book a call</button></div>
+      </form>
+      <p class="po-done" id="po-done" role="status" tabindex="-1" hidden>Sent, thank you. We will be in touch shortly.</p>
+    </div>
+    <div class="po-panel" id="po-panel-cal" role="tabpanel" aria-labelledby="po-tab-cal" hidden>
+      <div class="cal-wrap" id="po-cal-wrap"><div class="cal-loading">Loading the calendar</div><div class="cal-fallback">The calendar did not load. <a href="https://cal.com/harper-smith/30-minute-call" target="_blank" rel="noopener">Open it here</a>.</div><div class="cal-inline" id="po-cal"></div></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  /* Inline contact: the hero Pre-order button opens a dialog (message form or Cal.com booking); the Book a call section embeds Cal.com inline.
+     FORM_ENDPOINT: set this one constant to a form endpoint URL (POST, JSON) to switch messages on. Empty = honest "not switched on yet" note. */
+  const FORM_ENDPOINT = '';
+  const CAL_LINK = 'harper-smith/30-minute-call';
+  (function(){
+    /* Cal.com embed loader (same snippet as the old site); nothing loads until a calendar is needed */
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    let nsCount = 0;
+    function mountCal(wrap, el, prefill){
+      const ns = 'pac' + (++nsCount);
+      wrap.classList.remove('ready', 'failed'); el.innerHTML = '';
+      const config = Object.assign({ layout:'month_view', theme:'dark' }, prefill || {});
+      Cal('init', ns, { origin:'https://app.cal.com' });
+      Cal.ns[ns]('inline', { elementOrSelector: el, calLink: CAL_LINK, layout:'month_view', config: config });
+      Cal.ns[ns]('ui', { theme:'dark', cssVarsPerTheme:{ dark:{ 'cal-brand':'#ffffff' } }, hideEventTypeDetails:false, layout:'month_view' });
+      Cal.ns[ns]('on', { action:'linkReady', callback: () => wrap.classList.add('ready') });
+      Cal.ns[ns]('on', { action:'linkFailed', callback: () => wrap.classList.add('failed') });
+      setTimeout(() => { if (!wrap.classList.contains('ready') && !el.querySelector('iframe')) wrap.classList.add('failed'); }, 20000);
+    }
+    /* Section: mount when it comes near the viewport */
+    const bWrap = document.getElementById('book-cal-wrap'), bEl = document.getElementById('book-cal');
+    if (bWrap && bEl) {
+      const go = () => { if (!bWrap.dataset.mounted) { bWrap.dataset.mounted = '1'; mountCal(bWrap, bEl); } };
+      if ('IntersectionObserver' in window) { const o = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { go(); o.disconnect(); } }, { rootMargin:'800px 0px' }); o.observe(bWrap); } else go();
+    }
+    /* Dialog */
+    const dlg = document.getElementById('po-dialog'), opener = document.querySelector('.hero .preorder');
+    if (!dlg || !opener || typeof dlg.showModal !== 'function') return;
+    const tabs = [...dlg.querySelectorAll('.po-tab')], panels = { 'po-tab-msg': document.getElementById('po-panel-msg'), 'po-tab-cal': document.getElementById('po-panel-cal') };
+    const form = dlg.querySelector('.po-form'), note = document.getElementById('po-note'), done = document.getElementById('po-done'), sendErr = document.getElementById('po-send-err'), sendBtn = dlg.querySelector('.po-send');
+    const pWrap = document.getElementById('po-cal-wrap'), pEl = document.getElementById('po-cal');
+    let lastPrefill = null;
+    const val = n => (form.elements[n].value || '').trim();
+    function prefill(){
+      const p = {}; if (val('name')) p.name = val('name'); if (val('email')) p.email = val('email');
+      const notes = [val('company') && ('Company: ' + val('company')), val('phone') && ('Phone: ' + val('phone')), val('message')].filter(Boolean).join('\n');
+      if (notes) p.notes = notes; return p;
+    }
+    function select(id, focus){
+      tabs.forEach(t => { const on = t.id === id; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; panels[t.id].hidden = !on; });
+      if (focus) document.getElementById(id).focus();
+      if (id === 'po-tab-cal') { const p = prefill(), key = JSON.stringify(p); if (key !== lastPrefill) { lastPrefill = key; mountCal(pWrap, pEl, p); } }
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t.id));
+      t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length].id, true); } });
+    });
+    let byKeyboard = false;
+    function open(e){ if (e) e.preventDefault(); byKeyboard = !!(e && e.detail === 0); select('po-tab-msg'); note.hidden = true; sendErr.textContent = ''; document.documentElement.classList.add('po-open'); dlg.showModal(); const f = document.getElementById('po-name'); if (!done.hidden) done.focus(); else if (matchMedia('(hover:hover)').matches) f.focus(); else dlg.querySelector('.po-close').focus(); }
+    function close(){ dlg.close(); }
+    opener.setAttribute('aria-haspopup', 'dialog'); opener.setAttribute('aria-controls', 'po-dialog');
+    opener.addEventListener('click', open);
+    dlg.querySelector('.po-close').addEventListener('click', close);
+    dlg.addEventListener('click', e => { if (e.target === dlg) { const r = dlg.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) close(); } });
+    /* Keyboard users get focus back on the button; pointer users do not, so no focus style lingers on it */
+    dlg.addEventListener('close', () => { document.documentElement.classList.remove('po-open'); if (byKeyboard) opener.focus({ preventScroll:true }); else requestAnimationFrame(() => { if (document.activeElement === opener) opener.blur(); }); });
+    dlg.querySelector('.po-switch').addEventListener('click', () => select('po-tab-cal', true));
+    function setErr(name, msg){ const i = form.elements[name], e = document.getElementById('po-' + name + '-err'); e.textContent = msg; if (msg) i.setAttribute('aria-invalid', 'true'); else i.removeAttribute('aria-invalid'); return !msg; }
+    ['name', 'email'].forEach(n => form.elements[n].addEventListener('input', () => { if (form.elements[n].getAttribute('aria-invalid')) validate(n); }));
+    function validate(only){
+      let ok = true;
+      if (!only || only === 'name') ok = setErr('name', val('name') ? '' : 'Please add your name.') && ok;
+      if (!only || only === 'email') ok = setErr('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email')) ? '' : 'Please add a valid email address.') && ok;
+      return ok;
+    }
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); sendErr.textContent = ''; note.hidden = true;
+      if (!validate()) { form.querySelector('[aria-invalid="true"]').focus(); return; }
+      if (!FORM_ENDPOINT) { note.hidden = false; note.querySelector('.po-switch').focus(); return; }
+      sendBtn.disabled = true; sendBtn.textContent = 'Sending';
+      try {
+        const r = await fetch(FORM_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json', 'Accept':'application/json' }, body: JSON.stringify({ name: val('name'), company: val('company'), email: val('email'), phone: val('phone'), message: val('message'), source: 'Pre-order Pod 32', page: location.href }) });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        form.hidden = true; done.hidden = false; done.focus();
+      } catch (err) {
+        sendErr.textContent = 'That did not send. Please try again, or book a call instead.';
+      } finally { sendBtn.disabled = false; sendBtn.textContent = 'Send'; }
+    });
   })();
 </script>
 </body>

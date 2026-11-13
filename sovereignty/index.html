@@ -22,7 +22,7 @@
   nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
   nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
-  nav .links a.cta:hover { background:transparent; color:#fff; }
+  @media (hover:hover){ nav .links a.cta:hover { background:transparent; color:#fff; } }
 
   /* Full-bleed slides */
   .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
@@ -67,14 +67,14 @@
   /* CTA: one outlined button */
   .ctab { padding:var(--gap) var(--pad); text-align:center; }
   .ctab .btn { display:inline-block; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
-  .ctab .btn:hover { background:var(--ink); color:var(--bg); }
+  @media (hover:hover){ .ctab .btn:hover { background:var(--ink); color:var(--bg); } }
 
   /* Work with Pacific: three tiers */
   .btn-solid, .btn-ghost { display:inline-block; padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; text-align:center; transition:background-color .25s ease, color .25s ease, border-color .25s ease; }
   .btn-solid { background:#fff; color:#0a0a0a; border:1px solid #fff; }
-  .btn-solid:hover { background:transparent; color:#fff; }
+  @media (hover:hover){ .btn-solid:hover { background:transparent; color:#fff; } }
   .btn-ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.85); }
-  .btn-ghost:hover { background:#fff; color:#0a0a0a; }
+  @media (hover:hover){ .btn-ghost:hover { background:#fff; color:#0a0a0a; } }
   .ways { position:relative; background:#000; margin-top:var(--gap); padding:var(--gap) var(--pad); border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); }
   .ways .big { font-size:clamp(28px,3.3vw,48px); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
   .ways p.intro { margin-top:22px; font-size:clamp(18px,1.25vw,24px); color:#b3b1ac; max-width:52ch; line-height:1.5; }
@@ -246,6 +246,14 @@
     .hero .cap { position:static; padding:24px var(--pad) 0; }
     html.review .hero { height:auto; }
   }
+
+  /* Bordered buttons (2026-11-12): no second focus box after a click or a returned focus; keyboard focus shows the hover fill instead; hover fill only on devices that really hover */
+  .btn-ghost:focus, .btn-ghost:focus-visible, .btn-solid:focus, .btn-solid:focus-visible, nav .links a.cta:focus, nav .links a.cta:focus-visible, .ctab .btn:focus, .ctab .btn:focus-visible, .mnav .mnav-links a.cta:focus, .mnav .mnav-links a.cta:focus-visible { outline:none; }
+  nav .links a.cta:focus-visible { background:transparent; color:#fff; }
+  .ctab .btn:focus-visible { background:var(--ink); color:var(--bg); }
+  .btn-solid:focus-visible { background:transparent; color:#fff; }
+  .btn-ghost:focus-visible { background:#fff; color:#0a0a0a; }
+  .mnav .mnav-links a.cta:focus-visible { background:transparent; color:#fff; }
 </style>
 </head>
 <body>

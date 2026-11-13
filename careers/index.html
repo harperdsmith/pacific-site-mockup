@@ -22,7 +22,7 @@
   nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
   nav .links a:hover { opacity:1; }
   nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
-  nav .links a.cta:hover { background:transparent; color:#fff; }
+  @media (hover:hover){ nav .links a.cta:hover { background:transparent; color:#fff; } }
 
   /* Full-bleed slides */
   .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
@@ -33,7 +33,7 @@
   .hero .cap .sub { color:#CECECE; font-weight:400; max-width:34ch; }
   /* Get in touch: one outlined button, same style as the homepage Pre-order button, centred on the container body (placed by script from the image geometry; the CSS value is the fallback) */
   .hero .touch { position:absolute; left:50%; top:57.7%; transform:translate(-50%,-50%); z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; min-height:44px; transition:background-color .25s ease, color .25s ease; }
-  .hero .touch:hover { background:#fff; color:#0a0a0a; }
+  @media (hover:hover){ .hero .touch:hover { background:#fff; color:#0a0a0a; } }
   /* Roles: plain list, one per line, not links */
   .row ul.roles { list-style:none; font-size:18px; line-height:1.35; color:#d9d6d0; display:flex; flex-direction:column; gap:14px; }
 
@@ -71,7 +71,7 @@
   /* CTA: one outlined button */
   .ctab { padding:var(--gap) var(--pad); text-align:center; }
   .ctab .btn { display:inline-block; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
-  .ctab .btn:hover { background:var(--ink); color:var(--bg); }
+  @media (hover:hover){ .ctab .btn:hover { background:var(--ink); color:var(--bg); } }
 
   .fade { opacity:0; transform:translateY(18px); transition:opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
   .slide.fade, .giant.fade { transform:none; }
@@ -227,6 +227,13 @@
     .hero .cap { position:static; padding:24px var(--pad) 0; }
     html.review .hero { height:auto; }
   }
+
+  /* Bordered buttons (2026-11-12): no second focus box after a click or a returned focus; keyboard focus shows the hover fill instead; hover fill only on devices that really hover */
+  .hero .touch:focus, .hero .touch:focus-visible, nav .links a.cta:focus, nav .links a.cta:focus-visible, .ctab .btn:focus, .ctab .btn:focus-visible, .mnav .mnav-links a.cta:focus, .mnav .mnav-links a.cta:focus-visible { outline:none; }
+  nav .links a.cta:focus-visible { background:transparent; color:#fff; }
+  .hero .touch:focus-visible { background:#fff; color:#0a0a0a; }
+  .ctab .btn:focus-visible { background:var(--ink); color:var(--bg); }
+  .mnav .mnav-links a.cta:focus-visible { background:transparent; color:#fff; }
 </style>
 </head>
 <body>

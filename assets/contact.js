@@ -5,7 +5,9 @@
    "not switched on yet" note with a switch to Book a call. */
 window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
   FORM_ENDPOINT: '',
-  CAL_LINK: 'harper-smith/30-minute-call'
+  CAL_LINK: 'harper-smith/30-minute-call',
+  /* Cal.com routing form "Pacific website enquiry": when set, Send a message / Request show this Cal form inline (it records the response in Cal and emails Harper) */
+  ROUTING_FORM: '811cf180-4d3f-4e52-8e75-7c8fa685b514'
 };
 (function(){
   'use strict';
@@ -13,12 +15,12 @@ window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
   /* Cal.com embed loader (same snippet as the old site; safe to run twice, nothing loads until a calendar is mounted) */
   (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   var nsCount = 0;
-  function mountCal(wrap, el, prefill){
+  function mountCal(wrap, el, prefill, link){
     var ns = 'pwp' + (++nsCount);
     wrap.classList.remove('ready', 'failed'); el.innerHTML = '';
     var config = Object.assign({ layout:'month_view', theme:'dark' }, prefill || {});
     Cal('init', ns, { origin:'https://app.cal.com' });
-    Cal.ns[ns]('inline', { elementOrSelector: el, calLink: CFG.CAL_LINK, layout:'month_view', config: config });
+    Cal.ns[ns]('inline', { elementOrSelector: el, calLink: link || CFG.CAL_LINK, layout:'month_view', config: config });
     Cal.ns[ns]('ui', { theme:'dark', cssVarsPerTheme:{ dark:{ 'cal-brand':'#ffffff' } }, hideEventTypeDetails:false, layout:'month_view' });
     Cal.ns[ns]('on', { action:'linkReady', callback: function(){ wrap.classList.add('ready'); } });
     Cal.ns[ns]('on', { action:'linkFailed', callback: function(){ wrap.classList.add('failed'); } });
@@ -35,6 +37,7 @@ window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
         '<button class="po-tab" type="button" role="tab" id="wp-tab-cal" aria-controls="wp-panel-cal" aria-selected="false" tabindex="-1">Book a call</button>' +
       '</div>' +
       '<div class="po-panel" id="wp-panel-req" role="tabpanel" aria-labelledby="wp-tab-req">' +
+        '<div class="cal-wrap po-calform" id="wp-form-wrap" hidden><div class="cal-loading">Loading the form</div><div class="cal-fallback">The form did not load. <a href="https://app.cal.com/forms/' + CFG.ROUTING_FORM + '" target="_blank" rel="noopener">Open it here</a>.</div><div class="cal-inline" id="wp-form"></div></div>' +
         '<form class="po-form" novalidate>' +
           '<div class="po-grid">' +
             '<div class="po-field"><label for="wp-name">Name <span class="req">(required)</span></label><input id="wp-name" name="name" type="text" autocomplete="name" required aria-describedby="wp-name-err"><div class="po-err" id="wp-name-err" aria-live="polite"></div></div>' +
@@ -66,6 +69,8 @@ window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
     var form = dlg.querySelector('.po-form'), note = document.getElementById('wp-note'), done = document.getElementById('wp-done'), sendErr = document.getElementById('wp-send-err'), sendBtn = dlg.querySelector('.po-send');
     var cWrap = document.getElementById('wp-cal-wrap'), cEl = document.getElementById('wp-cal');
     var lastPrefill = null, lastOpener = null, byKeyboard = false;
+    var useCal = !!CFG.ROUTING_FORM, fWrap = document.getElementById('wp-form-wrap'), fEl = document.getElementById('wp-form'), fMounted = false;
+    if (useCal) { form.hidden = true; fWrap.hidden = false; }
     function val(n){ return (form.elements[n].value || '').trim(); }
     function prefill(){
       var p = {}; if (val('name')) p.name = val('name'); if (val('email')) p.email = val('email');
@@ -91,7 +96,8 @@ window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
       select('wp-tab-req'); note.hidden = true; sendErr.textContent = '';
       document.documentElement.classList.add('po-open');
       dlg.showModal();
-      if (!done.hidden) done.focus(); else if (matchMedia('(hover:hover)').matches) document.getElementById('wp-name').focus(); else dlg.querySelector('.po-close').focus();
+      if (useCal && !fMounted) { fMounted = true; mountCal(fWrap, fEl, { enquiry:'Whitepaper' }, 'forms/' + CFG.ROUTING_FORM); }
+      if (!done.hidden) done.focus(); else if (!useCal && matchMedia('(hover:hover)').matches) document.getElementById('wp-name').focus(); else dlg.querySelector('.po-close').focus();
     }
     function close(){ dlg.close(); }
     openers.forEach(function(o){ o.setAttribute('aria-haspopup', 'dialog'); o.setAttribute('aria-controls', 'wp-dialog'); o.addEventListener('click', open); });

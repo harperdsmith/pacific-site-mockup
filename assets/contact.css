@@ -56,3 +56,7 @@ dialog.po .po-send:focus-visible { background:#fff; color:#0a0a0a; }
   dialog.po .po-grid { grid-template-columns:1fr; gap:18px; }
   dialog.po .po-send { width:100%; }
 }
+
+/* Cal.com routing form inside the dialogs */
+dialog.po .cal-wrap.po-calform { min-height:520px; }
+dialog.po .cal-wrap[hidden] { display:none; }

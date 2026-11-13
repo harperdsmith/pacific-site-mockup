@@ -681,6 +681,7 @@
       <button class="po-tab" type="button" role="tab" id="po-tab-cal" aria-controls="po-panel-cal" aria-selected="false" tabindex="-1">Book a call</button>
     </div>
     <div class="po-panel" id="po-panel-msg" role="tabpanel" aria-labelledby="po-tab-msg">
+      <div class="cal-wrap po-calform" id="po-form-wrap" hidden><div class="cal-loading">Loading the form</div><div class="cal-fallback">The form did not load. <a href="https://app.cal.com/forms/811cf180-4d3f-4e52-8e75-7c8fa685b514" target="_blank" rel="noopener">Open it here</a>.</div><div class="cal-inline" id="po-form"></div></div>
       <form class="po-form" novalidate>
         <div class="po-grid">
           <div class="po-field"><label for="po-name">Name <span class="req">(required)</span></label><input id="po-name" name="name" type="text" autocomplete="name" required aria-describedby="po-name-err"><div class="po-err" id="po-name-err" aria-live="polite"></div></div>
@@ -709,12 +710,12 @@
     /* Cal.com embed loader (same snippet as the old site); nothing loads until a calendar is needed */
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     let nsCount = 0;
-    function mountCal(wrap, el, prefill){
+    function mountCal(wrap, el, prefill, link){
       const ns = 'pac' + (++nsCount);
       wrap.classList.remove('ready', 'failed'); el.innerHTML = '';
       const config = Object.assign({ layout:'month_view', theme:'dark' }, prefill || {});
       Cal('init', ns, { origin:'https://app.cal.com' });
-      Cal.ns[ns]('inline', { elementOrSelector: el, calLink: CAL_LINK, layout:'month_view', config: config });
+      Cal.ns[ns]('inline', { elementOrSelector: el, calLink: link || CAL_LINK, layout:'month_view', config: config });
       Cal.ns[ns]('ui', { theme:'dark', cssVarsPerTheme:{ dark:{ 'cal-brand':'#ffffff' } }, hideEventTypeDetails:false, layout:'month_view' });
       Cal.ns[ns]('on', { action:'linkReady', callback: () => wrap.classList.add('ready') });
       Cal.ns[ns]('on', { action:'linkFailed', callback: () => wrap.classList.add('failed') });
@@ -737,6 +738,9 @@
     const form = dlg.querySelector('.po-form'), note = document.getElementById('po-note'), done = document.getElementById('po-done'), sendErr = document.getElementById('po-send-err'), sendBtn = dlg.querySelector('.po-send');
     const pWrap = document.getElementById('po-cal-wrap'), pEl = document.getElementById('po-cal');
     let lastPrefill = null;
+    const ROUTING_FORM = (window.PACIFIC_CONTACT && window.PACIFIC_CONTACT.ROUTING_FORM) || '';
+    const fWrap = document.getElementById('po-form-wrap'), fEl = document.getElementById('po-form'); let fMounted = false;
+    if (ROUTING_FORM) { form.hidden = true; fWrap.hidden = false; }
     const val = n => (form.elements[n].value || '').trim();
     function prefill(){
       const p = {}; if (val('name')) p.name = val('name'); if (val('email')) p.email = val('email');
@@ -753,7 +757,7 @@
       t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length].id, true); } });
     });
     let byKeyboard = false;
-    function open(e){ if (e) e.preventDefault(); byKeyboard = !!(e && e.detail === 0); select('po-tab-msg'); note.hidden = true; sendErr.textContent = ''; document.documentElement.classList.add('po-open'); dlg.showModal(); const f = document.getElementById('po-name'); if (!done.hidden) done.focus(); else if (matchMedia('(hover:hover)').matches) f.focus(); else dlg.querySelector('.po-close').focus(); }
+    function open(e){ if (e) e.preventDefault(); byKeyboard = !!(e && e.detail === 0); select('po-tab-msg'); note.hidden = true; sendErr.textContent = ''; document.documentElement.classList.add('po-open'); dlg.showModal(); if (ROUTING_FORM && !fMounted) { fMounted = true; mountCal(fWrap, fEl, { enquiry:'Pre-order Pod 32' }, 'forms/' + ROUTING_FORM); } const f = document.getElementById('po-name'); if (!done.hidden) done.focus(); else if (!ROUTING_FORM && matchMedia('(hover:hover)').matches) f.focus(); else dlg.querySelector('.po-close').focus(); }
     function close(){ dlg.close(); }
     opener.setAttribute('aria-haspopup', 'dialog'); opener.setAttribute('aria-controls', 'po-dialog');
     opener.addEventListener('click', open);

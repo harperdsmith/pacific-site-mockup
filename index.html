@@ -430,6 +430,29 @@
   /* Book a call on phones sits under the statement; desktop keeps the one after Work with Pacific. Only the visible calendar loads. */
   .book-m { display:none; }
   @media (max-width:760px){ .book-m { display:block; } .book:not(.book-m) { display:none; } }
+
+  /* Factory band (Harper 2026-11-12): label top left, headline top centre in the dark above the container, paragraphs centred under the container. Phone: label and headline above the image, paragraphs below it. */
+  .band.fband { --fb-label-top:40px; --fb-head-y:22%; --fb-para-top:auto; --fb-para-bottom:3.2%; --fb-para-w:60ch; --fb-shade-y:92%; --fb-shade-a:.45; }
+  .band.fband .nw { white-space:nowrap; }
+  .band.fband .fbot p { hyphens:none; -webkit-hyphens:none; }
+  @media (min-width:761px){
+    .band.fband .veil { background:radial-gradient(ellipse 46% 30% at 50% var(--fb-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .45)) 55%, rgba(0,0,0,0) 100%); }
+    .band.fband .txt { position:absolute; left:var(--pad); right:var(--pad); max-width:none; z-index:2; text-align:center; }
+    .band.fband .txt.ftop { top:0; bottom:0; pointer-events:none; }
+    .band.fband .ftop .label { position:absolute; top:var(--fb-label-top); left:0; text-align:left; }
+    .band.fband .ftop .big { position:absolute; left:0; right:0; top:var(--fb-head-y); transform:translateY(-50%); margin:0; max-width:none; text-align:center; }
+    .band.fband .txt.fbot { top:var(--fb-para-top); bottom:var(--fb-para-bottom); }
+    .band.fband .fbot p { max-width:var(--fb-para-w); margin-left:auto; margin-right:auto; }
+    .band.fband .fbot p:first-child { margin-top:0; }
+  }
+  @media (max-width:760px){
+    .band.fband { display:flex; flex-direction:column; }
+    .band.fband .txt.ftop { order:-1; padding:0 var(--pad) 24px; text-align:center; }
+    .band.fband .ftop .big { margin-left:auto; margin-right:auto; }
+    .band.fband .txt.fbot { padding-top:24px; text-align:center; }
+    .band.fband .fbot p { margin-left:auto; margin-right:auto; }
+    .band.fband .fbot p:first-child { margin-top:0; }
+  }
 </style>
 </head>
 <body>
@@ -538,13 +561,15 @@
   <div class="cal-wrap" id="book-cal-wrap"><div class="cal-loading">Loading the calendar</div><div class="cal-fallback">The calendar did not load. <a href="https://cal.com/harper-smith/30-minute-call" target="_blank" rel="noopener">Open it here</a>.</div><div class="cal-inline" id="book-cal"></div></div>
 </section>
 
-<div class="band fade">
+<div class="band fade fband">
   <img src="img/band_orange_end_on.jpg" alt="Pacific pod end-on in front of a wall of light" loading="lazy" decoding="async">
   <div class="veil"></div>
-  <div class="txt">
+  <div class="txt ftop">
     <div class="label">The factory</div>
     <div class="big">We build data center factories.</div>
-    <p>The data center supply chain sat idle for twenty years. AI now demands ten thousand times more than it can produce, in a matter of years. Serving that demand requires re-industrialization.</p>
+  </div>
+  <div class="txt fbot">
+    <p>The data center supply chain sat idle for twenty years. AI now demands ten thousand times more than it can produce, in a matter of years. Serving that demand requires <span class="nw">re-industrialization.</span></p>
     <p>SpaceX didn't just build rockets, they built rocket factories.</p>
   </div>
 </div>

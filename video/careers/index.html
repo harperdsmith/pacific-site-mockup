@@ -31,6 +31,11 @@
   .hero .cap { position:absolute; left:var(--pad); right:var(--pad); bottom:32px; font-family:var(--mono); font-weight:400; font-size:clamp(22px,2vw,36px); line-height:1.06; color:#CECECE; letter-spacing:-0.01em; }
   .hero .cap span { display:block; }
   .hero .cap .sub { color:#CECECE; font-weight:400; max-width:34ch; }
+  /* Get in touch: one outlined button, same style as the homepage Pre-order button, centred on the container body (placed by script from the image geometry; the CSS value is the fallback) */
+  .hero .touch { position:absolute; left:50%; top:57.7%; transform:translate(-50%,-50%); z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; min-height:44px; transition:background-color .25s ease, color .25s ease; }
+  .hero .touch:hover { background:#fff; color:#0a0a0a; }
+  /* Roles: plain list, one per line, not links */
+  .row ul.roles { list-style:none; font-size:18px; line-height:1.35; color:#d9d6d0; display:flex; flex-direction:column; gap:14px; }
 
   /* Text rows, the Helsing component: hairline, title left, one paragraph right */
   .wrap { padding:0 var(--pad); }
@@ -170,6 +175,7 @@
     html.review .slide { height:70svh; } html.review .hero { height:100svh; }
     /* Text rows and spec strip at readable sizes */
     .row p { font-size:17px; line-height:1.4; }
+    .row ul.roles { font-size:17px; line-height:1.4; }
     .row h2 { max-width:none; }
     .spec li { grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:16px; padding:14px 0; }
     .spec .k { font-size:17px; }
@@ -236,50 +242,25 @@
 <header class="slide hero">
   <img src="../../img/careers/hero_gantry_lift_v2.jpg" alt="Pacific pod hanging from a gantry crane in the factory" fetchpriority="high">
   <div class="shade"></div>
+  <a class="touch" href="mailto:harper@pacificmachines.com">Get in touch</a>
   <h1 class="cap"><span>Careers</span><span class="sub">Pacific is hiring engineers and manufacturing leads.</span></h1>
 </header>
 
 <section class="wrap rows">
   <div class="row fade">
-    <h2>THE FACTORY THAT BUILDS DATA CENTERS</h2>
-    <p>Pacific manufactures self-contained, portable AI data centers at scale. The hard part is the factory that turns them out, and that is what we are hiring to build.</p>
+    <h2>We are looking for</h2>
+    <ul class="roles">
+      <li>Head of Manufacturing</li>
+      <li>Head of Finance</li>
+      <li>Solutions Architect</li>
+      <li>Data Center Technician</li>
+      <li>Site Manager</li>
+    </ul>
   </div>
 </section>
 
 <section class="slide fade">
   <img src="../../img/careers/band_line_crew.jpg" alt="A crew around a line of Pacific pods" decoding="async">
-</section>
-
-<section class="wrap rows">
-  <div class="row fade">
-    <h2>WHO WE ARE HIRING</h2>
-    <p>Pacific is hiring engineers and manufacturing leads who have built fast before, from SpaceX, the aerospace supply chain and the data center trades. We are looking for people who have built factories, pads and power systems, and for a solutions architect for pod deployments.</p>
-  </div>
-  <div class="row fade">
-    <h2>SAN FRANCISCO AND LONDON</h2>
-    <p>Pacific works from San Francisco and London. Our first factory and R&amp;D shop opens in San Francisco early next year, and the first job there is building Pod 1 in phases to prove the engineering, the shop, the contractors and the supply chain. Pacific is part of Y Combinator's summer 2026 batch.</p>
-  </div>
-</section>
-
-<section class="slide fade">
-  <img src="../../img/careers/band_roof_fans_install.jpg" alt="Two technicians fitting fan grilles on a pod roof" decoding="async">
-</section>
-
-<section class="wrap rows">
-  <div class="row fade">
-    <h2>GET IN TOUCH</h2>
-    <p>Write to Harper directly at harper@pacificmachines.com and tell him what you have built. If you need GPU clusters or colocation space at the end of this year or early next, get in touch the same way.</p>
-  </div>
-</section>
-
-<section class="giant" style="--podtop:42%; --sink:12%">
-  <img class="base" src="../../img/careers/giant_side_on_p40.jpg" alt="Pacific Pod 32 side-on in a hangar" decoding="async">
-  <div class="word" aria-hidden="true"><span class="giant-fit">HIRING</span></div>
-  <img class="cover" src="../../img/careers/giant_side_on_p40.jpg" alt="" aria-hidden="true" decoding="async">
-</section>
-
-<section class="ctab">
-  <a class="btn fade" href="mailto:harper@pacificmachines.com">Write to Harper</a>
 </section>
 
 <footer class="fa">
@@ -316,6 +297,30 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })(); } catch (e) { console.error(e); }
   setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('in')), 2500);
+</script>
+<script>
+  /* Put the Get in touch button on the centre of the container's corrugated body, whatever the image crop: the body centre is at (50%, 57.7%) of the hero image; this maps it through the rendered image box, object-fit and object-position */
+  (function(){
+    const hero=document.querySelector('.hero'), img=hero&&hero.querySelector('img'), btn=hero&&hero.querySelector('.touch'); if(!hero||!img||!btn) return;
+    const CX=0.5, CY=0.577;
+    function pct(v, total){ v=v.trim(); if(v.endsWith('%')) return parseFloat(v)/100*total; if(v==='left'||v==='top') return 0; if(v==='right'||v==='bottom') return total; if(v==='center') return total/2; return parseFloat(v)||0; }
+    function place(){
+      const iw=img.naturalWidth, ih=img.naturalHeight; if(!iw||!ih) return;
+      const hr=hero.getBoundingClientRect(), r=img.getBoundingClientRect(); const rw=r.width, rh=r.height; if(!rw||!rh) return;
+      const cs=getComputedStyle(img); const fit=cs.objectFit||'fill'; let dw=rw, dh=rh;
+      if(fit==='cover'){ const sc=Math.max(rw/iw, rh/ih); dw=iw*sc; dh=ih*sc; }
+      else if(fit==='contain'||fit==='scale-down'){ const sc=Math.min(rw/iw, rh/ih); dw=iw*sc; dh=ih*sc; }
+      else if(fit==='none'){ dw=iw; dh=ih; }
+      const op=(cs.objectPosition||'50% 50%').split(' '); const ox=(rw-dw)*(pct(op[0],1)), oy=(rh-dh)*(pct(op[1]||'50%',1));
+      let x=r.left-hr.left+ox+CX*dw, y=r.top-hr.top+oy+CY*dh;
+      /* keep the whole button inside the hero if the crop pushes the container body off the edge */
+      const bw=btn.offsetWidth, bh=btn.offsetHeight, pad=16;
+      x=Math.min(Math.max(x, bw/2+pad), hr.width-bw/2-pad); y=Math.min(Math.max(y, bh/2+pad), hr.height-bh/2-pad);
+      btn.style.left=x+'px'; btn.style.top=y+'px';
+    }
+    place(); window.addEventListener('resize', place); img.addEventListener('load', place);
+    if (window.ResizeObserver) new ResizeObserver(place).observe(hero);
+  })();
 </script>
 <script>
   (function(){

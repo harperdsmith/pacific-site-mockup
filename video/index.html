@@ -25,7 +25,7 @@
 
   /* 1. Hero: the v7 light wall, one giant line cropped at the bottom edge */
   .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
-  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+  .hero img, .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.35) 100%); }
   .hero .giant { position:absolute; left:0; right:0; bottom:0.3em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
   .hero .giant .l { display:inline; }
@@ -174,7 +174,7 @@
     :root { --pad:20px; --gap:100px; }
     nav .links a:not(.cta){ display:none; }
     nav .links a.cta { padding:9px 14px; letter-spacing:.14em; }
-    .hero img { object-position:78% 40%; }
+    .hero img, .hero video { object-position:78% 40%; }
     .block p.sub { font-size:16px; }
     .actions a { width:100%; text-align:center; }
     .hero .giant { white-space:normal; font-size:19vw; }
@@ -281,8 +281,8 @@
   /* ---- Mobile round 2 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
   @media (max-width:760px){
     /* Hero crop on a phone shows 26% of the frame: the end of the pod and the technician at its corner, never a lockup cut mid-word */
-    .hero img { object-position:96% 40%; }
-    @media (max-width:380px){ .hero img { object-position:100% 40%; } }
+    .hero img, .hero video { object-position:96% 40%; }
+    @media (max-width:380px){ .hero img, .hero video { object-position:100% 40%; } }
     /* Sunrise image: taller crop placed left of the hangar frame, so no black band on the right of the phone frame */
     .seam .media { height:auto; min-height:0; aspect-ratio:5/8; }
     .seam .media img { object-position:28% center; }
@@ -299,7 +299,7 @@
     /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
     nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
     /* SE-width hero: push the sliver of the lockup's last letter off the left edge (crop anchored to the right, technician and light wall kept) */
-    @media (max-width:380px){ .hero img { transform:scale(1.1); transform-origin:100% 50%; } }
+    @media (max-width:380px){ .hero img, .hero video { transform:scale(1.1); transform-origin:100% 50%; } }
   }
   /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
   @media (max-width:760px){
@@ -337,7 +337,14 @@
 </div>
 
 <header class="hero">
-  <img src="../img/hero_wall_v6.jpg" alt="Pacific pod in silhouette in front of a wall of light" fetchpriority="high">
+  <video class="hv" autoplay muted loop playsinline preload="auto" poster="media/hero_wall_poster.jpg" aria-label="Pacific pod in silhouette in front of a wall of light that slowly breathes" disablepictureinpicture>
+    <source src="media/hero_wall_2560.webm" type="video/webm; codecs=vp9" media="(min-width:1600px)">
+    <source src="media/hero_wall_2560.mp4" type="video/mp4" media="(min-width:1600px)">
+    <source src="media/hero_wall_1920.webm" type="video/webm; codecs=vp9" media="(min-width:761px)">
+    <source src="media/hero_wall_1920.mp4" type="video/mp4" media="(min-width:761px)">
+    <source src="media/hero_wall_1280.webm" type="video/webm; codecs=vp9">
+    <source src="media/hero_wall_1280.mp4" type="video/mp4">
+  </video>
   <div class="shade"></div>
   <a class="preorder" href="https://cal.com/harper-smith/30-minute-call">Pre-order Pod 32</a>
   <h1 class="giant"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>

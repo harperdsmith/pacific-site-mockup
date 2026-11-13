@@ -1,0 +1,58 @@
+/* Pacific inline contact dialogs (Pre-order Pod 32, Request the whitepaper). Same look as the homepage Pre-order dialog. */
+.cal-wrap .cal-loading { position:absolute; left:0; top:0; font-size:15px; color:var(--dim); }
+.cal-wrap.ready .cal-loading { display:none; }
+.cal-wrap .cal-inline { position:relative; width:100%; min-height:inherit; }
+.cal-wrap .cal-fallback { display:none; font-size:17px; color:#c9c7c2; }
+.cal-wrap.failed .cal-fallback { display:block; } .cal-wrap.failed .cal-loading { display:none; }
+.cal-wrap .cal-fallback a { color:var(--ink); }
+html.po-open, html.po-open body { overflow:hidden; }
+dialog.po { margin:auto; padding:0; border:1px solid rgba(255,255,255,.14); background:#0a0a0a; color:var(--ink); width:min(1040px, calc(100vw - 48px)); max-width:none; max-height:calc(100vh - 48px); overflow:auto; overscroll-behavior:contain; font-family:inherit; }
+dialog.po::backdrop { background:rgba(0,0,0,.72); }
+dialog.po .po-in { padding:32px 40px 40px; }
+dialog.po .po-head { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
+dialog.po .po-title { font-size:clamp(24px,2.2vw,32px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; padding-top:6px; margin:0; }
+dialog.po .po-close { min-height:44px; min-width:44px; padding:0 0 0 12px; margin:-6px -2px 0 0; background:none; border:0; color:var(--ink); font-family:inherit; font-size:11px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-appearance:none; appearance:none; }
+dialog.po .po-tabs { display:flex; gap:32px; margin-top:28px; border-bottom:1px solid rgba(255,255,255,.18); }
+dialog.po .po-tab { min-height:44px; padding:0; margin-bottom:-1px; background:none; border:0; border-bottom:1px solid transparent; color:var(--dim); font-family:inherit; font-size:12px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-appearance:none; appearance:none; transition:color .2s, border-color .2s; }
+dialog.po .po-tab:hover { color:var(--ink); }
+dialog.po .po-tab[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--ink); }
+dialog.po .po-panel { padding-top:32px; }
+dialog.po .po-panel[hidden] { display:none; }
+dialog.po form { max-width:680px; margin:0; }
+dialog.po form[hidden] { display:none; }
+dialog.po .po-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px 24px; }
+dialog.po .po-field { display:flex; flex-direction:column; gap:8px; }
+dialog.po .po-field.wide { grid-column:1 / -1; }
+dialog.po .po-field label { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+dialog.po .po-field label .req { color:var(--dim); letter-spacing:0; text-transform:none; }
+dialog.po input, dialog.po textarea { width:100%; box-sizing:border-box; min-height:48px; padding:12px 14px; background:transparent; color:var(--ink); border:1px solid rgba(255,255,255,.28); border-radius:0; font-family:inherit; font-size:17px; line-height:1.4; -webkit-appearance:none; appearance:none; transition:border-color .2s; }
+dialog.po textarea { min-height:128px; resize:vertical; }
+dialog.po input:hover, dialog.po textarea:hover { border-color:rgba(255,255,255,.5); }
+dialog.po input:focus, dialog.po textarea:focus { outline:none; border-color:var(--ink); }
+dialog.po [aria-invalid="true"] { border-color:#ff8a3d; }
+dialog.po .po-err { min-height:0; font-size:14px; color:#ff8a3d; }
+dialog.po .po-err:empty { display:none; }
+dialog.po .po-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-top:28px; }
+dialog.po .po-send { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.85); border-radius:0; padding:15px 34px; min-height:48px; font-family:inherit; font-size:17px; line-height:1.2; cursor:pointer; -webkit-appearance:none; appearance:none; transition:background-color .25s ease, color .25s ease; }
+@media (hover:hover){ dialog.po .po-send:hover { background:#fff; color:#0a0a0a; } }
+dialog.po .po-send[disabled] { opacity:.5; cursor:default; }
+dialog.po .po-note { margin-top:24px; padding:18px 20px; border:1px solid rgba(255,255,255,.18); font-size:17px; line-height:1.5; color:#e2dfd9; }
+dialog.po .po-note[hidden] { display:none; }
+dialog.po .po-note .po-switch { display:inline-block; margin-top:14px; background:none; border:0; border-bottom:1px solid rgba(255,255,255,.5); padding:10px 0 4px; color:var(--ink); font-family:inherit; font-size:12px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-appearance:none; appearance:none; }
+dialog.po .po-done { font-size:clamp(20px,1.6vw,24px); line-height:1.4; max-width:40ch; margin:0; }
+dialog.po .po-done[hidden] { display:none; }
+dialog.po .cal-wrap { position:relative; min-height:560px; }
+dialog.po button:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+dialog.po .po-send:focus, dialog.po .po-send:focus-visible { outline:none; }
+dialog.po .po-send:focus-visible { background:#fff; color:#0a0a0a; }
+@media (max-width:760px){
+  dialog.po { width:100vw; height:100vh; height:100dvh; max-height:none; margin:0; border:0; inset:0; }
+  dialog.po .po-in { padding:calc(12px + env(safe-area-inset-top)) var(--pad) calc(32px + env(safe-area-inset-bottom)); }
+  dialog.po .po-head { align-items:center; }
+  dialog.po .po-title { font-size:24px; padding-top:0; }
+  dialog.po .po-close { margin:0 -2px 0 0; }
+  dialog.po .po-tabs { gap:24px; margin-top:16px; }
+  dialog.po .po-panel { padding-top:24px; }
+  dialog.po .po-grid { grid-template-columns:1fr; gap:18px; }
+  dialog.po .po-send { width:100%; }
+}

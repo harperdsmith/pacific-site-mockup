@@ -454,6 +454,7 @@
     .band.fband .fbot p:first-child { margin-top:0; }
   }
 </style>
+<link rel="stylesheet" href="assets/contact.css"><script src="assets/contact.js"></script>
 </head>
 <body>
 
@@ -463,7 +464,7 @@
     <a href="pod-32/">Pod 32</a>
     <a href="factory-1/">Factory 1</a>
     <a href="careers/">Careers</a>
-    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
+    <a class="cta" href="#book-a-call" data-wp-open>Request whitepaper</a>
     <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false">Menu</button>
   </div>
 </nav>
@@ -473,7 +474,7 @@
     <a href="pod-32/">Pod 32</a>
     <a href="factory-1/">Factory 1</a>
     <a href="careers/">Careers</a>
-    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
+    <a class="cta" href="#book-a-call" data-wp-open>Request whitepaper</a>
   </div>
 </div>
 
@@ -588,7 +589,7 @@
     <a href="./"><img src="./img/pacific_logo_full_white.svg" alt="Pacific"></a>
     <div class="fcol"><div class="label">Product</div><a href="./pod-32/">Pod 32</a><a href="./vera-rubin/">Vera Rubin</a><a href="./factory-1/">Factory 1</a><a href="./sovereignty/">Sovereignty</a></div>
     <div class="fcol"><div class="label">Work with Pacific</div><a href="./buy/">Buy the pod</a><a href="./rent/">Rent the compute</a><a href="./colocate/">Bring your own GPUs</a></div>
-    <div class="fcol"><div class="label">Company</div><a href="./careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="fcol"><div class="label">Company</div><a href="./careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="#book-a-call" data-wp-open>Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
   <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Mock-up, not the live site &middot; <a href="video/">Video version</a></span></div>
 </footer>
@@ -678,8 +679,8 @@
 <script>
   /* Inline contact: the hero Pre-order button opens a dialog (message form or Cal.com booking); the Book a call section embeds Cal.com inline.
      FORM_ENDPOINT: set this one constant to a form endpoint URL (POST, JSON) to switch messages on. Empty = honest "not switched on yet" note. */
-  const FORM_ENDPOINT = '';
-  const CAL_LINK = 'harper-smith/30-minute-call';
+  const FORM_ENDPOINT = (window.PACIFIC_CONTACT && window.PACIFIC_CONTACT.FORM_ENDPOINT) || ''; /* set it in assets/contact.js */
+  const CAL_LINK = (window.PACIFIC_CONTACT && window.PACIFIC_CONTACT.CAL_LINK) || 'harper-smith/30-minute-call';
   (function(){
     /* Cal.com embed loader (same snippet as the old site); nothing loads until a calendar is needed */
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -751,7 +752,7 @@
       if (!FORM_ENDPOINT) { note.hidden = false; note.querySelector('.po-switch').focus(); return; }
       sendBtn.disabled = true; sendBtn.textContent = 'Sending';
       try {
-        const r = await fetch(FORM_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json', 'Accept':'application/json' }, body: JSON.stringify({ name: val('name'), company: val('company'), email: val('email'), phone: val('phone'), message: val('message'), source: 'Pre-order Pod 32', page: location.href }) });
+        const r = await fetch(FORM_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json', 'Accept':'application/json' }, body: JSON.stringify({ form: 'preorder', name: val('name'), company: val('company'), email: val('email'), phone: val('phone'), message: val('message'), source: 'Pre-order Pod 32', page: location.href }) });
         if (!r.ok) throw new Error('HTTP ' + r.status);
         form.hidden = true; done.hidden = false; done.focus();
       } catch (err) {

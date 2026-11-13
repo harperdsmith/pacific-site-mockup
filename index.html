@@ -421,6 +421,8 @@
   .seam .scale .jump-wrap { flex:none; display:block; }
   .seam .scale .book-jump { padding:13px 26px; font-size:15px; }
   @media (min-width:761px) and (max-width:1180px){ .seam .scale p.sub { white-space:normal; } }
+  /* Desktop (Harper 2026-11-12): sentence at the left margin, Book a call on the right content edge. Phone keeps sentence then button, centred. */
+  @media (min-width:761px){ .seam .scale { justify-content:space-between; } .seam .scale p.sub { order:1; } .seam .scale .jump-wrap { order:2; } }
   @media (max-width:760px){
     .seam .scale { left:0; display:flex; flex-direction:column; align-items:center; text-align:center; gap:20px; padding-bottom:8px; }
     .seam .scale p.sub { order:1; }

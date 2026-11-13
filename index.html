@@ -439,7 +439,7 @@
   @media (max-width:760px){ .book-m { display:block; } .book:not(.book-m) { display:none; } }
 
   /* Factory band (Harper 2026-11-12): label top left, headline top centre in the dark above the container, paragraphs centred under the container. Phone: label and headline above the image, paragraphs below it. */
-  .band.fband { --fb-label-top:19%; --fb-head-y:33.5%; --fb-para-top:73.5%; --fb-para-bottom:auto; --fb-para-w:46ch; --fb-shade-y:84%; --fb-label-shade-y:20%; --fb-shade-a:.68; }
+  .band.fband { --fb-label-top:40px; --fb-head-y:33.5%; --fb-para-top:73.5%; --fb-para-bottom:auto; --fb-para-w:46ch; --fb-shade-y:84%; --fb-label-shade-y:5.5%; --fb-shade-a:.68; }
   .band.fband .nw { white-space:nowrap; }
   .band.fband .fbot p { hyphens:none; -webkit-hyphens:none; }
   .band.fband .fbot p { color:#fff; text-shadow:0 1px 12px rgba(0,0,0,.6); }
@@ -447,7 +447,7 @@
     .band.fband .veil { background:radial-gradient(ellipse 16% 9% at calc(var(--pad) + 50px) var(--fb-label-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .45)) 55%, rgba(0,0,0,0) 100%), radial-gradient(ellipse 50% 34% at 50% var(--fb-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .8)) 40%, rgba(0,0,0,calc(var(--fb-shade-a) * .35)) 70%, rgba(0,0,0,0) 100%); }
     .band.fband .txt { position:absolute; left:var(--pad); right:var(--pad); max-width:none; z-index:2; text-align:center; }
     .band.fband .txt.ftop { top:0; bottom:0; pointer-events:none; }
-    .band.fband .ftop .label { position:absolute; top:var(--fb-label-top); left:0; text-align:left; color:#fff; opacity:1; }
+    .band.fband .ftop .label { position:absolute; top:var(--fb-label-top); left:0; text-align:left; color:#fff; opacity:1; text-shadow:0 1px 10px rgba(0,0,0,.85); }
     .band.fband .ftop .big { position:absolute; left:0; right:0; top:var(--fb-head-y); transform:translateY(-50%); margin:0; max-width:none; text-align:center; }
     .band.fband .txt.fbot { top:var(--fb-para-top); bottom:var(--fb-para-bottom); }
     .band.fband .fbot p { max-width:var(--fb-para-w); margin-left:auto; margin-right:auto; }

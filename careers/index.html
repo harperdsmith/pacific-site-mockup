@@ -32,8 +32,8 @@
   .hero .cap span { display:block; }
   .hero .cap .sub { color:#CECECE; font-weight:400; max-width:34ch; }
   /* Get in touch: one outlined button, same style as the homepage Pre-order button, centred on the container body (placed by script from the image geometry; the CSS value is the fallback) */
-  .hero .touch { position:absolute; left:50%; top:57.7%; transform:translate(-50%,-50%); z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; min-height:44px; transition:background-color .25s ease, color .25s ease; }
-  @media (hover:hover){ .hero .touch:hover { background:#fff; color:#0a0a0a; } }
+  .hero .touch { position:absolute; left:50%; top:57.7%; transform:translate(-50%,-50%); z-index:2; display:inline-block; background:#fff; color:#0a0a0a; border:1px solid #fff; padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; min-height:44px; transition:background-color .25s ease, color .25s ease; }
+  @media (hover:hover){ .hero .touch:hover { background:transparent; color:#fff; } }
   /* Roles: plain list, one per line, not links */
   .row ul.roles { list-style:none; font-size:18px; line-height:1.35; color:#d9d6d0; display:flex; flex-direction:column; gap:14px; }
 
@@ -231,7 +231,7 @@
   /* Bordered buttons (2026-11-12): no second focus box after a click or a returned focus; keyboard focus shows the hover fill instead; hover fill only on devices that really hover */
   .hero .touch:focus, .hero .touch:focus-visible, nav .links a.cta:focus, nav .links a.cta:focus-visible, .ctab .btn:focus, .ctab .btn:focus-visible, .mnav .mnav-links a.cta:focus, .mnav .mnav-links a.cta:focus-visible { outline:none; }
   nav .links a.cta:focus-visible { background:transparent; color:#fff; }
-  .hero .touch:focus-visible { background:#fff; color:#0a0a0a; }
+  .hero .touch:focus-visible { background:transparent; color:#fff; }
   .ctab .btn:focus-visible { background:var(--ink); color:var(--bg); }
   .mnav .mnav-links a.cta:focus-visible { background:transparent; color:#fff; }
 </style>

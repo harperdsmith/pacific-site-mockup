@@ -652,7 +652,7 @@
 <dialog class="po" id="po-dialog" aria-labelledby="po-title">
   <div class="po-in">
     <div class="po-head">
-      <h2 class="po-title" id="po-title">Pre-order Pod 32</h2>
+      <h2 class="po-title" id="po-title" tabindex="-1">Pre-order Pod 32</h2>
       <button class="po-close" type="button" aria-label="Close">Close</button>
     </div>
     <div class="po-tabs" role="tablist" aria-label="How to get in touch">
@@ -736,7 +736,7 @@
       t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length].id, true); } });
     });
     let byKeyboard = false;
-    function open(e){ if (e) e.preventDefault(); byKeyboard = !!(e && e.detail === 0); select('po-tab-msg'); note.hidden = true; sendErr.textContent = ''; document.documentElement.classList.add('po-open'); dlg.showModal(); if (ROUTING_FORM && !fMounted) { fMounted = true; mountCal(fWrap, fEl, { enquiry:'Pre-order Pod 32' }, 'forms/' + ROUTING_FORM); } const f = document.getElementById('po-name'); if (!done.hidden) done.focus(); else if (!ROUTING_FORM && matchMedia('(hover:hover)').matches) f.focus(); else dlg.querySelector('.po-close').focus(); }
+    function open(e){ if (e) e.preventDefault(); byKeyboard = !!(e && e.detail === 0); select('po-tab-msg'); note.hidden = true; sendErr.textContent = ''; document.documentElement.classList.add('po-open'); dlg.showModal(); if (ROUTING_FORM && !fMounted) { fMounted = true; mountCal(fWrap, fEl, { enquiry:'Pre-order Pod 32' }, 'forms/' + ROUTING_FORM); } const f = document.getElementById('po-name'); if (!done.hidden) done.focus(); else if (!ROUTING_FORM && matchMedia('(hover:hover)').matches) f.focus(); else document.getElementById('po-title').focus({ preventScroll:true }); }
     function close(){ dlg.close(); }
     opener.setAttribute('aria-haspopup', 'dialog'); opener.setAttribute('aria-controls', 'po-dialog');
     opener.addEventListener('click', open);

@@ -31,7 +31,7 @@ window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
   var WP_HTML =
     '<dialog class="po" id="wp-dialog" aria-labelledby="wp-title">' +
     '<div class="po-in">' +
-      '<div class="po-head"><h2 class="po-title" id="wp-title">Request the whitepaper</h2><button class="po-close" type="button" aria-label="Close">Close</button></div>' +
+      '<div class="po-head"><h2 class="po-title" id="wp-title" tabindex="-1">Request the whitepaper</h2><button class="po-close" type="button" aria-label="Close">Close</button></div>' +
       '<div class="po-tabs" role="tablist" aria-label="How to get the whitepaper">' +
         '<button class="po-tab" type="button" role="tab" id="wp-tab-req" aria-controls="wp-panel-req" aria-selected="true">Request</button>' +
         '<button class="po-tab" type="button" role="tab" id="wp-tab-cal" aria-controls="wp-panel-cal" aria-selected="false" tabindex="-1">Book a call</button>' +
@@ -97,7 +97,7 @@ window.PACIFIC_CONTACT = window.PACIFIC_CONTACT || {
       document.documentElement.classList.add('po-open');
       dlg.showModal();
       if (useCal && !fMounted) { fMounted = true; mountCal(fWrap, fEl, { enquiry:'Whitepaper' }, 'forms/' + CFG.ROUTING_FORM); }
-      if (!done.hidden) done.focus(); else if (!useCal && matchMedia('(hover:hover)').matches) document.getElementById('wp-name').focus(); else dlg.querySelector('.po-close').focus();
+      if (!done.hidden) done.focus(); else if (!useCal && matchMedia('(hover:hover)').matches) document.getElementById('wp-name').focus(); else document.getElementById('wp-title').focus({ preventScroll:true });
     }
     function close(){ dlg.close(); }
     openers.forEach(function(o){ o.setAttribute('aria-haspopup', 'dialog'); o.setAttribute('aria-controls', 'wp-dialog'); o.addEventListener('click', open); });

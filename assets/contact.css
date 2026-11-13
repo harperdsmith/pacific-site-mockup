@@ -60,3 +60,15 @@ dialog.po .po-send:focus-visible { background:#fff; color:#0a0a0a; }
 /* Cal.com routing form inside the dialogs */
 dialog.po .cal-wrap.po-calform { min-height:520px; }
 dialog.po .cal-wrap[hidden] { display:none; }
+
+/* Polish 2026-11-12: no focus box on open (focus goes to the heading), single-line keyboard focus on text buttons,
+   the Cal form starts right under the tab line and its built-in top padding is clipped. */
+dialog.po .po-title:focus { outline:none; }
+dialog.po .po-close:focus-visible, dialog.po .po-tab:focus-visible { outline:none; }
+dialog.po .po-close:focus-visible { text-decoration:underline; text-underline-offset:6px; }
+dialog.po .po-tab:focus-visible { color:var(--ink); border-bottom-color:var(--ink); }
+dialog.po .po-panel:has(> .po-calform:not([hidden])) { padding-top:8px; }
+dialog.po .cal-wrap.po-calform { overflow:hidden; min-height:0; }
+dialog.po .cal-wrap.po-calform .cal-inline { margin-top:var(--calform-clip, 0px); min-height:480px; }
+dialog.po .cal-wrap.po-calform { --calform-clip:-80px; }
+@media (max-width:760px){ dialog.po .cal-wrap.po-calform { --calform-clip:-20px; } }

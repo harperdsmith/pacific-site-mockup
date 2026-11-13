@@ -432,11 +432,12 @@
   @media (max-width:760px){ .book-m { display:block; } .book:not(.book-m) { display:none; } }
 
   /* Factory band (Harper 2026-11-12): label top left, headline top centre in the dark above the container, paragraphs centred under the container. Phone: label and headline above the image, paragraphs below it. */
-  .band.fband { --fb-label-top:40px; --fb-head-y:22%; --fb-para-top:auto; --fb-para-bottom:3.2%; --fb-para-w:60ch; --fb-shade-y:92%; --fb-label-shade-y:5.5%; --fb-shade-a:.45; }
+  .band.fband { --fb-label-top:40px; --fb-head-y:22%; --fb-para-top:auto; --fb-para-bottom:3.2%; --fb-para-w:60ch; --fb-shade-y:92%; --fb-label-shade-y:5.5%; --fb-shade-a:.5; }
   .band.fband .nw { white-space:nowrap; }
   .band.fband .fbot p { hyphens:none; -webkit-hyphens:none; }
+  .band.fband .fbot p { color:#fff; text-shadow:0 1px 12px rgba(0,0,0,.6); }
   @media (min-width:761px){
-    .band.fband .veil { background:radial-gradient(ellipse 46% 30% at 50% var(--fb-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .45)) 55%, rgba(0,0,0,0) 100%); }
+    .band.fband .veil { background:radial-gradient(ellipse 50% 34% at 50% var(--fb-shade-y), rgba(0,0,0,var(--fb-shade-a)) 0%, rgba(0,0,0,calc(var(--fb-shade-a) * .8)) 40%, rgba(0,0,0,calc(var(--fb-shade-a) * .35)) 70%, rgba(0,0,0,0) 100%); }
     .band.fband .txt { position:absolute; left:var(--pad); right:var(--pad); max-width:none; z-index:2; text-align:center; }
     .band.fband .txt.ftop { top:0; bottom:0; pointer-events:none; }
     .band.fband .ftop .label { position:absolute; top:var(--fb-label-top); left:0; text-align:left; color:#fff; opacity:1; }
@@ -567,7 +568,7 @@
   <div class="veil"></div>
   <div class="txt ftop">
     <div class="label">The factory</div>
-    <div class="big">We build data center factories.</div>
+    <div class="big">We build factories.</div>
   </div>
   <div class="txt fbot">
     <p>The data center supply chain sat idle for twenty years. AI now demands ten thousand times more than it can produce, in a matter of years. Serving that demand requires <span class="nw">re-industrialization.</span></p>

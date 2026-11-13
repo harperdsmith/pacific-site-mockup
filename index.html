@@ -264,6 +264,23 @@
     .hiring-img .btn { min-height:44px; display:inline-flex; align-items:center; }
     .block p.sub { font-size:17px; }
   }
+
+  /* ---- Mobile round 2 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Hero crop on a phone shows 26% of the frame: the end of the pod and the technician at its corner, never a lockup cut mid-word */
+    .hero img { object-position:96% 40%; }
+    @media (max-width:380px){ .hero img { object-position:100% 40%; } }
+    /* Sunrise image: taller crop placed left of the hangar frame, so no black band on the right of the phone frame */
+    .seam .media { height:auto; min-height:0; aspect-ratio:5/8; }
+    .seam .media img { object-position:28% center; }
+    /* Four cards: images full-bleed edge to edge, text on black beneath with the page padding */
+    .grid { padding:var(--gap) 0 0; }
+    .card .txt { padding:18px var(--pad) 0; }
+    /* Hiring: the word and button sit higher in the sky, clear air above the pod roof */
+    .hiring-img .centre { bottom:40%; gap:14px; }
+    /* Footer link rows a full 44pt */
+    footer.fa .fcol a { padding:11px 0; }
+  }
 </style>
 </head>
 <body>

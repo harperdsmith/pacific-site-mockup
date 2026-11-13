@@ -177,6 +177,19 @@
     .ways .tier .cta { width:100%; padding:15px 26px; font-size:17px; }
     .ctab .btn { display:block; min-height:44px; }
   }
+
+  /* ---- Mobile round 2 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Hero and slide crops on a phone show 26% of the frame: pick the end of the pod and the person, never a lockup cut mid-word */
+    .hero img { object-position:78% 50%; }
+    .slide img[src*="band_line_crew"] { object-position:0% 50%; }
+    /* Diagram callouts are unreadable at phone scale (18px text in a 1920 viewBox); the mono list under the drawing carries them */
+    .diagram svg text, .diagram svg circle[r="3"], .diagram svg line:not([opacity]) { display:none; }
+    /* Giant word block sits on the page black, no tonal step against the CTA block */
+    .giant:not(.ink) { background:var(--bg); }
+    /* Footer link rows a full 44pt */
+    footer.fa .fcol a { padding:11px 0; }
+  }
 </style>
 </head>
 <body>

@@ -215,6 +215,20 @@
     .mnav { overscroll-behavior:contain; }
   }
   @media (max-width:760px){ .flegal a { display:inline-block; padding:14px 0; } }
+
+  /* ---- Mobile round 5 (phones, max-width 760px). Harper's iPhone review 2026-11-12: every container whole, caption under the image, not on it. Additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Every slide shows its whole frame at full width, nothing cropped at the ends of the pod */
+    .slide { height:auto; min-height:0; }
+    .slide img, .hero img { position:relative; inset:auto; width:100%; height:auto; object-fit:contain; object-position:center; transform:none; display:block; }
+    .slide video, .hero video { position:relative; inset:auto; top:auto; left:auto; width:100%; height:auto; aspect-ratio:1280/704; object-fit:contain; transform:none; display:block; -webkit-mask-image:none; mask-image:none; }
+    html.review .slide { height:auto; }
+    /* Hero: the whole pod at full width, the caption below it on black, the set centred in the first screen */
+    .hero { height:auto; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:calc(84px + env(safe-area-inset-top)) 0 calc(36px + env(safe-area-inset-bottom)); }
+    .hero .shade { display:none; }
+    .hero .cap { position:static; padding:24px var(--pad) 0; }
+    html.review .hero { height:auto; }
+  }
 </style>
 </head>
 <body>

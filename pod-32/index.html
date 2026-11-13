@@ -264,6 +264,18 @@
     .hero .cap { font-size:20px; }
     .hero .cap .sub { font-size:15px; line-height:1.3; }
   }
+  /* Pod 32 base configuration table (2026-11-12) */
+  .spec.base .label { margin-bottom:20px; }
+  .spec.base dl { margin:0; border-bottom:1px solid var(--hair); }
+  .spec.base dl > div { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,4fr); gap:32px; align-items:baseline; padding:18px 0; border-top:1px solid var(--hair); }
+  .spec.base dt { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+  .spec.base dd { margin:0; font-size:18px; line-height:1.35; color:#d9d6d0; }
+  .spec.base .note { margin-top:20px; font-size:15px; line-height:1.4; color:var(--dim); max-width:62ch; }
+  @media (max-width:760px){
+    .spec.base dl > div { grid-template-columns:minmax(0,1fr); gap:6px; padding:14px 0; }
+    .spec.base dd { font-size:15px; line-height:1.35; letter-spacing:-0.005em; }
+    .spec.base .note { font-size:15px; line-height:1.35; }
+  }
 </style>
 <link rel="stylesheet" href="../assets/contact.css"><script src="../assets/contact.js"></script>
 </head>
@@ -317,15 +329,19 @@
   </div>
 </section>
 
-<section class="spec fade">
-  <ol>
-    <li><span class="k">Nodes</span><span class="v">32</span></li>
-    <li><span class="k">GPUs</span><span class="v">256 NVIDIA B300</span></li>
-    <li><span class="k">Power</span><span class="v">Under 1 MW</span></li>
-    <li><span class="k">Fabric</span><span class="v">3.2 or 6.4 Tbps</span></li>
-    <li><span class="k">Storage</span><span class="v">983 TB raw</span></li>
-    <li><span class="k">Cooling</span><span class="v">Direct-to-chip liquid</span></li>
-  </ol>
+<section class="spec base fade" aria-labelledby="base-config">
+  <div class="label" id="base-config">Base configuration</div>
+  <dl>
+    <div><dt>GPUs</dt><dd>256 NVIDIA B300</dd></div>
+    <div><dt>Nodes</dt><dd>32 HGX B300 nodes, 8 per rack across 4 racks</dd></div>
+    <div><dt>CPUs</dt><dd>64 Intel Xeon 6776P</dd></div>
+    <div><dt>System memory</dt><dd>128 TB DDR5</dd></div>
+    <div><dt>Local NVMe</dt><dd>983 TB raw</dd></div>
+    <div><dt>Compute fabric</dt><dd>400G rail-optimised Ethernet, 3.2 Tbps per node</dd></div>
+    <div><dt>Power</dt><dd>645 kW operating, 790 kW design envelope, 480 V A/B feeds</dd></div>
+    <div><dt>Cooling</dt><dd>direct-to-chip liquid, closed loop, redundant CDUs, 850 kW heat rejection</dd></div>
+  </dl>
+  <p class="note">Configurable at order. Fabric to 6.4 Tbps per node, shared storage to around 200 TB.</p>
 </section>
 
 <section class="diagram fade" style="background:#07070b">

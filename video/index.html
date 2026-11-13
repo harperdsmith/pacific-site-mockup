@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pacific. The data center factory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62,800;75,800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --pad:40px; --h:clamp(28px,3.3vw,48px); --gap:150px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  @media (prefers-reduced-motion:no-preference){ html { scroll-behavior:smooth; } }
+  body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
+  a { color:inherit; }
+  .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px var(--pad) 40px; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+  nav .wordmark img { height:20px; display:block; opacity:0.96; }
+  nav .links { display:flex; gap:34px; align-items:center; }
+  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
+  nav .links a:hover { opacity:1; }
+  nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
+  nav .links a.cta:hover { background:transparent; color:#fff; }
+
+  /* 1. Hero: the v7 light wall, one giant line cropped at the bottom edge */
+  .hero { position:relative; height:100vh; min-height:640px; overflow:hidden; background:#000; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+  .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(0,0,0,.35) 100%); }
+  .hero .giant { position:absolute; left:0; right:0; bottom:0.3em; padding:0 var(--pad); text-align:center; font-weight:700; text-transform:uppercase; letter-spacing:-0.025em; line-height:.92; white-space:nowrap; color:#fff; font-size:6.3vw; }
+  .hero .giant .l { display:inline; }
+  .hero .preorder { position:absolute; left:50%; transform:translateX(-50%); bottom:22vh; z-index:2; display:inline-block; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.9); padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; transition:background-color .25s ease, color .25s ease; }
+  .hero .preorder:hover { background:#fff; color:#0a0a0a; }
+
+  /* 2. Statement over the sunrise image: breathing room after the hero, text stepped in, container low */
+  .seam { position:relative; height:138vh; min-height:1060px; overflow:hidden; background:var(--bg); }
+  .seam .media { position:absolute; inset:0; }
+  .seam .media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; }
+  .seam .media .top { position:absolute; left:0; right:0; top:0; height:40%; background:linear-gradient(180deg, rgba(10,10,10,.45) 0%, rgba(10,10,10,.2) 50%, rgba(10,10,10,0) 100%); }
+  .seam .txt { position:absolute; left:var(--pad); right:var(--pad); top:300px; z-index:2; }
+  .seam .txt .big { font-size:clamp(27px,3.1vw,48px); font-weight:400; line-height:1.1; letter-spacing:-0.018em; max-width:min(calc(100vw - var(--pad) - 420px), 66vw); text-shadow:0 2px 24px rgba(0,0,0,.35); }
+  .seam .txt p.sub { margin-top:0; font-size:clamp(19px,1.5vw,29px); color:#dcd9d3; max-width:calc(min(100vw - var(--pad) - 420px, 66vw) - 5.6vw); margin-left:5.6vw; text-shadow:0 2px 24px rgba(0,0,0,.5); line-height:1.4; }
+  .seam .txt p.sub:first-of-type { margin-top:44px; }
+  .seam .txt p.sub + p.sub { margin-top:1.4em; }
+  .seam .scale { position:absolute; left:calc(var(--pad) + 5.6vw); right:var(--pad); bottom:72px; z-index:2; padding:0; }
+  .seam .scale p.sub { font-size:clamp(19px,1.5vw,29px); color:#dcd9d3; max-width:none; white-space:nowrap; text-shadow:0 2px 24px rgba(0,0,0,.5); }
+
+  /* 3a. Four cards, Helsing product grid */
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:72px var(--pad) 0; }
+  .card { position:relative; aspect-ratio:16/10; overflow:hidden; background:#000; display:block; text-decoration:none; }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s cubic-bezier(.2,.6,.2,1); }
+  .card:hover img { transform:scale(1.03); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.85) 100%); }
+  .card .txt { position:absolute; left:28px; right:28px; bottom:26px; }
+  .card .name { font-size:clamp(22px,2vw,30px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; }
+  .card .line { margin-top:8px; font-size:15px; color:#c9c7c2; max-width:40ch; }
+  .card .more { margin-top:16px; display:inline-block; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:4px; }
+  .card.pod img { object-position:center 55%; }
+  .card.vera img { object-position:center 50%; }
+  .card.factory img { object-position:center 45%; }
+  .card.sov img { object-position:center 60%; }
+
+  /* 3b. Version B: one card per screen, Helsing rows. Name on top, descriptor in grey, outlined button. */
+  .rows { padding-top:72px; }
+  .rowcard { position:relative; height:100vh; min-height:600px; overflow:hidden; display:block; text-decoration:none; border-top:1px solid #000; }
+  .rowcard img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.6,.2,1); }
+  .rowcard:hover img { transform:scale(1.02); }
+  .rowcard .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.8) 100%); }
+  .rowcard .txt { position:absolute; left:var(--pad); right:var(--pad); bottom:64px; }
+  .rowcard .name { font-size:clamp(34px,4.2vw,64px); font-weight:400; letter-spacing:-0.02em; line-height:1.02; }
+  .rowcard .line { font-size:clamp(22px,2.6vw,40px); color:#a9a7a2; font-weight:400; letter-spacing:-0.015em; line-height:1.1; margin-top:4px; }
+  .rowcard .btn { display:inline-block; margin-top:40px; border:1px solid rgba(255,255,255,.85); padding:16px 34px; font-size:17px; color:#fff; }
+  .rowcard.pod img { object-position:center 55%; } .rowcard.vera img { object-position:center 50%; } .rowcard.factory img { object-position:center 45%; } .rowcard.sov img { object-position:center 60%; }
+
+  /* 5. Closing band: hangar door, the SpaceX line on it */
+  .band { position:relative; height:100vh; min-height:560px; overflow:hidden; margin-top:var(--gap); }
+  .band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; }
+  .band video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; background:#000; }
+  .band .veil { position:absolute; inset:0; background:linear-gradient(232deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.8) 100%); }
+  .band .txt { position:absolute; left:var(--pad); right:var(--pad); bottom:64px; max-width:60ch; }
+  .band .txt .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
+  .band .txt p { margin-top:20px; font-size:clamp(18px,1.25vw,24px); color:#e2dfd9; max-width:52ch; line-height:1.5; }
+
+  /* 6a. Hiring, image version: giant word in the sky, button under it, no black */
+  .hiring-img { position:relative; aspect-ratio:1344/978; min-height:640px; overflow:hidden; margin-top:0; }
+  .hiring-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 100%; }
+  .hiring-img .centre { position:absolute; left:0; right:0; top:0; bottom:33%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px; }
+  .hiring-img .weare { font-size:var(--h); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; color:#fff; margin-bottom:-22px; text-shadow:0 2px 24px rgba(0,0,0,.4); }
+  .hiring-img .word { width:100%; padding:0 var(--pad); text-align:center; font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
+  .hiring-img .btn { border:1px solid rgba(255,255,255,.9); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
+  .hiring-img .btn:hover { background:#fff; color:var(--bg); }
+  .hiring-img.dark .word { color:#0a0a0a; }
+  .hiring-img.dark .btn { color:#0a0a0a; border-color:rgba(10,10,10,.9); }
+  .hiring-img.dark .btn:hover { background:#0a0a0a; color:#fff; }
+  html.review .hiring-img { height:auto; }
+  @media (max-width:760px){ .hiring-img { height:70vh; min-height:420px; aspect-ratio:auto; } .hiring-img img { object-position:60% 100%; } }
+  /* 6. Hiring: one giant word edge to edge, one button */
+  .hiring { padding:var(--gap) 0 calc(var(--gap) - 20px); text-align:center; overflow:hidden; margin-top:var(--gap); }
+  .hiring .word { padding:0 var(--pad); font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; }
+  .hiring .btn { display:inline-block; margin-top:44px; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
+  .hiring .btn:hover { background:var(--ink); color:var(--bg); }
+  /* 6b. legacy block styles (still used by the divider) */
+  .block { padding:var(--gap) var(--pad) 72px; }
+  .block h2, .block .big { font-size:var(--h); font-weight:400; line-height:1.12; letter-spacing:-0.015em; max-width:26ch; margin-top:20px; }
+  .block p.sub { margin-top:22px; font-size:18px; color:#b3b1ac; font-weight:400; max-width:52ch; }
+  .actions { display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
+  .actions a { color:var(--bg); background:var(--ink); text-decoration:none; font-size:11px; letter-spacing:.22em; text-transform:uppercase; border:1px solid var(--ink); padding:13px 24px; transition:opacity .25s ease; }
+  .actions a:hover { opacity:.85; }
+  .actions a.ghost { background:transparent; color:var(--ink); border-color:rgba(255,255,255,.5); }
+  a:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+
+
+  /* Footer, cloned from Helsing: flush grey block, lockup + two link columns + legal line */
+  .foot { background:#9E9A9B; color:#474749; padding:32px var(--pad) 10px; margin-top:0; }
+  .foot a { color:inherit; text-decoration:none; transition:color .15s ease; }
+  .foot a:hover { color:#1F1E1E; }
+  .foot .fnav { display:grid; grid-template-columns:minmax(0,4fr) minmax(0,2fr) minmax(0,2fr) minmax(0,4fr); gap:24px; align-items:start; font-size:16px; line-height:1.3; }
+  .foot .flogo img { height:16px; width:auto; display:block; opacity:.9; }
+  .foot ul { list-style:none; display:flex; flex-direction:column; gap:14px; }
+  .foot .fsocial { display:flex; justify-content:flex-end; gap:16px; }
+  .foot .fsocial svg { display:block; }
+  .foot .flegal { display:flex; justify-content:space-between; gap:16px; margin-top:80px; font-size:12px; line-height:1.3; }
+  @media (max-width:760px){
+    .foot .fnav { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px 16px; }
+    .foot .flogo { grid-column:1 / -1; }
+    .foot .fsocial { grid-column:1 / -1; justify-content:flex-start; }
+    .foot .flegal { flex-direction:column; align-items:flex-end; gap:6px; margin-top:40px; }
+  }
+
+  /* A/B divider */
+  .divider { padding:120px var(--pad) 40px; border-top:1px dashed #333; margin-top:var(--gap); }
+  .divider .label { color:#ff8a3d; }
+  .divider .big { font-size:var(--h); font-weight:400; margin-top:16px; }
+
+  /* Work with Pacific: three tiers */
+  .btn-solid, .btn-ghost { display:inline-block; padding:16px 34px; font-size:17px; line-height:1.2; text-decoration:none; white-space:nowrap; text-align:center; transition:background-color .25s ease, color .25s ease, border-color .25s ease; }
+  .btn-solid { background:#fff; color:#0a0a0a; border:1px solid #fff; }
+  .btn-solid:hover { background:transparent; color:#fff; }
+  .btn-ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.85); }
+  .btn-ghost:hover { background:#fff; color:#0a0a0a; }
+  .ways { position:relative; background:#000; margin-top:var(--gap); padding:var(--gap) var(--pad); border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); }
+  .ways .big { font-size:clamp(28px,3.3vw,48px); font-weight:400; line-height:1.12; letter-spacing:-0.015em; margin-top:20px; max-width:26ch; }
+  .ways p.intro { margin-top:22px; font-size:clamp(18px,1.25vw,24px); color:#b3b1ac; max-width:52ch; line-height:1.5; }
+  .ways .tiers { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 40px; margin-top:64px; padding-top:28px; border-top:1px solid rgba(255,255,255,.18); }
+  .ways .tier { position:relative; display:flex; flex-direction:column; align-items:flex-start; }
+  .ways .tier + .tier::before { content:""; position:absolute; left:-20px; top:0; bottom:0; width:1px; background:rgba(255,255,255,.18); }
+  .ways .tier img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:#000; }
+  .ways .tier .label { margin-top:24px; }
+  .ways .tier .name { margin-top:10px; font-size:clamp(22px,2vw,30px); font-weight:400; letter-spacing:-0.01em; line-height:1.1; }
+  .ways .tier .line { margin-top:10px; font-size:17px; color:#c9c7c2; line-height:1.5; max-width:40ch; flex:1; }
+  .ways .tier .cta { margin-top:24px; padding:13px 26px; font-size:15px; }
+  .ways + .slide { margin-top:var(--gap); }
+  @media (max-width:900px){ .ways .tiers { grid-template-columns:1fr; gap:40px 0; } .ways .tier + .tier { padding-top:40px; border-top:1px solid rgba(255,255,255,.18); } .ways .tier + .tier::before { display:none; } }
+  @media (max-width:760px){ .ways .tier .cta { width:100%; } }
+
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
+  .band.fade, .card.fade, .rowcard.fade, .media.fade { transform:none; }
+  .grid .fade:nth-child(2){ transition-delay:.1s } .grid .fade:nth-child(3){ transition-delay:.2s } .grid .fade:nth-child(4){ transition-delay:.3s }
+  .fade.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
+
+  html.review .hero, html.review .band, html.review .rowcard { height:1000px; } html.review .seam { height:1500px; } html.review .fade { opacity:1; transform:none; }
+
+  @media (max-width:900px){ .grid { grid-template-columns:1fr; } }
+  @media (max-width:760px){
+    :root { --pad:20px; --gap:100px; }
+    nav .links a:not(.cta){ display:none; }
+    nav .links a.cta { padding:9px 14px; letter-spacing:.14em; }
+    .hero img { object-position:78% 40%; }
+    .block p.sub { font-size:16px; }
+    .actions a { width:100%; text-align:center; }
+    .hero .giant { white-space:normal; font-size:19vw; }
+    .hero .giant .l { display:block; width:max-content; }
+    .hero .preorder { bottom:auto; top:54%; }
+    .card { aspect-ratio:4/3; }
+    .band, .rowcard { height:70vh; min-height:420px; }
+    .seam .media img { object-position:58% center; }
+    .seam { height:auto; min-height:0; } .seam .media { position:relative; height:70vh; } .seam .txt { position:relative; top:0; left:0; right:auto; padding:60px var(--pad) 24px; } .seam .txt .big { max-width:none; } .seam .txt p.sub { margin-left:0; } .seam .scale { position:relative; left:0; bottom:0; padding:18px var(--pad) 40px; } .seam .scale p.sub { white-space:normal; }
+  }
+  nav { transition:transform .35s ease, opacity .35s ease; }
+  nav.hide { transform:translateY(-110%); opacity:0; pointer-events:none; }
+  /* Footer A: black, three labelled columns */
+  footer.fa { background:var(--bg); color:var(--ink); border-top:1px solid var(--line); padding:64px var(--pad) 36px; margin-top:0; }
+  footer.fa .row { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; align-items:start; }
+  footer.fa img { height:18px; display:block; }
+  footer.fa .fcol .label { margin-bottom:4px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+  footer.fa .fcol a { display:block; color:var(--ink); text-decoration:none; font-size:14px; margin-top:12px; opacity:.85; transition:opacity .2s; }
+  footer.fa .fcol a:hover { opacity:1; }
+  footer.fa .flegal { display:flex; justify-content:space-between; margin-top:72px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
+  @media (max-width:760px){ footer.fa .row { grid-template-columns:1fr 1fr; } footer.fa .flegal { flex-direction:column; gap:8px; } }
+
+  /* ---- Mobile v1 (phones, max-width 760px). Additions only: nothing in here reaches 761px and wider. ---- */
+  .menu-btn, .mnav { display:none; }
+  @media (max-width:760px){
+    html { -webkit-text-size-adjust:100%; }
+    /* Fixed nav: safe-area top inset, 44pt hit areas, wordmark + Menu only (the three links and the CTA live in the menu) */
+    nav { padding:calc(16px + env(safe-area-inset-top)) var(--pad) 36px; }
+    nav .wordmark { display:block; padding:13px 0; margin:-13px 0; }
+    nav .wordmark img { height:18px; }
+    nav .links { gap:0; }
+    nav .links a.cta { display:none; }
+    nav .menu-btn, .mnav .mnav-close { display:inline-flex; align-items:center; justify-content:center; min-height:44px; min-width:44px; padding:0 2px 0 12px; margin:-12px -2px -12px 0; background:none; border:0; color:var(--ink); font-family:inherit; font-size:11px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; -webkit-appearance:none; appearance:none; }
+    nav .menu-btn { opacity:.96; }
+    .mnav { position:fixed; inset:0; z-index:20; background:#0a0a0a; color:var(--ink); flex-direction:column; padding:calc(16px + env(safe-area-inset-top)) var(--pad) calc(24px + env(safe-area-inset-bottom)); overflow:auto; -webkit-overflow-scrolling:touch; }
+    .mnav.open { display:flex; }
+    .mnav .mnav-bar { display:flex; justify-content:space-between; align-items:center; }
+    .mnav .mnav-bar .wordmark { display:block; padding:13px 0; margin:-13px 0; }
+    .mnav .mnav-bar .wordmark img { height:18px; display:block; opacity:.96; }
+    .mnav .mnav-links { display:flex; flex-direction:column; margin-top:min(14vh, 120px); }
+    .mnav .mnav-links a { display:block; padding:15px 0; font-size:17px; line-height:1.3; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:var(--ink); border-top:1px solid rgba(255,255,255,.14); }
+    .mnav .mnav-links a:last-of-type:not(.cta) { border-bottom:1px solid rgba(255,255,255,.14); }
+    .mnav .mnav-links a.cta { margin-top:32px; border:1px solid #fff; background:#fff; color:#0a0a0a; text-align:center; padding:15px 22px; }
+    html.menu-open, html.menu-open body { overflow:hidden; height:100%; }
+    /* Footer: columns stack to two, then one on phones; 44pt link rows; home-indicator inset */
+    footer.fa { padding:56px var(--pad) calc(28px + env(safe-area-inset-bottom)); }
+    footer.fa .row { grid-template-columns:1fr 1fr; gap:40px 20px; }
+    footer.fa .row > a { grid-column:1 / -1; padding:13px 0; margin:-13px 0; width:max-content; }
+    footer.fa .fcol .label { margin-bottom:6px; }
+    footer.fa .fcol a { font-size:17px; line-height:1.4; margin-top:0; padding:10px 0; }
+    footer.fa .flegal { margin-top:48px; gap:10px; }
+  }
+  @media (max-width:480px){
+    footer.fa .row { grid-template-columns:1fr; gap:36px; }
+  }
+  footer.fa .flegal a { color:inherit; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.28); padding-bottom:2px; transition:color .2s, border-color .2s; }
+  footer.fa .flegal a:hover { color:var(--ink); border-color:var(--ink); }
+
+  @media (max-width:760px){
+    /* Hero: full viewport (svh), word at the bottom above the home indicator, pre-order button up in the light wall, not on the pod */
+    .hero { height:100svh; }
+    .hero .giant { bottom:calc(0.3em + env(safe-area-inset-bottom)); }
+    .hero .preorder { top:calc(100px + env(safe-area-inset-top) + 6svh); bottom:auto; min-height:44px; }
+    html.review .hero { height:100svh; }
+    /* Statement: generous air under the hero, text on black, then the sunrise image full-bleed, then the scale line */
+    .seam .txt { padding:112px var(--pad) 44px; }
+    .seam .txt .big { font-size:30px; max-width:none; }
+    .seam .txt p.sub { font-size:19px; max-width:none; margin-left:0; }
+    .seam .txt p.sub:first-of-type { margin-top:32px; }
+    .seam .media { height:64svh; min-height:380px; }
+    .seam .scale { padding:24px var(--pad) 0; }
+    html.review .seam { height:auto; }
+    /* Four cards: one column, image full width, text on black under it */
+    .grid { padding:var(--gap) var(--pad) 0; gap:52px; }
+    .card { aspect-ratio:auto; }
+    .card img { position:relative; display:block; height:auto; aspect-ratio:16/10; }
+    .card .veil { display:none; }
+    .card .txt { position:static; padding:18px 0 0; }
+    .card .name { font-size:26px; }
+    .card .line { font-size:17px; max-width:none; margin-top:8px; }
+    .card .more { margin-top:16px; }
+    /* Work with Pacific tiers already stack; make the buttons 44pt and full width */
+    .ways .tier .cta { width:100%; padding:15px 26px; font-size:17px; }
+    /* Closing band: image full-bleed at its own ratio, text on black beneath it */
+    .band { height:auto; min-height:0; }
+    .band img { position:relative; display:block; height:auto; aspect-ratio:1344/752; }
+    .band .veil { display:none; }
+    .band .txt { position:static; padding:28px var(--pad) 0; max-width:none; }
+    .band .txt .big { margin-top:14px; max-width:none; }
+    .band .txt p { font-size:17px; max-width:none; }
+    html.review .band { height:auto; }
+    /* Hiring: square crop so the whole pod and the walker fit the phone width, word and button in the sky above the pod, air after the band */
+    .hiring-img { height:auto; min-height:0; aspect-ratio:1/1; margin-top:72px; }
+    .hiring-img img { object-position:50% 100%; }
+    html.review .hiring-img { height:auto; }
+    .hiring-img .centre { bottom:36%; gap:20px; }
+    .hiring-img .weare { margin-bottom:-10px; }
+    .hiring-img .btn { min-height:44px; display:inline-flex; align-items:center; }
+    .block p.sub { font-size:17px; }
+  }
+
+  /* ---- Mobile round 2 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Hero crop on a phone shows 26% of the frame: the end of the pod and the technician at its corner, never a lockup cut mid-word */
+    .hero img { object-position:96% 40%; }
+    @media (max-width:380px){ .hero img { object-position:100% 40%; } }
+    /* Sunrise image: taller crop placed left of the hangar frame, so no black band on the right of the phone frame */
+    .seam .media { height:auto; min-height:0; aspect-ratio:5/8; }
+    .seam .media img { object-position:28% center; }
+    /* Four cards: images full-bleed edge to edge, text on black beneath with the page padding */
+    .grid { padding:var(--gap) 0 0; }
+    .card .txt { padding:18px var(--pad) 0; }
+    /* Hiring: the word and button sit higher in the sky, clear air above the pod roof */
+    .hiring-img .centre { bottom:40%; gap:14px; }
+    /* Footer link rows a full 44pt */
+    footer.fa .fcol a { padding:11px 0; }
+  }
+  /* ---- Mobile round 3 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
+    nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+    /* SE-width hero: push the sliver of the lockup's last letter off the left edge (crop anchored to the right, technician and light wall kept) */
+    @media (max-width:380px){ .hero img { transform:scale(1.1); transform-origin:100% 50%; } }
+  }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+    /* Four cards: the images are composed 16:9; show the whole frame so the technician at the pod corner is not cut in half */
+    .card img { aspect-ratio:16/9; }
+  }
+  /* ---- Video version: the SpaceX band carries the gantry clip instead of the orange end-on still. Same veil and text placement.
+     On a phone the clip sits full-bleed at its own ratio with the text on black beneath, exactly as the still does. ---- */
+  @media (max-width:760px){ .band video { position:relative; display:block; height:auto; aspect-ratio:1280/704; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="wordmark" href="./"><img src="../img/pacific_logo_full_white.svg" alt="Pacific"></a>
+  <div class="links">
+    <a href="pod-32/">Pod 32</a>
+    <a href="factory-1/">Factory 1</a>
+    <a href="careers/">Careers</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
+    <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <div class="mnav-bar"><a class="wordmark" href="./"><img src="../img/pacific_logo_full_white.svg" alt="Pacific"></a><button class="mnav-close" type="button">Close</button></div>
+  <div class="mnav-links">
+    <a href="pod-32/">Pod 32</a>
+    <a href="factory-1/">Factory 1</a>
+    <a href="careers/">Careers</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
+  </div>
+</div>
+
+<header class="hero">
+  <img src="../img/hero_wall_v5.jpg" alt="Pacific pod in silhouette in front of a wall of light" fetchpriority="high">
+  <div class="shade"></div>
+  <a class="preorder" href="https://cal.com/harper-smith/30-minute-call">Pre-order Pod 32</a>
+  <h1 class="giant"><span class="giant-fit"><span class="l">The data </span><span class="l">center </span><span class="l">factory</span></span></h1>
+</header>
+
+<section class="seam" id="company">
+  <div class="txt">
+    <div class="big fade">Pacific manufactures self-contained, portable AI data centers at scale.</div>
+    <p class="sub fade">This is the fastest path to bringing compute online. We deliver functional data centers to sites where the power is already developed, and they generate tokens within days.</p>
+    <p class="sub fade">We build factories to mass manufacture the pods and the most critically constrained components of the data center supply chain. We work with AI labs, governments and defense to bring compute online fast and at scale.</p>
+  </div>
+  <div class="media fade">
+    <img src="../img/v08_anduril_crew_sky_p41.jpg" alt="Pacific pod at sunrise, a technician walking towards it with a tool case" decoding="async">
+    <div class="top"></div>
+  </div>
+  <div class="scale"><p class="sub fade">Pods can be single megawatt sites or clustered to form hyperscale campuses.</p></div>
+</section>
+
+<div class="grid" id="pod">
+  <a class="card pod fade" href="pod-32/">
+    <img src="../img/card_pod32_real_v4.jpg" alt="Pacific Pod 32 in front of a wall of light" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Pod 32</div><div class="line">256 NVIDIA B300s in a 40 foot container.</div><span class="more">Learn more</span></div>
+  </a>
+  <a class="card vera fade" href="vera-rubin/">
+    <img src="../img/card_vera_real_v4.jpg" alt="Pacific pod in a hangar" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Vera Rubin</div><div class="line">The next configuration, in development.</div><span class="more">Learn more</span></div>
+  </a>
+  <a class="card factory fade" href="factory-1/" id="factory">
+    <img src="../img/card_factory_gantry.jpg" alt="Pacific pod on a gantry crane in the factory" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Factory 1</div><div class="line">Our factory and R&amp;D shop in San Francisco, opening early next year.</div><span class="more">Learn more</span></div>
+  </a>
+  <a class="card sov fade" href="sovereignty/">
+    <img src="../img/card_sov_truck_p41.jpg" alt="Pacific pod on a truck at dusk" loading="lazy" decoding="async">
+    <div class="veil"></div>
+    <div class="txt"><div class="name">Sovereignty</div><div class="line">Compute that lands on your land and stays under your control.</div><span class="more">Learn more</span></div>
+  </a>
+</div>
+
+<section class="ways" id="work-with-pacific">
+  <div class="label fade">Work with Pacific</div>
+  <div class="big fade">Work with Pacific</div>
+  <p class="intro fade">Pacific operates, manages clusters, rents GPUs, and directly sells pods to selected partners.</p>
+  <div class="tiers">
+    <div class="tier fade">
+      <img src="../img/three_ways/buy_the_pod_v3.jpg" alt="Pacific pod side-on in front of a wall of light, a technician kneeling at its corner" loading="lazy" decoding="async">
+      <div class="label">Pod</div>
+      <div class="name">Buy the pod</div>
+      <div class="line">You own the whole module. It is configured at order, and the target is operation within three months of pre-payment.</div>
+      <a class="btn-ghost cta" href="buy/">Request a pod</a>
+    </div>
+    <div class="tier fade">
+      <img src="../img/three_ways/rent_capacity_v3.jpg" alt="Pacific pod with both end doors open, rows of racks lit inside" loading="lazy" decoding="async">
+      <div class="label">Capacity</div>
+      <div class="name">Rent the compute</div>
+      <div class="line">Pacific's GPUs run as a managed cluster for your term. You are the only tenant.</div>
+      <a class="btn-ghost cta" href="rent/">Request capacity</a>
+    </div>
+    <div class="tier fade">
+      <img src="../img/three_ways/managed_cluster_v3.jpg" alt="Three Pacific pods in a row in front of a wall of light" loading="lazy" decoding="async">
+      <div class="label">Colocation</div>
+      <div class="name">Bring your own GPUs</div>
+      <div class="line">Your GPUs sit in a Pacific pod, with A and B power and liquid cooling already built in.</div>
+      <a class="btn-ghost cta" href="colocate/">Request colo space</a>
+    </div>
+  </div>
+</section>
+
+<div class="band fade">
+  <video class="bv" autoplay muted loop playsinline preload="metadata" poster="media/factory1_gantry_poster.jpg" aria-label="Pacific pod carried toward camera on a gantry crane in the factory" disablepictureinpicture>
+    <source src="media/factory1_gantry_1280.webm" type="video/webm; codecs=vp9" media="(min-width:761px)">
+    <source src="media/factory1_gantry_1280.mp4" type="video/mp4" media="(min-width:761px)">
+    <source src="media/factory1_gantry_720.webm" type="video/webm; codecs=vp9">
+    <source src="media/factory1_gantry_720.mp4" type="video/mp4">
+  </video>
+  <div class="veil"></div>
+  <div class="txt">
+    <div class="label">The factory</div>
+    <div class="big">SpaceX built rocket factories.</div>
+    <p>The data center supply chain sat idle for twenty years. AI now demands ten thousand times more than it can produce, in a matter of years. Serving that demand requires re-industrialization.</p>
+  </div>
+</div>
+<script>
+  /* Video version: honour prefers-reduced-motion. The poster stays, nothing autoplays. */
+  (function(){ if(!matchMedia('(prefers-reduced-motion: reduce)').matches) return; document.querySelectorAll('video[autoplay]').forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.preload='none'; v.load(); }); })();
+</script>
+
+<section class="hiring-img" id="careers">
+  <img src="../img/hiring_dusk_v3.jpg" alt="Pacific pod at dusk, a technician walking past" loading="lazy" decoding="async">
+  <div class="centre">
+    <div class="weare">We are</div>
+    <div class="word" aria-hidden="true"><span class="hiring-fit">HIRING</span></div>
+    <a class="btn fade" href="careers/">Open roles</a>
+  </div>
+</section>
+
+<footer class="fa">
+  <div class="row">
+    <a href="./"><img src="../img/pacific_logo_full_white.svg" alt="Pacific"></a>
+    <div class="fcol"><div class="label">Product</div><a href="./pod-32/">Pod 32</a><a href="./vera-rubin/">Vera Rubin</a><a href="./factory-1/">Factory 1</a><a href="./sovereignty/">Sovereignty</a></div>
+    <div class="fcol"><div class="label">Work with Pacific</div><a href="./buy/">Buy the pod</a><a href="./rent/">Rent the compute</a><a href="./colocate/">Bring your own GPUs</a></div>
+    <div class="fcol"><div class="label">Company</div><a href="./careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Video version &middot; <a href="../">Stills version</a></span></div>
+</footer>
+
+<script>
+  if (location.search.includes('review')) { document.documentElement.classList.add('review'); document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager'); }
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  try { (function(){
+    const fits = [...document.querySelectorAll('.giant-fit, .hiring-fit')];
+    function fit(){
+      const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
+      const avail = document.documentElement.clientWidth - pad*2;
+      fits.forEach(el => {
+        const target = avail * (el.classList.contains('hiring-fit') ? 0.8 : 0.995);
+        const box = el.parentElement; const lines = el.querySelectorAll('.l');
+        box.style.fontSize = '100px';
+        const stacked = lines.length && getComputedStyle(lines[0]).display === 'block';
+        const w = stacked ? Math.max(...[...lines].map(l => l.getBoundingClientRect().width)) : el.getBoundingClientRect().width;
+        if (w) box.style.fontSize = (100 * target / w) + 'px';
+      });
+    }
+    fit(); window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })(); } catch (e) { console.error(e); }
+  setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('in')), 2500);
+</script>
+<script>
+  (function(){
+    const nav=document.querySelector('nav'); if(!nav) return;
+    let last=window.scrollY, ticking=false;
+    function update(){
+      const y=window.scrollY, first=window.innerHeight*0.9;
+      if(y<first){ nav.classList.remove('hide'); }
+      else if(y>last+6){ nav.classList.add('hide'); }
+      else if(y<last-6){ nav.classList.remove('hide'); }
+      last=y; ticking=false;
+    }
+    window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});
+  })();
+</script>
+<script>
+  (function(){
+    const btn=document.querySelector('.menu-btn'), m=document.getElementById('mnav'); if(!btn||!m) return;
+    const close=m.querySelector('.mnav-close');
+    function set(o){ m.classList.toggle('open',o); m.setAttribute('aria-hidden',String(!o)); btn.setAttribute('aria-expanded',String(o)); document.documentElement.classList.toggle('menu-open',o); (o?close:btn).focus({preventScroll:true}); }
+    btn.addEventListener('click',()=>set(true));
+    close.addEventListener('click',()=>set(false));
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&m.classList.contains('open')) set(false); });
+    const mq=matchMedia('(min-width:761px)'); if(mq.addEventListener) mq.addEventListener('change',e=>{ if(e.matches&&m.classList.contains('open')) set(false); });
+  })();
+</script>
+</body>
+</html>

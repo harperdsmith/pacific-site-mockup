@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Careers. Pacific</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62,800;75,800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0a0a; --ink:#eceae6; --dim:#8a8a86; --line:#222; --hair:rgba(255,255,255,.28); --orange:#F4691E; --pad:40px; --gap:160px; --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  @media (prefers-reduced-motion:no-preference){ html { scroll-behavior:smooth; } }
+  body { background:var(--bg); color:var(--ink); font-family:"Helvetica Neue",Helvetica,Inter,Arial,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.4; }
+  a { color:inherit; }
+  a:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+  .label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--dim); }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:26px var(--pad) 40px; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+  nav .wordmark img { height:20px; display:block; opacity:0.96; }
+  nav .links { display:flex; gap:34px; align-items:center; }
+  nav .links a { color:var(--ink); text-decoration:none; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.92; transition:opacity .3s; }
+  nav .links a:hover { opacity:1; }
+  nav .links a.cta { background:#fff; color:#0a0a0a; border:1px solid #fff; padding:9px 22px; opacity:1 !important; transition:background-color .25s ease, color .25s ease; }
+  nav .links a.cta:hover { background:transparent; color:#fff; }
+
+  /* Full-bleed slides */
+  .slide { position:relative; height:100svh; min-height:560px; overflow:hidden; background:#000; }
+  .slide img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 50%; }
+  .hero .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(0,0,0,.45) 100%); }
+  .hero .cap { position:absolute; left:var(--pad); right:var(--pad); bottom:32px; font-family:var(--mono); font-weight:400; font-size:clamp(22px,2vw,36px); line-height:1.06; color:#CECECE; letter-spacing:-0.01em; }
+  .hero .cap span { display:block; }
+  .hero .cap .sub { color:#CECECE; font-weight:400; max-width:34ch; }
+
+  /* Text rows, the Helsing component: hairline, title left, one paragraph right */
+  .wrap { padding:0 var(--pad); }
+  .rows { margin-top:48px; }
+  .slide + .rows { margin-top:48px; }
+  .rows + .slide, .rows + .spec, .rows + .diagram, .spec + .slide, .diagram + .slide, .rows + .giant, .slide + .giant, .spec + .diagram { margin-top:var(--gap); }
+  .row { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,4fr); gap:32px; padding-top:26px; border-top:1px solid var(--hair); }
+  .row + .row { margin-top:80px; border-top:0; padding-top:0; }
+  .row h2 { font-size:clamp(20px,1.55vw,26px); line-height:1.2; font-weight:500; text-transform:uppercase; letter-spacing:.02em; max-width:14ch; }
+  .row p { font-size:18px; line-height:1.35; color:#d9d6d0; max-width:62ch; overflow-wrap:anywhere; }
+
+  /* Spec strip: mono key/value list, values in Signal Orange */
+  .spec { padding:0 var(--pad); }
+  .spec ol { list-style:none; font-family:var(--mono); }
+  .spec li { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,4fr); gap:32px; align-items:baseline; padding:22px 0; border-top:2px solid rgba(255,255,255,.22); }
+  .spec li:last-child { border-bottom:2px solid rgba(255,255,255,.22); }
+  .spec .k { font-size:14px; color:#CECECE; letter-spacing:.02em; }
+  .spec .v { font-size:24px; line-height:1; color:var(--orange); }
+
+  /* Diagram: thin-line drawing on near-black, callouts live in the drawing, mono list on mobile */
+  .diagram { padding:0; }
+  .diagram img { display:block; width:100%; height:auto; }
+  .diagram ul { display:none; list-style:none; font-family:var(--mono); font-size:14px; line-height:1; color:#CECECE; padding:16px var(--pad) 0; gap:12px; flex-direction:column; }
+
+  /* Giant word: the word fitted edge to edge, the pod in front of it (a masked copy of the image covers the letters) */
+  .giant { position:relative; width:100%; aspect-ratio:1344/752; overflow:hidden; background:#000; --podtop:42%; --sink:12%; }
+  .giant img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .giant .word { position:absolute; left:0; right:0; bottom:calc(100% - var(--podtop) - var(--sink)); padding:0 var(--pad); text-align:center; font-family:'Archivo',"Helvetica Neue",sans-serif; font-stretch:62%; font-variation-settings:'wdth' 62,'wght' 800; font-weight:800; text-transform:uppercase; letter-spacing:-0.01em; line-height:.84; color:#fff; white-space:nowrap; font-size:20vw; z-index:1; }
+  .giant .cover { z-index:2; -webkit-mask-image:linear-gradient(to bottom, transparent calc(var(--podtop) - 2.5%), #000 calc(var(--podtop) + 1%)); mask-image:linear-gradient(to bottom, transparent calc(var(--podtop) - 2.5%), #000 calc(var(--podtop) + 1%)); }
+  .giant.ink .word { color:#0a0a0a; }
+  .giant.nocover .cover { display:none; }
+
+  /* CTA: one outlined button */
+  .ctab { padding:var(--gap) var(--pad); text-align:center; }
+  .ctab .btn { display:inline-block; border:1px solid rgba(255,255,255,.85); padding:16px 40px; font-size:17px; color:#fff; text-decoration:none; transition:background-color .25s, color .25s; }
+  .ctab .btn:hover { background:var(--ink); color:var(--bg); }
+
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
+  .slide.fade, .giant.fade { transform:none; }
+  .fade.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .fade { opacity:1; transform:none; transition:none; } }
+  html.review .slide { height:1000px; } html.review .fade { opacity:1; transform:none; }
+
+  @media (max-width:760px){
+    :root { --pad:20px; --gap:80px; }
+    nav .links a:not(.cta){ display:none; }
+    nav .links a.cta { padding:9px 14px; letter-spacing:.14em; }
+    .slide { height:70svh; min-height:420px; }
+    .hero { height:100svh; }
+    .hero .cap { font-size:24px; bottom:24px; }
+    .row { grid-template-columns:minmax(0,1fr); gap:14px; padding-top:16px; }
+    .row + .row { margin-top:40px; }
+    .row p { font-size:16px; }
+    .spec li { grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:12px; padding:10px 0; border-width:1px; }
+    .spec .v { font-size:18px; }
+    .diagram ul { display:flex; }
+    .giant { aspect-ratio:auto; }
+    .giant .word { position:static; padding:40px var(--pad) 24px; }
+    .giant img { position:static; display:block; width:100%; height:auto; }
+    .giant .cover { display:none; }
+    .ctab .btn { display:block; }
+  }
+
+  /* Footer, cloned from Helsing: flush grey block, lockup + two link columns + legal line */
+  .foot { background:#9E9A9B; color:#474749; padding:32px var(--pad) 10px; margin-top:0; }
+  .foot a { color:inherit; text-decoration:none; transition:color .15s ease; }
+  .foot a:hover { color:#1F1E1E; }
+  .foot .fnav { display:grid; grid-template-columns:minmax(0,4fr) minmax(0,2fr) minmax(0,2fr) minmax(0,4fr); gap:24px; align-items:start; font-size:16px; line-height:1.3; }
+  .foot .flogo img { height:16px; width:auto; display:block; opacity:.9; }
+  .foot ul { list-style:none; display:flex; flex-direction:column; gap:14px; }
+  .foot .fsocial { display:flex; justify-content:flex-end; gap:16px; }
+  .foot .fsocial svg { display:block; }
+  .foot .flegal { display:flex; justify-content:space-between; gap:16px; margin-top:80px; font-size:12px; line-height:1.3; }
+  @media (max-width:760px){
+    .foot .fnav { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px 16px; }
+    .foot .flogo { grid-column:1 / -1; }
+    .foot .fsocial { grid-column:1 / -1; justify-content:flex-start; }
+    .foot .flegal { flex-direction:column; align-items:flex-end; gap:6px; margin-top:40px; }
+  }
+  nav { transition:transform .35s ease, opacity .35s ease; }
+  nav.hide { transform:translateY(-110%); opacity:0; pointer-events:none; }
+  /* Footer A: black, three labelled columns */
+  footer.fa { background:var(--bg); color:var(--ink); border-top:1px solid var(--line); padding:64px var(--pad) 36px; margin-top:0; }
+  footer.fa .row { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; align-items:start; }
+  footer.fa img { height:18px; display:block; }
+  footer.fa .fcol .label { margin-bottom:4px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); }
+  footer.fa .fcol a { display:block; color:var(--ink); text-decoration:none; font-size:14px; margin-top:12px; opacity:.85; transition:opacity .2s; }
+  footer.fa .fcol a:hover { opacity:1; }
+  footer.fa .flegal { display:flex; justify-content:space-between; margin-top:72px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
+  @media (max-width:760px){ footer.fa .row { grid-template-columns:1fr 1fr; } footer.fa .flegal { flex-direction:column; gap:8px; } }
+
+  /* ---- Mobile v1 (phones, max-width 760px). Additions only: nothing in here reaches 761px and wider. ---- */
+  .menu-btn, .mnav { display:none; }
+  @media (max-width:760px){
+    html { -webkit-text-size-adjust:100%; }
+    /* Fixed nav: safe-area top inset, 44pt hit areas, wordmark + Menu only (the three links and the CTA live in the menu) */
+    nav { padding:calc(16px + env(safe-area-inset-top)) var(--pad) 36px; }
+    nav .wordmark { display:block; padding:13px 0; margin:-13px 0; }
+    nav .wordmark img { height:18px; }
+    nav .links { gap:0; }
+    nav .links a.cta { display:none; }
+    nav .menu-btn, .mnav .mnav-close { display:inline-flex; align-items:center; justify-content:center; min-height:44px; min-width:44px; padding:0 2px 0 12px; margin:-12px -2px -12px 0; background:none; border:0; color:var(--ink); font-family:inherit; font-size:11px; letter-spacing:.22em; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; -webkit-appearance:none; appearance:none; }
+    nav .menu-btn { opacity:.96; }
+    .mnav { position:fixed; inset:0; z-index:20; background:#0a0a0a; color:var(--ink); flex-direction:column; padding:calc(16px + env(safe-area-inset-top)) var(--pad) calc(24px + env(safe-area-inset-bottom)); overflow:auto; -webkit-overflow-scrolling:touch; }
+    .mnav.open { display:flex; }
+    .mnav .mnav-bar { display:flex; justify-content:space-between; align-items:center; }
+    .mnav .mnav-bar .wordmark { display:block; padding:13px 0; margin:-13px 0; }
+    .mnav .mnav-bar .wordmark img { height:18px; display:block; opacity:.96; }
+    .mnav .mnav-links { display:flex; flex-direction:column; margin-top:min(14vh, 120px); }
+    .mnav .mnav-links a { display:block; padding:15px 0; font-size:17px; line-height:1.3; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:var(--ink); border-top:1px solid rgba(255,255,255,.14); }
+    .mnav .mnav-links a:last-of-type:not(.cta) { border-bottom:1px solid rgba(255,255,255,.14); }
+    .mnav .mnav-links a.cta { margin-top:32px; border:1px solid #fff; background:#fff; color:#0a0a0a; text-align:center; padding:15px 22px; }
+    html.menu-open, html.menu-open body { overflow:hidden; height:100%; }
+    /* Footer: columns stack to two, then one on phones; 44pt link rows; home-indicator inset */
+    footer.fa { padding:56px var(--pad) calc(28px + env(safe-area-inset-bottom)); }
+    footer.fa .row { grid-template-columns:1fr 1fr; gap:40px 20px; }
+    footer.fa .row > a { grid-column:1 / -1; padding:13px 0; margin:-13px 0; width:max-content; }
+    footer.fa .fcol .label { margin-bottom:6px; }
+    footer.fa .fcol a { font-size:17px; line-height:1.4; margin-top:0; padding:10px 0; }
+    footer.fa .flegal { margin-top:48px; gap:10px; }
+  }
+  @media (max-width:480px){
+    footer.fa .row { grid-template-columns:1fr; gap:36px; }
+  }
+  footer.fa .flegal a { color:inherit; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.28); padding-bottom:2px; transition:color .2s, border-color .2s; }
+  footer.fa .flegal a:hover { color:var(--ink); border-color:var(--ink); }
+
+  @media (max-width:760px){
+    /* Heroes and slides: svh heights so iOS toolbars do not push the caption; caption smaller and on the floor, under the pod */
+    .slide { height:70svh; min-height:420px; }
+    .hero { height:100svh; min-height:0; }
+    .hero .shade { background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.55) 100%); }
+    .hero .cap { font-size:22px; bottom:calc(20px + env(safe-area-inset-bottom)); }
+    .hero .cap .sub { font-size:18px; margin-top:.35em; max-width:none; }
+    html.review .slide { height:70svh; } html.review .hero { height:100svh; }
+    /* Text rows and spec strip at readable sizes */
+    .row p { font-size:17px; line-height:1.4; }
+    .row h2 { max-width:none; }
+    .spec li { grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:16px; padding:14px 0; }
+    .spec .k { font-size:17px; }
+    .spec .v { font-size:20px; line-height:1.15; }
+    .diagram .dwrap { padding:24px 0; }
+    .diagram ul { font-size:17px; line-height:1.3; }
+    /* Giant word on black, then the image full-bleed */
+    .giant .word { padding:48px var(--pad) 28px; }
+    .ways .tier .cta { width:100%; padding:15px 26px; font-size:17px; }
+    .ctab .btn { display:block; min-height:44px; }
+  }
+
+  /* ---- Mobile round 2 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Hero and slide crops on a phone show 26% of the frame: pick the end of the pod and the person, never a lockup cut mid-word */
+    .hero img { object-position:78% 50%; }
+    .slide img[src*="band_line_crew"] { object-position:0% 50%; }
+    /* Diagram callouts are unreadable at phone scale (18px text in a 1920 viewBox); the mono list under the drawing carries them */
+    .diagram svg text, .diagram svg circle[r="3"], .diagram svg line:not([opacity]) { display:none; }
+    /* Giant word block sits on the page black, no tonal step against the CTA block */
+    .giant:not(.ink) { background:var(--bg); }
+    /* Footer link rows a full 44pt */
+    footer.fa .fcol a { padding:11px 0; }
+  }
+  /* ---- Mobile round 3 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Keyboard focus on the Menu and Close buttons in the house hairline style, not the UA blue ring */
+    nav .menu-btn:focus-visible, .mnav .mnav-close:focus-visible { outline:1px solid var(--ink); outline-offset:4px; }
+    /* Hero: the technician stands to the right of the caption instead of under it; caption wraps at 24ch so the text never reaches him */
+    .hero img { object-position:64% 50%; }
+    @media (max-width:380px){ .hero img { object-position:60% 50%; } }
+    .hero .cap .sub { max-width:24ch; }
+  }
+  /* ---- Mobile round 4 (phones, max-width 760px). Review fixes; additions only, nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    /* Menu overlay: no scroll chaining to the page behind it on iOS */
+    .mnav { overscroll-behavior:contain; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="wordmark" href="../"><img src="../../img/pacific_logo_full_white.svg" alt="Pacific"></a>
+  <div class="links">
+    <a href="../pod-32/">Pod 32</a>
+    <a href="../factory-1/">Factory 1</a>
+    <a href="../careers/">Careers</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
+    <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <div class="mnav-bar"><a class="wordmark" href="../"><img src="../../img/pacific_logo_full_white.svg" alt="Pacific"></a><button class="mnav-close" type="button">Close</button></div>
+  <div class="mnav-links">
+    <a href="../pod-32/">Pod 32</a>
+    <a href="../factory-1/">Factory 1</a>
+    <a href="../careers/">Careers</a>
+    <a class="cta" href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a>
+  </div>
+</div>
+
+<header class="slide hero">
+  <img src="../../img/careers/hero_gantry_lift_v2.jpg" alt="Pacific pod hanging from a gantry crane in the factory" fetchpriority="high">
+  <div class="shade"></div>
+  <h1 class="cap"><span>Careers</span><span class="sub">Pacific is hiring engineers and manufacturing leads.</span></h1>
+</header>
+
+<section class="wrap rows">
+  <div class="row fade">
+    <h2>THE FACTORY THAT BUILDS DATA CENTERS</h2>
+    <p>Pacific manufactures self-contained, portable AI data centers at scale. The hard part is the factory that turns them out, and that is what we are hiring to build.</p>
+  </div>
+</section>
+
+<section class="slide fade">
+  <img src="../../img/careers/band_line_crew.jpg" alt="A crew around a line of Pacific pods" decoding="async">
+</section>
+
+<section class="wrap rows">
+  <div class="row fade">
+    <h2>WHO WE ARE HIRING</h2>
+    <p>Pacific is hiring engineers and manufacturing leads who have built fast before, from SpaceX, the aerospace supply chain and the data center trades. We are looking for people who have built factories, pads and power systems, and for a solutions architect for pod deployments.</p>
+  </div>
+  <div class="row fade">
+    <h2>SAN FRANCISCO AND LONDON</h2>
+    <p>Pacific works from San Francisco and London. Our first factory and R&amp;D shop opens in San Francisco early next year, and the first job there is building Pod 1 in phases to prove the engineering, the shop, the contractors and the supply chain. Pacific is part of Y Combinator's summer 2026 batch.</p>
+  </div>
+</section>
+
+<section class="slide fade">
+  <img src="../../img/careers/band_roof_fans_install.jpg" alt="Two technicians fitting fan grilles on a pod roof" decoding="async">
+</section>
+
+<section class="wrap rows">
+  <div class="row fade">
+    <h2>GET IN TOUCH</h2>
+    <p>Write to Harper directly at harper@pacificmachines.com and tell him what you have built. If you need GPU clusters or colocation space at the end of this year or early next, get in touch the same way.</p>
+  </div>
+</section>
+
+<section class="giant" style="--podtop:42%; --sink:12%">
+  <img class="base" src="../../img/careers/giant_side_on_p40.jpg" alt="Pacific Pod 32 side-on in a hangar" decoding="async">
+  <div class="word" aria-hidden="true"><span class="giant-fit">HIRING</span></div>
+  <img class="cover" src="../../img/careers/giant_side_on_p40.jpg" alt="" aria-hidden="true" decoding="async">
+</section>
+
+<section class="ctab">
+  <a class="btn fade" href="mailto:harper@pacificmachines.com">Write to Harper</a>
+</section>
+
+<footer class="fa">
+  <div class="row">
+    <a href="../"><img src="../../img/pacific_logo_full_white.svg" alt="Pacific"></a>
+    <div class="fcol"><div class="label">Product</div><a href="../pod-32/">Pod 32</a><a href="../vera-rubin/">Vera Rubin</a><a href="../factory-1/">Factory 1</a><a href="../sovereignty/">Sovereignty</a></div>
+    <div class="fcol"><div class="label">Work with Pacific</div><a href="../buy/">Buy the pod</a><a href="../rent/">Rent the compute</a><a href="../colocate/">Bring your own GPUs</a></div>
+    <div class="fcol"><div class="label">Company</div><a href="../careers/">Careers</a><a href="mailto:harper@pacificmachines.com">Contact</a><a href="mailto:harper@pacificmachines.com?subject=Pod%2032%20whitepaper">Request whitepaper</a><a href="https://www.linkedin.com/in/harper-dammann-smith/" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+  <div class="flegal"><span>&copy; 2026 Pacific Systems, Inc.</span><span>Video version &middot; <a href="../../careers/">Stills version</a></span></div>
+</footer>
+
+<script>
+  if (location.search.includes('review')) { document.documentElement.classList.add('review'); document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager'); }
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  try { (function(){
+    const fits = [...document.querySelectorAll('.giant-fit')];
+    function fit(){
+      const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad')) || 40;
+      const avail = document.documentElement.clientWidth - pad*2;
+      fits.forEach(el => {
+        const box = el.parentElement; const sec = box.parentElement;
+        box.style.fontSize = '100px';
+        const w = el.getBoundingClientRect().width;
+        if (!w) return;
+        let fs = 100 * (avail * 0.97) / w;
+        const stacked = getComputedStyle(box).position === 'static';
+        if (!stacked) { const maxH = sec.getBoundingClientRect().height * 0.5; const h = box.getBoundingClientRect().height; if (h) fs = Math.min(fs, 100 * maxH / h); }
+        box.style.fontSize = fs + 'px';
+      });
+    }
+    fit(); window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })(); } catch (e) { console.error(e); }
+  setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('in')), 2500);
+</script>
+<script>
+  (function(){
+    const nav=document.querySelector('nav'); if(!nav) return;
+    let last=window.scrollY, ticking=false;
+    function update(){
+      const y=window.scrollY, first=window.innerHeight*0.9;
+      if(y<first){ nav.classList.remove('hide'); }
+      else if(y>last+6){ nav.classList.add('hide'); }
+      else if(y<last-6){ nav.classList.remove('hide'); }
+      last=y; ticking=false;
+    }
+    window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});
+  })();
+</script>
+<script>
+  (function(){
+    const btn=document.querySelector('.menu-btn'), m=document.getElementById('mnav'); if(!btn||!m) return;
+    const close=m.querySelector('.mnav-close');
+    function set(o){ m.classList.toggle('open',o); m.setAttribute('aria-hidden',String(!o)); btn.setAttribute('aria-expanded',String(o)); document.documentElement.classList.toggle('menu-open',o); (o?close:btn).focus({preventScroll:true}); }
+    btn.addEventListener('click',()=>set(true));
+    close.addEventListener('click',()=>set(false));
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&m.classList.contains('open')) set(false); });
+    const mq=matchMedia('(min-width:761px)'); if(mq.addEventListener) mq.addEventListener('change',e=>{ if(e.matches&&m.classList.contains('open')) set(false); });
+  })();
+</script>
+</body>
+</html>

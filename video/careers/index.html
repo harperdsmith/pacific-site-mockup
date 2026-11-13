@@ -236,6 +236,18 @@
   .hero .touch:focus-visible { background:transparent; color:#fff; }
   .ctab .btn:focus-visible { background:var(--ink); color:var(--bg); }
   .mnav .mnav-links a.cta:focus-visible { background:transparent; color:#fff; }
+
+  /* ---- Mobile type (phones, max-width 760px, 2026-11-12): body copy at Helsing's phone scale (about 15px, open 1.35 leading, slightly tight), headings scaled with it. Giant words, buttons, dialog inputs and tap targets unchanged. Nothing reaches 761px and wider. ---- */
+  @media (max-width:760px){
+    .seam .txt p.sub, .seam .scale p.sub, .card .line, .ways p.intro, .ways .tier .line, .band .txt p, .block p.sub, .row p, .row ul.roles, .spec .k, .diagram ul { font-size:15px; line-height:1.35; letter-spacing:-0.005em; }
+    .seam .txt .big, .ways .big, .book .big, .band .txt .big, .block h2, .block .big, .divider .big { font-size:24px; line-height:1.1; letter-spacing:-0.02em; }
+    .card .name { font-size:22px; }
+    .ways .tier .name { font-size:20px; }
+    .row h2 { font-size:17px; }
+    .spec .v { font-size:18px; line-height:1.2; }
+    .hero .cap { font-size:20px; }
+    .hero .cap .sub { font-size:15px; line-height:1.3; }
+  }
 </style>
 </head>
 <body>
